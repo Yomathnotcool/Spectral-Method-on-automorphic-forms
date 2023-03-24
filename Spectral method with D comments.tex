@@ -1,0 +1,4587 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{mathrsfs}
+\usepackage{bbm}
+\usepackage{tikz}
+\usepackage{amsfonts}
+\usepackage{amssymb,amsmath,amscd,amsthm,amsfonts}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[pdflatex%dvipdfm,  %pdflatex,pdftexÕâÀï¾ö¶¨ÔËÐÐÎÄ¼þµÄ·½Ê½²»Í¬
+            pdfstartview=FitH,
+            CJKbookmarks=true,
+            bookmarksnumbered=true,
+            bookmarksopen=true,
+            colorlinks=true, %×¢ÊÍµô´ËÏîÔò½»²æÒýÓÃÎª²ÊÉ«±ß¿ò(½«colorlinksºÍpdfborderÍ¬Ê±×¢ÊÍµô)
+            pdfborder=001,   %×¢ÊÍµô´ËÏîÔò½»²æÒýÓÃÎª²ÊÉ«±ß¿ò
+            linkcolor=green,
+            anchorcolor=green,
+            citecolor=green
+            ]{}
+\pagestyle{plain}
+\marginparwidth    0pt
+\oddsidemargin     0pt
+\evensidemargin    0pt
+\topmargin         0pt
+\textheight        21cm
+\textwidth         17cm
+
+\usepackage[all]{xy}
+
+
+\usepackage{CJK}
+
+\renewcommand{\le}{\left}
+\newcommand{\ri}{\right}
+\newcommand{\bqa}{\begin{equation}}
+\newcommand{\eqa}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\bna}{\begin{eqnarray*}}
+\newcommand{\ena}{\end{eqnarray*}}
+\newcommand{\bma}{\begin{pmatrix}}
+\newcommand{\ema}{\end{pmatrix}}
+\newcommand{\ep}{\delta}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\vp}{\varphi}
+\newcommand{\pal}{\partial}
+\newcommand{\mk}{\mathfrak}
+\newcommand{\ml}{\mathcal}
+\newcommand{\diff }[1]{{\rm d}#1}
+\newcommand{\mmod}[1]{\;{\rm mod}\;#1}
+\newcommand{\mpmod}[1]{\;({\rm mod}\;#1)}
+\newcommand{\sumstar}[1]{\underset{#1}{\sum\nolimits^*}}
+
+\def\fxx{\backslash}
+\def\riaw{\rightarrow}
+\def\leaw{\leftarrow}
+\def\cl{{\mathcal L}}
+\def\ct{{\mathcal T}}
+\def\bz{{\mathbb Z}}
+\def\br{{\mathbb R}}
+\def\bc{{\mathbb C}}
+\def\bh{{\mathbb H}}
+\def\sl2z{SL(2,\bz)}
+\def\psl2z{PSL(2,\bz)}
+\def\sltr{SL(2,\br)}
+\def\gl2r{GL(2,\br)}
+\def\glnr{GL(n,\br)}
+\def\rme{{\rm e}}
+\def\rmi{{\rm i}}
+\def\re{{\mathrm{Re}}}
+\def\im{{\mathrm{Im}}}
+\def\res{{\rm Res}}
+\def\m{\mathfrak}
+\def\C{\mathbb{C}}
+\def\B{\mathcal{B}}
+\def\A{\mathbb{A}}
+\def\R{\mathbb{R}}
+\def\Q{\mathbb{Q}}
+\def\Z{\mathbb{Z}}
+\def\g{\mathfrak{g}}
+\def\sign{\mathrm {sign}}
+\def\vol{\mathrm {Vol}}
+
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{thm}[lemma]{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}[lemma]{Proposition}
+\newtheorem{conj}[lemma]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{exam}{Example}
+\newtheorem*{ques}{Question}
+
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand\Prefix[3]{\vphantom{#3}#1#2#3}
+
+\newcommand{\red}[1]{\textcolor{red}{{#1}}}
+
+\title{Spectral Method on automorphic forms}
+
+
+
+
+\author{Deng Zhiyuan}
+\date{\today}
+
+
+\keywords{Petersson trace formula, Kuznetsov trace formula, Maass newforms, Central $L$-values.}
+
+
+
+
+
+
+\begin{document}
+\maketitle
+
+\section{\textbf{The  M\"obius transform on the Riemann sphere}}
+Let $\hat\C=\C\cup\{\infty\}$ be the Riemann sphere.
+It can be realized as $S^2$ in $\R^3$, or as $\mathbb P^1(\C)$.
+
+For $g\in SL_2(\C)$, the M\"obious transform  is defined by
+\bna
+g\mapsto g.z=\frac{az+b}{cz+d},\quad g=\bma a&b\\c&d\ema.
+\ena
+This is a bilinear transformation. One has
+\bna
+z=\infty\mapsto\frac{a}{c},\qquad z=-\frac{d}{c}\mapsto\infty.
+\ena
+\begin{prop}
+The M\"obius transforms form a group of conformal maps of the Riemann sphere.
+\end{prop}
+
+
+Consider the fixed points of $g=\bma a&b\\c&d\ema\in SL_2(\C)=\bigg\{\bma a&b\\c&d\ema: a,b,c,d\in \C,\ and\ ad-bc=1\bigg\}$,
+\bna
+\frac{az+b}{cz+d}=z.
+\ena
+One has
+\bna
+cz^2+(d-a)z-b=0.
+\ena
+The solutions are
+\bna
+z_1,z_2=\frac{a-d\pm\sqrt{(d+a)^2-4}}{2c}
+\ena
+and we know that  $a+d=\mathrm{Tr}(g)\neq \pm 2$ then $z_1\neq z_2$.
+
+We assume that $g$ has two fixed different points $z_1\neq z_2$.
+Let  $A=\bma 1&-z_1\\ 1&-z_2\ema$ so that $
+z\mapsto A.z$
+maps
+\bna
+z_1\mapsto 0,\qquad z_2\mapsto\infty
+\ena
+which are the south pole and the north pole in $S^2$, respectively.
+Then we have
+\bna
+\xymatrix{
+\hat \C\ar[rr]^{g}\ar[d]^{A}&&\hat \C\ar[d]^{A}\\
+\hat \C\ar[rr]^{\tilde g=AgA^{-1}}&&\hat \C
+}\qquad
+\xymatrix{
+z_1,z_2\ar[rr]^{g}&&z_1,z_2\ar[d]^{A}\\
+0,\infty\ar[u]^{A^{-1}}\ar[rr]^{\tilde g=AgA^{-1}}&&0,\infty
+}.
+\ena
+Here
+\bna
+\tilde g=AgA^{-1}=\bma\lambda^{1/2}&\\&\lambda^{-1/2}\ema
+\ena
+with
+\bna
+\tilde g.0=0,\quad \tilde g.\infty=\infty,\quad\tilde g.z=\lambda z
+\ena
+where $\lambda^{1/2}$ and $\lambda^{-1/2}$ are eigenvalues of $\tilde g$ (hence of $g$).
+\bit
+\item
+For $g$ with fixed points $z_1$ and $z_2$,
+let $\mathcal H_{z_1,z_2}$ be circles  passing through $z_1$ and $z_2$,
+called \underline{hyperbolic pencil};
+let $\mathcal E_{z_1,z_2}$ be circles orthogonal to those circles in $\mathcal H_{z_1,z_2}$,
+called \underline{elliptic pencil}.
+\item
+Correspondingly, for $\tilde g$, the hyperbolic pencil $\mathcal H_{0,\infty}$
+are circles passing through  the north pole and the south pole, i.e.
+\underline{longitude lines};
+the elliptic pencil $\mathcal E_{0,\infty}$ are just \underline{latitude lines}
+\eit
+
+We give the classification of $g=\bma a&b\\c&d\ema$ as follows.
+\bit
+\item [1.]elliptic.\\
+ If $tr(g)=a+d=\lambda^{1/2}+\lambda^{-1/2}$ satisfies
+\bna
+-2<tr(g)<2.
+\ena
+Then we know $\lambda$ must be of the form $\lambda=e^{i\theta}$, $0<\theta<2\pi$.
+In this case,
+\bna
+\tilde g:z\mapsto \lambda z=e^{i\theta}z
+\ena
+Besides the fixed points  at $0$ and $\infty$, $\tilde g$ moves points along the latitude lines,
+or equivalently,
+$g$ moves points along the \underline{elliptic pencil}.
+Such $g$ is called elliptic.
+\item[2.]hyperbolic.\\ If $tr(g)=a+d=\lambda^{1/2}+\lambda^{-1/2}$ satisfies
+\bna
+tr(g)>2,\quad\mbox{or}\quad tr(g)<-2,
+\ena
+then we know $\lambda$ must be real and $\lambda=r\neq 1$.
+In this case,
+\bna
+\tilde g:z\mapsto \lambda z=rz
+\ena
+which moves points along the longitude lines;
+or equivalently, $g$ moves points along the \underline{hyperbolic pencil}.
+such $g$ is called \underline{hyperbolic}.
+\item[3.]loxodromic.\\ If $tr(g)=a+d=\lambda^{1/2}+\lambda^{-1/2}$ is not real, then $\lambda$ is of the form
+\bna
+\lambda=re^{i\theta},\quad r\neq 1,0<\theta<2\pi.
+\ena
+In this case, $\tilde g$  and hence $g$ is called loxodromic.
+\item[4.]parabolic.\\ If $tr(g)=a+d=\lambda^{1/2}+\lambda^{-1/2}$ and $g\neq id$,
+ we know that $g$ has only one fixed point,
+and  we can choose $A$ so that
+\bna
+\tilde g =AgA^{-1}=\bma 1&1\\&1\ema.
+\ena
+in this case, $\tilde g$ has the only fixed point $\infty$.
+Such $g$ is called \underline{parabolic}.
+\eit
+\begin{remark}We consider the finite order move, i.e. those $g$ with $g^n=id$ for some $n\in\mathbb N$.
+Note that $id=g^n= (AgA^{-1})^n=\tilde g^n$.
+By the classification above,
+\bna
+\tilde g^n.z=\lambda^n.z=z,\quad\forall z\in\hat \C
+\ena
+if and only if $\lambda=e^{\alpha 2\pi i}$ for some $\alpha\in \Q$.
+Thus the finite orders are those elliptic ones with the rotation angle being rational multiple  of $2\pi i$.
+\end{remark}
+
+\section{\textbf{The hyperbolic geometry - The Poincare Upper half plane with rectangular coordinate}}
+One of the realization of the hyperbolic plane is the Poincare upper half plane with
+the action of $SL_2(\R)$.
+Let $$\mathfrak h=\{z=x+iy,\quad x,y\in \R, y>0\}$$ be the Poincare Upper half plane.
+For $g=\bma a&b\\c&d\ema\in SL_2(\R)$ and $z\in \mathfrak h$,
+we have the map
+\bna
+z\mapsto g.z=\frac{az+b}{cz+d}.
+\ena
+which makes $\mk h$ to be a $SL_2(\R)$-space. the action of $SL_2(\R)$ on $\mk h$
+ is transitive and the stablizer at $z=i$ is
+\bna
+\{g\in SL_2(\R),\quad g.i=i\}=SO(2)
+\ena
+so that one has $G$-space isomorphism
+\bna
+SL_2(\R)/SO(2)\rightarrow \mathfrak h,\quad gSO(2)\mapsto g.i.
+\ena
+
+By Iwasawa decomposition,  each $g\in SL_2(\R)$ can be uniquely expressed as
+\bna
+g=\bma 1&x\\&1\ema\bma y^{1/2}\\&y^{-1/2}\ema\kappa_\theta
+\ena
+with $\kappa_\theta=\bma\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\ema\in SO(2)$.
+Thus we can take the representative elements in $g SO(2)$ as
+\bna
+\bma 1&x\\&1\ema\bma y^{1/2}\\&y^{-1/2}\ema
+\ena
+so that one has the identification of $SL_2(\R)$-spaces,
+\bna
+SL_2(\R)/SO(2)\rightarrow\mk h,\quad
+\bma 1&x\\&1\ema\bma y^{1/2}\\&y^{-1/2}\ema\mapsto \bma 1&x\\&1\ema\bma y^{1/2}\\&y^{-1/2}\ema.i=x+iy=z
+\ena
+\begin{remark}
+Note that for $g\in SL_2(\R)$, $g.z=(-g).z$.
+Thus it is natural to consider the action of $PSL_2(\R)=SL_2(\R)/\{\pm 1\}$.
+If one consider $PSL_2(\R)$, the isotropic subgroup
+at $i$ is $SO(2)/\{\pm id\}$.
+\end{remark}
+\subsection{Hyperbolic arc density}
+We recall the definition of the arc density and geodesic lines.
+Let $\Omega\subset \widehat C$ be a region with arc density $\rho(z)$.
+for $\gamma(z)$ a curve  in $\Omega$, the length of $\gamma$ is defined as
+\bna
+d(\gamma)=\int_{\gamma}\rho(z)|dz|
+\ena
+Here
+\bna
+z=x+iy,\quad dz=(1,i)\bma dx\\ dy\ema=dx+idy,\quad
+|dz|=\sqrt{dx^2+dy^2}.
+\ena
+For $p,q\in\Omega$, the distance  is defined to be
+\bna
+d_\Omega(p,q)=\inf_{\gamma\atop{\gamma(0)=p,\gamma(1)=q}}d(\gamma).
+\ena
+\medskip
+
+The hyperbolic line density $\rho(z)|dz|$ should be invariant under
+conformal homeomorphisms, i.e.  for any $g=\bma a&b\\c&d\ema\in SL_2(\R)$, one should has
+\bea
+\rho(g.z)|d(g.z)|=\rho(z)|dz|\label{arc-relation}
+\eea
+Here
+\bna
+d(g.z)=\frac{d}{dz}\left(\frac{az+b}{cz+d}\right)=\frac{1}{(cz+d)^2}dz
+\ena
+and thus $\rho(z)$ satisfies
+\bea
+\frac{\rho(g.z)}{|cz+d|^2}=\rho(z).\label{temp-1}
+\eea
+
+Since $SL_2(\R)$ acts transitively on $\mk h$,
+the value of $\rho(z)$ at $z\in \mk h$ is determined by
+\eqref{arc-relation}.
+So we assume that $\rho(i)=1$.
+For
+\bna
+z=x+iy=\bma y^{1/2}&y^{-1/2}x\\&y^{-1/2}\ema.i,
+\ena
+by \eqref{temp-1},
+\bna
+\rho(z)=\rho\left(\bma y^{1/2}&y^{-1/2}x\\&y^{-1/2}\ema.i\right)
+=\frac{\rho(i)}{|y|}=\frac{1}{|y|}.
+\ena
+Thus we conclude that the hyperbolic line density is just
+\bna
+ds=\rho(z)|dz|=\frac{|dz|}{|y|}=\frac{\sqrt{dx^2+dy^2}}{|y|}
+\ena
+and thus
+\bea
+ds^2=\frac{dx^2+dy^2}{y^2}.\label{hyperbolic-line-density}
+\eea
+\subsection{The geodesics and distance function}
+Let $z_1=is_1$ and $z_2=is_2$ be two different points on $y$-axis.
+Let $\gamma$ be the line on $y$-axis with start point $z_1$ and end points $z_2$,
+i.e.
+\bna
+\gamma=\gamma(t)=tz_2+ (1-t)z_1,\qquad 0\leq t\leq 1.
+\ena
+We have
+\bna
+d(\gamma)&=&\int_{\gamma}\rho(z)|dz|=\int_{0}^1\frac{1}{|\im(tz_2+ (1-t)z_1)|}
+|z_2-z_1||dt|\\
+&=&\int_0^1\frac{|s_2-s_1|}{|t(s_2-s_1)+s_1|}dt=\left|\log (t(s_2-s_1)-+s_1)\right|
+_{0}^1\\
+&=&|\log\frac{s_2}{s_1}|.
+\ena
+
+Next, we prove that
+\bna
+d(is_1,is_2)=\left|\log\frac{s_2}{s_1}\right|,
+\ena
+or equivalently, $y$-axis is a geodesic.
+
+In fact, assume that
+\bna
+\gamma(t)=x(t)+iy(t),\qquad  x(0)=x(1)=0,y(0)=s_1,y(1)=s_2
+\ena
+is any differential line with start point $is_1$ and end point $is_2$.
+One has
+\bna
+d(\gamma)&=&\int_0^1\frac{\sqrt{x'(t)^2+y'(t)^2}}{|y(t)|}dt
+\geq \int_0^1\left|\frac{y'(t)}{y(t)}\right|dt\\
+&\geq& \left|\int_0^1\frac{y'(t)}{y(t)}dt\right|\\
+&=&\left|\log\frac{s_2}{s_1}\right|.
+\ena
+
+Next, since $g\in SL_2(\R)$ acts on $\mk h$ as conformal and isometry translations,
+it maps geodesics into geodesics. So we have the following proposition
+\begin{prop}
+The geodesics on $\mk h$ are those lines and semi-circles orthogonal to $x$-axis.
+For any points $z,w\in \mk h$,
+\bna
+d(z,w)=\log\frac{|z-\overline w|+|z-w|}{|z-\overline w|-|z-w|}.
+\ena
+\end{prop}
+\begin{proof}
+We have obtained the distance for points on $y$-axis.
+To establish the distance function on general  points,
+we need only to find some $g\in SL_2(\R)$ so that
+\bna
+z=g.i,\qquad w=g.(is)
+\ena
+so that $d(z,w)=d(i,is)=|\log s|$.
+
+Assume that $z=x+iy$ and $w=u+iv$. The idea is the following.
+On taking $g_z=\bma y^{1/2}& y^{-1/2}x\\&y^{-1/2}\ema$ and $g_w=
+\bma v^{1/2}& v^{-1/2}u\\&v^{-1/2}\ema$, one has
+\bna
+z=g_z.i,\quad w=g_w.i=g_z.(g_z^{-1}g_w.i).
+\ena
+We can use $KAK$ decomposition to write
+\bna
+g_z^{-1}g_w= \kappa_\varphi.\bma s^{\frac{1}{2}}&\\&s^{-\frac{1}{2}}\ema \kappa_\theta
+\ena
+so that
+\bna
+z&=&g_z.i\\
+&=&g_z\kappa_\varphi.i,\\
+w&=&g_z\kappa_\varphi.\left(\bma s^{\frac{1}{2}}&\\&s^{-\frac{1}{2}}\ema \kappa_\theta.i\right)\\
+&=&g_z\kappa_\varphi.(is)
+\ena
+and thus
+\bna
+d(z,w)=d(i,is)=|\log s|.
+\ena
+\end{proof}
+\begin{remark}We define
+\bea
+u(z,w):=\frac{\cosh(d(z,w))-1}{2}=\frac{|z-w|^2}{4\im z\im w}\label{u-function-conformal-invariance}
+\eea
+which is also a conformal invariance. It is used in the invariant automorphic kernel.
+\end{remark}
+\subsection{The invariant measure and the Laplacian operator}
+The invariant measure and the Laplacian-Beltrami operator are obtained
+via group theory,
+\bna
+ d\mu(z):=\frac{dxdy}{y^2},
+ \qquad \Delta:=-y^2
+ \left(\frac{\partial ^2}{\partial x^2}+\frac{\partial ^2}{\partial y^2}\right).
+\ena
+
+Consider $L^2(\mk h)$ with the inner product
+\bna
+\langle f_1,f_2\rangle:=\int_{\mathfrak h}f_1(z)\overline{f_2(z)}d\mu(z).
+\ena
+We are interested in the spectrum of $L^2(\mathfrak h)$.
+The Laplacian-Beltrami operator is important for the decomposition of $L^2(\mk h)$.
+In fact, $C_c^\infty(\mk h)$
+is a dense subspace in $L^2(\mk h)$ with respect to Fr\'echet topology.
+Roughly speaking, elements in $L^2(\mk h)$ can be expressed as `limit' of
+ a sequence of
+functions in $C_c^\infty(\mk h)$.
+The action of $\Delta$ on such sequence is also a sequence.
+So we can extend $\Delta$ to be an operator on $L^2(\mk h)$.
+
+\begin{prop}$\Delta$ is defined on $C_c^\infty(\mk h)$,
+which is a dense subspace of $L^2(\mk h)$.
+It is extended to a positive definite, unbounded, self-adjoint operators on $L^2(\mk h)$
+and satisfies
+\bna
+\langle \Delta f,f\rangle\geq\frac{1}{4}\langle f,f\rangle.
+\ena
+\end{prop}
+\begin{proof}
+Set $\Delta^e=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}$.
+Let $d$ be the exterior derivative, which takes $1$-forms  to $2$-forms.
+We have
+\bna
+dh&=&\frac{\partial h}{\partial x} dx +\frac{\partial h}{\partial y}dy,\\
+d\left(h_1dx+h_2dy\right)&=&d(h_1)\wedge dx+ d(h_2)\wedge dy\\
+&=&\frac{\partial h_1}{\partial y}dy\wedge dx +\frac{\partial h_2}{\partial x}
+dx\wedge dy\\
+&=&\left(
+\frac{\partial h_2}{\partial x}
+-\frac{\partial h_1}{\partial y}
+\right) dx\wedge dy.
+\ena
+The Green's identity assert that
+\bna
+\int_{\Omega}
+\left(\frac{\partial h_2}{\partial x}
+-\frac{\partial h_1}{\partial y}
+\right) dx\wedge dy=
+\int_{\Omega} d\left(h_1dx+h_2dy\right)
+=\int_{\partial\Omega}h_1dx+h_2dy
+\ena
+
+Let $f$ and $g$ be two smooth functions defined in n.b.d. of a bounded region $\Omega$,
+whose boundary is a smooth curve (or union of smooth curve) $\partial \Omega$.
+Note that
+\bna
+(\overline g\Delta^ef )dx\wedge dy&=&\left(\overline g\frac{\partial ^2f}{\partial x^2}
++\overline g\frac{\partial ^2f}{\partial y^2}\right)dx\wedge dy\\
+&=&\overline g d\left(\frac{\partial f}{\partial x}\right)\wedge dy-\overline g
+\left(\frac{\partial f}{\partial y}\right)\wedge dx\\
+&=&d\left(\overline g
+\frac{\partial f}{\partial x}\right)\wedge dy-
+d\left(\overline g\frac{\partial f}{\partial y}\right)\wedge dx
+-
+\left(\frac{\partial f}{\partial x}d(\overline g) \wedge dy
+-
+\frac{\partial f}{\partial y} d(\overline g)\wedge dx\right).
+\ena
+Thus
+\bna
+-\langle \Delta f,g\rangle&=&\int_{\mk h}\overline{g} \Delta^e fdx\wedge dy
+\\
+&=&
+\int_{\Omega} d\left(\overline g
+\frac{\partial f}{\partial x}\right)\wedge dy-
+d\left(\overline g\frac{\partial f}{\partial y}\right)\wedge dx
+-
+\left(\int_{\Omega} \frac{\partial f}{\partial x}\frac{\partial \overline g}{\partial x}dx\wedge dy
++
+\frac{\partial f}{\partial y}\frac{\partial \overline g}{\partial y}dx\wedge dy\right)\\
+&=&
+\int_{\partial\Omega} \left(\overline g
+\frac{\partial f}{\partial x}\right)dy-
+\left(\overline g\frac{\partial f}{\partial y}\right)dx
+-
+\left(\int_{\Omega} \frac{\partial f}{\partial x}\frac{\partial \overline g}{\partial x}dx\wedge dy
++
+\frac{\partial f}{\partial y}\frac{\partial \overline g}{\partial y}dx\wedge dy\right)
+\ena
+Note that $\partial \Omega$ is the boundary enclosed the support of $f$ and $g$ and thus the integrand vanishes, which gives
+\bna
+-\langle \Delta f,g\rangle=-\int_{\Omega}
+\left(\frac{\partial f}{\partial x}\frac{\partial \overline g}{\partial x}+
+\frac{\partial f}{\partial y}\frac{\partial \overline{g}}{\partial y}\right)dx\wedge dy
+=-\int_{\Omega}\nabla f\cdot \nabla\overline g dx\wedge dy.
+\ena
+Thus one should has $\langle\Delta f,g\rangle=\langle f,\Delta g\rangle$,
+i.e. $\Delta$ is self-adjoint,  and is positive definite.
+
+Moreover, for $f\in C_c^\infty(\mk h)$,
+\bna
+\langle \Delta f,f\rangle&=&
+\int_{-\infty}^\infty \int_0^\infty
+\nabla f\cdot  \overline{\nabla f}dydx\\
+&=&
+\int_{-\infty}^\infty \int_0^\infty
+\left(\left|\frac{\partial f}{\partial x}\right|^2+\left|\frac{\partial f}{\partial y}\right|^2\right)dydx\\
+&\geq &
+\int_{-\infty}^\infty \int_0^\infty
+\left|\frac{\partial f}{\partial y}\right|^2dydx.
+\ena
+Viewing $f$ as functions in $y$, $f(y)=u(y)+iv(y)$ and
+\bna
+|f|^2=u^2+v^2,\quad
+\frac{\partial f}{\partial y}=
+u'+iv',\quad
+\left|\frac{\partial f}{\partial y}\right|^2=u'^2+v'^2
+\ena
+and one needs to show that
+\bna
+\int_0^\infty (u'^2+v'^2 )dy\geq \frac{1}{4}\int_0^\infty \frac{u^2+v^2}{y^2}dy.
+\ena
+Note that
+\bna
+\int_0^\infty \frac{u^2}{y^2}dy=
+-\int_0^\infty u^2d\frac{1}{y}
+=2\int_0^\infty\frac{u}{y}u'dy\leq 2\left(\int_0^\infty \frac{u^2}{y^2}dy\right)^{1/2}
+\left(\int_0^\infty u'^2 dy\right)^{1/2}
+\ena
+which gives that
+\bna
+\int_0^\infty\frac{u^2}{y^2}dy\leq 4\int_0^\infty u'^2dy.
+\ena
+This finishes the proof.
+\end{proof}
+
+\subsection{Remark on spectral decomposition}
+We have showed that $\Delta$ is a `good' enough  operators on $L^2(\mk h)$.
+We hope to build `Fourier analysis' on $L^2(\mk h)$ as eigenfunctions
+of $\Delta$.
+We recall the spectral decomposition in the simplest cases as follows.
+
+Consider $L^2(\R)$. Eigenfunctions of $\frac{d^2}{dx^2}$
+are of the form
+\bna
+e^{2\pi i y},\quad y\in \R
+\ena
+and each $\phi\in L^2(\R)$ has spectral decomposition
+\bna
+\phi(x)=\int_{\R} \widehat\phi(r) e^{2\pi irx}dr
+\ena
+where
+\bna
+\widehat\phi(r)=\langle\phi, e^{2\pi ir*}\rangle=\int_{\R}\phi(y) e^{-2\pi iry}dy
+\ena
+is the Fourier transform of $\phi$.
+Here  $e^{2\pi iry}$ are eigenfunctions of $\frac{d^2}{dx^2}$ which is not in $L^2(\R)$.
+
+Consider $L^2(\Z\backslash\R)$, the space of functions on $\R$ with period in $\Z$.
+It admits discrete spectrum
+\bna
+e^{2\pi i mx},\quad m\in \Z.
+\ena
+which are also eigenfunctions of $\Delta$.
+They can be also obtained via the following theory.
+Let
+\bna
+\hat{(\R/\Z)}=\{\psi: \R/\Z\rightarrow S^1,\quad \psi(a+b)=\psi(a)\psi(b)\}
+\ena
+be the group of complex continuous characters of $\R/\Z$
+(all continuous group homomorphisms from $\R$ to $S^1$ with period in $\Z$).
+Then $\psi$ is of the form $\psi(x)=e(mx)$ for some $m\in \Z$ and one has
+\bna
+\hat{(\R/\Z)}\simeq \Z,\qquad  e(m*)\mapsto m.
+\ena
+Then we can build Fourier analysis as that $\phi\in L^2(\Z\backslash \R)$,
+\bna
+\phi(x)=\sum_{m\atop{\mbox{\tiny spectral parameter}}}
+\frac{\langle\phi,e(m*)\rangle_{\R/\Z}}
+{\langle e(m*),e(m*)\rangle_{\R/\Z}}
+ e(m x)
+\ena
+where
+\bna
+\langle\phi,e(m*)\rangle_{\R/\Z}=\int_{\R/\Z}\phi(y) \overline{e(my)}dy
+\ena
+is the $m$-th Fourier coefficient of $\phi$.
+We refer to GTM186 - Fourier analysis on number field (Ramakrishnan-Valenza)
+for much information.
+
+
+
+\subsection{Eigenfunctions of $\Delta$}
+To build the spectral decomposition of $L^{2}(\mk h)$,
+we need to find eigenfunctions of $\Delta$ firstly.
+
+Assume that $f$ is an eigenfunction of $\Delta$ with $\Delta f=\lambda f$.
+We can assume that $f(z)=v(x)w(y)$ by separating parameters.
+One has
+\bna
+-y^2\left(v''(x)w(y)+v(x)w''(y)\right)=\lambda v(x)w(y)
+\ena
+dividing $v(x)w(y)$ on both sides, one has
+\bna
+\frac{w''(y)}{w(y)}+\frac{\lambda}{y^2}=k= -\frac{v''(x)}{v(x)}
+\ena
+where $k$ is the separable parameter.
+
+Consider the  differential equation
+\bna
+k= -\frac{v''(x)}{v(x)},\quad \mbox{or equivalently,}\quad
+v''+kv=0.
+\ena
+It is independent of the eigenvalue $\lambda$.
+The characteristic function of the differential equation is
+\bna
+r^2+k=0,\quad r=\pm \sqrt{-k}
+\ena
+and thus we have solutions
+\bna
+e^{\sqrt{-k}x},\quad e^{-\sqrt{-k}x}.
+\ena
+\underline{The growth condition implies that $k\geq 0$}.
+Let $k=4\pi ^2 a^2$. The solutions are
+\bna
+e^{2\pi ai }\quad\mbox{and}\quad e^{-2\pi a i}.
+\ena
+
+Consider another differential equation,
+\bna
+\frac{w''(y)}{w(y)}+\frac{\lambda}{y^2}=4\pi^2 a^2.
+\ena
+Assume that $w=y^{1/2}u(y)$ one has
+\bna
+\frac{dw}{dy}=\frac{u(y)}{2\sqrt{y}}+y^{1/2}u'(y),
+\quad\frac{d^2w}{dy^2}=y^{1/2}u''(y)+ \frac{1}{\sqrt{y}}u'-\frac{1}{4y^{3/2}}u(y)
+\ena
+and thus the differential equation becomes
+\bea
+y^2u''+yu'+\left((\lambda-\frac{1}{4})-4\pi a^2 y^2\right)u=0.
+\label{Bessel-differential-equation}
+\eea
+
+
+
+\begin{lemma}
+Let $\lambda=s(1-s)=\frac{1}{4}+t^2$ with $s=\frac{1}{2}+it$.
+The solutions of \eqref{Bessel-differential-equation} are
+as follows.
+\bit
+\item
+If $a=0$,
+\bna
+\frac{y^s+y^{1-s}}{2},\qquad\frac{y^s-y^{1-s}}{2s-1}
+\ena
+\item If $a\neq 0$,
+ solutions of \eqref{Bessel-differential-equation} are
+\bna
+K_{s-\frac{1}{2}}(2\pi |a|y),\quad I_{s-\frac{1}{2}}(2\pi|a|y).
+\ena
+with asymptotic formulas as $|z|\rightarrow\infty$
+\bna
+K_{s-\frac{1}{2}}(z)\sim
+\sqrt{\frac{\pi}{2z}} e^{-z},\quad I_{s-\frac{1}{2}}(z)\sim\sqrt{\frac{1}{2\pi z}}e^{z}
+\ena
+\eit
+
+\end{lemma}
+\begin{remark}
+For the case $a=0$ and $s\neq 1/2$, $\{y^s, y^{1-s}\}$
+are linear dependent solutions in this case;
+For $a=0$ and $s=1/2$,
+\bna
+\{y^{1/2},\quad y^{1/2}\log y\}
+\ena
+are the independent solutions.
+\end{remark}
+\begin{proof}
+Let $u(y)=F(2\pi |a|y)$ and $z=2\pi|a|y$.
+One has
+\bna
+u'=2\pi|a| F'(2\pi |a|y),\quad
+u''=4\pi^2 a^2=F''(2\pi |a|y),
+\ena
+and thus the differential equation \eqref{Bessel-differential-equation} is of the form
+\bna
+(2\pi |a|y)^2F''(2\pi|a|y)+ (2\pi|a|y)F'(2\pi|a|y)
++\left(\lambda-\frac{1}{4}-(2\pi|a|y)^2\right)F(2\pi|a|y)=0.
+\ena
+Note that  $z=2\pi|a|y$. It is
+\bna
+z^2F''(z)+zF'(z)+\left(\lambda-\frac{1}{4}-z^2\right)F(z)=0
+\ena
+or equivalently,
+\bea
+F''(z)+\frac{1}{z}F'(z)-\left(1+\frac{(it)^2}{z^2}\right)F(z)=0
+\label{Bessel-real}
+\eea
+which is a Bessel equation.
+The linear independent solutions \eqref{Bessel-real} are $K_{it}(z)$ and $I_{it}(z)$
+with the growth condition as above.
+We refer to appendix \ref{appendix-Bessel-equ} for detail.
+\end{proof}
+
+
+
+\begin{prop}
+Eigenfunctions of $\Delta$ with eigenvalues
+$\lambda=s(1-s)=\frac{1}{4}+t^2$  satisfying moderate growth conditions
+are
+\bna
+y^{1/2+it}=y^{s}\quad\mbox{,} \quad y^{1/2-it}=y^{1-s};
+\ena
+and
+\bna
+\sqrt{y}K_{s-\frac{1}{2}}(2\pi|a|y)e(ax),\qquad 0\neq a\in \R.
+\ena
+\end{prop}
+
+\subsection{Relation with the spherical function
+in the Whittaker model of the principle series}
+We have proved that most of the eigenfunctions are of the form (in the case $a\neq0$)
+\bna
+W_s(az)=
+2\sqrt{|a|y}K_{s-\frac{1}{2}}(2\pi |a|y)e(ax).
+\ena
+Here
+\bea
+W_s(z):= 2\sqrt{y}K_{s-\frac{1}{2}}(2\pi y)e(x)\label{Whittkaer}
+\eea
+is called the Whittaker function.
+
+
+The expression \eqref{Whittkaer} is good for explicit calculation and estimation.
+However, we need another way to construct the sphercial Whittaker function
+associated to the spectral parameter $s$, which is simple and good for generalization
+(Not good for explicit calculation and estimation).
+
+
+Let $s\in \C$ be a spectral parameter.  We define
+\bna
+I_s(z)=(\im z)^s
+\ena
+which is eigenfunction of $\Delta$ with eigenvalue $s(1-s)$.
+We let
+\bna
+\psi:N(\R)\rightarrow\C,\quad \bma 1&u\\&1\ema\mapsto e^{2\pi i u}
+\ena
+be a fixed non-trivial additive character on the unipotent group.
+The sphercial Whittaker function associated to $\psi$ is defined by
+\bea
+\tilde W_s(z)
+=\int_{-\infty}^\infty \I_s\left(\bma&-1\\1\ema\bma 1&u\\&1\ema.z\right)\psi(-u)du
+\label{spherical-Whittaker}
+\eea
+for $\im z>0$, and is generalized to the lower half plane via (see (1.27) in Iwaniec's book)
+\bna
+\tilde W_s(\overline z)=\tilde W_s(z).
+\ena
+
+This definition of $\tilde W_s(z)$ is easy to be generalized to the case $SL_n$
+(See formula (5.5.1) in Goldfeld's book, {\it automorphic forms and $L$-functions for the group $GL_n(\R)$}.)
+However, for the explicit calculation and estimation, one needs much precisely
+information on the behaviour of $W_s(z)$ in terms of the so called
+generalized Bessel functions.
+These have been worked out recently for the case $GL_3$ (V. Blomer, Buttcane)
+and for the case $GL_2(\C)$ (Qi Zhi.)
+\begin{prop}
+For $\tilde W_s(z)$, and $a\neq 0$, we have
+\bna
+\Delta \tilde W_s(z)&=&s(1-s)\tilde W_s(z),\\
+\tilde W_{s}(az)&=&e( ax)W_s(i|a|y)
+=
+\frac{\pi^{s}}{\Gamma(s)} 2\sqrt{|a|y}K_{s-\frac{1}{2}}(2\pi |a|y)e(ax).
+\ena
+\end{prop}
+\begin{remark}
+Note that the $K$-Bessel function satisfies $K_s(y)=K_{-s}(y)$
+and $\overline{K_s(y)}=K_{\overline{s}}(y)$ by the integral representation in \eqref{integral-transform-K-Bessel-in-appendix}.
+For a general definition of the spherical Whittaker function in
+the Whittaker model of the unramified principle series of $PGL_2(\R)$, see appendix \ref{appendix-spherical-whittaker-model}.
+\end{remark}
+\begin{proof}
+The first and the second result follows from the fact
+\bna
+z=x+iy=\bma 1&x\\&1\ema\bma y^{1/2}\\&y^{-1/2}\ema.i
+\ena
+and that $\Delta$ commutes with the action of $g\in SL_2(\R)$,
+\bna
+\Delta \left(f(g.z)\right)=\left(\Delta f\right)(g.z).
+\ena
+
+Note that
+\bna
+&I_s(z)=(\im z)^s, \quad I_s(g.z)=\left(\frac{y}{|cz+d|^2}\right)^s,&\\
+&I_s\left(\bma &-1 \\ 1\ema\bma 1&u\\&1\ema.z\right)=\left(\frac{y}{(x+u)^2+y^2}\right)^s&
+\ena
+Thus
+\bea
+\tilde W_s(z)=
+\int_{-\infty}^\infty \left(\frac{y}{(x+u)^2+y^2}\right)^se(-u)du
+=e(x)\int_{-\infty}^\infty \left(\frac{y}{u^2+y^2}\right)^se(-u)du\label{tilde-whittaker}.
+\eea
+By the above and the definition on the lower half plane, obviously one has
+\bna
+\tilde W_s(az)=e(a x)W_s(i|a|y).
+\ena
+Moreover, by the definition,
+\bna
+\overline{\tilde W_s(x+iy)}
+=e(-x)\int_{-\infty}^{\infty}\left(\frac{y}{u^2+y^2}\right)^{\overline s} e(u)du
+=\tilde W_{\overline s}(-x+iy).
+\ena
+The final step follows from the
+following proposition immediately.
+\end{proof}
+\begin{lemma}\label{lemma-integral-Whitaker-Bessel}Let $y\in(0,+\infty)$.
+For $\re(s)>0$ we have
+\bna
+\int_{-\infty}^\infty \left(\frac{y}{u^2+y^2}\right)^se(-au)du
+=\frac{\pi^s}{\Gamma(s)}\left\{
+\begin{aligned}
+&\pi^{-s+\frac{1}{2}}\Gamma(s-\frac{1}{2})y^{1-s},\quad &&a=0\\
+&2|a|^{s-\frac{1}{2}}\sqrt{|a|}K_{s-\frac{1}{2}}(2\pi|a|y),\quad &&a\neq 0
+\end{aligned}
+\right.
+\ena
+
+\end{lemma}
+\begin{proof}
+Recall that
+\bna
+\Gamma(s)=\int_0^\infty e^{-t}t^s\frac{dt}{t}
+\ena
+i.e. $\Gamma(s)$ is the Mellin transform of $e^{-t}$ with transform kernel $t^s$.
+The integral involves $\left(\frac{y}{u^2+y^2}\right)^s$ which can be combined with $t^s$
+to get new kernel and then change variable.
+
+By multiplying  $\Gamma(s)$ and exchanging the integration,
+\bna
+&&\Gamma(s)
+\int_{-\infty}^\infty \left(\frac{y}{u^2+y^2}\right)^se(-au)du
+=\int_{0}^\infty e^{-t}t^{s}\frac{dt}{t}\int_{-\infty}^\infty \left(\frac{y}{u^2+y^2}\right)^se(-au)du\\
+&=&\int_{-\infty}^\infty  e(-au)
+\left\{\int_{0}^\infty e^{-t}\left(\frac{ty}{u^2+y^2}\right)^s\frac{dt}{t}\right\}du
+=\int_{-\infty}^\infty  e(-au)
+\left\{\int_{0}^\infty e^{-t\frac{u^2+y^2}{y}}t^s\frac{dt}{t}\right\}du\\
+&=&
+\int_{0}^\infty e^{-ty}t^s
+\left\{\int_{-\infty}^\infty e^{-\frac{t}{y}u^2-2\pi i au}du\right\}\frac{dt}{t}
+\ena
+Now we can calculate the inner integral and apply the fact that Bessel function is expressed
+as Mellin transform, namely
+\bna
+\int_0^\infty e^{-\frac{y}{2}(t+\frac{1}{t})}t^s\frac{dt}{t}=2 K_s(y).
+\ena
+
+\end{proof}
+
+
+
+\subsection{Spectral decomposition of $L^2(\mk h)$}
+We have obtained  eigenfunctions of $\Delta$. Now we give the
+spectral decomposition of $L^2(\mk h)$ as follows.
+\begin{thm}
+Denote by
+\bna
+e_{a,s}(z)=
+\left\{
+\begin{aligned}
+&y^s,\qquad &&a=0\\
+&\sqrt{y}K_{s-\frac{1}{2}}(2\pi |a|y) e(ax),\quad &&a\neq 0
+\end{aligned}
+\right.
+\ena
+For  $f\in C_c^\infty(\mk h)$, denote by
+\bna
+\widehat f(a,s)=\int_{\mk h}f(z)\overline{e_{a,s}(z)}\frac{dxdy}{y^2}.
+\ena
+One has
+\bna
+f(z)=\int_{a\in \R}\int_{\re(s)=\frac{1}{2}}\widehat f(a,s) e_{a,s}(z)\frac{t\sinh(\pi t)}{\pi^2}dtda.
+\ena
+\end{thm}
+\begin{remark}
+Note that $W_s(az)=2\sqrt{\pi|a|} e_{s,a}(z)$. The above formula can be expressed as
+\bna
+f(z)&=&
+\int_{a\in \R}\int_{\re(s)=\frac{1}{2}}
+\langle f,e_{a,s}\rangle e_{a,s}(z) \frac{t\sinh(\pi t)}{\pi^2}dtda\\
+&=&\frac{1}{2\pi i}
+\int_{a\in \R}\int_{\re(s)=\frac{1}{2}}
+\langle f,W_{s}(a*)\rangle W_s(az) \frac{t\sinh(\pi t)}{2\pi^2|a|}dads
+\ena
+which is the same as the formula in Iwaniec's book.
+
+\end{remark}
+
+\begin{proof}
+To prove the identity, it is sufficient to prove it for $f(z)=h(x)g(y)$
+with special values $x=0$ and $y=1$. Note
+\bna
+\hat f(a,\frac{1}{2}+it)
+&=&\int_{-\infty}^\infty h(u)e(-au)du
+\left(
+\int_0^\infty g(v)\sqrt{v}K_{it}(2\pi |a|v)\frac{dv}{v^2}
+\right).
+\ena
+Here note that
+$\overline{K_{s-\frac{1}{2}}}(2\pi |a|y)= K_{\overline s-\frac{1}{2}}(2\pi |a|y)$
+and $K_{-s}(y)=K_{s}(y)$, $s=\frac{1}{2}+it$.
+%Replacing $v$ by $2\pi |a|v$, one has
+%\bna
+%\hat f(a,\frac{1}{2}+it)
+%&=&\int_{-\infty}^\infty h(u)e(-au)
+%\left(
+%\int_0^\infty \frac{g(\frac{v}{2\pi|a|})}{\sqrt{\frac{v}{2\pi|a|}}}K_{it}(v)\frac{dv}{v}
+%\right)du.
+%\ena
+
+We want to show that
+\bna
+h(x)g(y)&=&
+\int_{a\in\R}\int_{-\infty}^\infty
+\left(\int_{-\infty}^\infty h(u)e(-au)du
+\left(
+\int_0^\infty g(v)\sqrt{v}K_{it}(2\pi |a|v)\frac{dv}{v^2}
+\right)\right)\\
+&&\quad\sqrt{y}K_{it}(2\pi |a|y)e(ax)
+ \frac{t\sinh(\pi t)}{\pi^2}dtda\\
+ &=&
+\int_{a\in\R}
+\int_{-\infty}^\infty h(u)e(-au)du
+\left(\int_{-\infty}^\infty
+\int_0^\infty g(v)\sqrt{v}K_{it}(2\pi |a|v)\frac{dv}{v^2}
+\sqrt{y}K_{it}(2\pi |a|y) \frac{t\sinh(\pi t)}{\pi^2}dt
+\right)\\
+&&\quad e(ax)da.
+ \ena
+ It is sufficient to consider
+\bna
+I(a,y)&=&
+\int_{-\infty}^\infty
+\int_0^\infty g(v)\sqrt{v}K_{it}(2\pi |a|v)\frac{dv}{v^2}
+\sqrt{y}K_{it}(2\pi |a|y) \frac{t\sinh(\pi t)}{\pi^2}dt\\
+&=&\int_0^\infty
+\left(\int_0^\infty g(v)\frac{K_{it}(2\pi|a|v)}{\sqrt{v}}
+\frac{dv}{v}\right)
+\sqrt{y}K_{it}(2\pi |a|y) \frac{2t\sinh(\pi t)}{\pi^2}dt\\
+&=&
+2\pi|a|y\int_0^\infty
+\left(\int_0^\infty
+\frac{g(\frac{v}{2\pi|a|})}
+{v}\frac{K_{it}(v)}{\sqrt{v}}
+dv\right)
+\frac{K_{it}(2\pi |a|y)}{\sqrt{2\pi|a|y}} \frac{2t\sinh(\pi t)}{\pi^2}dt.
+\ena
+Applying Kontorovitch-Lebedev transform,
+\bna
+I(a,y)=2\pi |a|y \times \left.\frac{g\left(\frac{v}{2\pi |a|}\right)}{v}\right|_{v=2\pi|a|y}=g(y)
+\ena
+We finish the proof.
+\end{proof}
+\subsection{Kontorovitch-Lebedev trasform}
+\begin{prop}[Kontorovitch-Lebedev]
+Let $h(y)$ with $y>0$ be a function, one has
+\bna
+g(y)&=&\int_0^\infty
+\left(\int_{0}^\infty g(v)\frac{K_{it}(v)}{\sqrt{v}}dv\right)
+\frac{K_{it}(y)}{\sqrt{y}} \frac{2t\sinh(\pi t)}{\pi^2}dt\\
+f(t)&=&\frac{2t\sinh(\pi t)}{\pi^2}
+\int_0^\infty\frac{K_{it}(y)}{y}
+\left\{
+\int_0^\infty f(u)K_{iu}(y)du
+\right\}dy.
+\ena
+
+\end{prop}
+
+\begin{proof}
+Recall the integral representation of $K$-Bessel function, for $s=it$,
+by viewing $y$ as a parameter,
+\bna
+K_{it}(y)&=&
+\frac{1}{2}\int_0^\infty e^{-\frac{y}{2}(t_0+\frac{1}{t_0})}t_0^{it}\frac{dt_0}{t_0},\quad t_0=e^x\\
+&=&
+\frac{1}{2}\int_{-\infty}^\infty e^{-y\cosh x}e^{2\pi i\frac{x}{2\pi}t} dx
+=
+\pi\int_{-\infty}^\infty e^{-y\cosh (2\pi x)}e^{2\pi i xt} dx
+\ena
+and we know that $t\mapsto K_{it}(y)$ is the Fourier inverse transform  of
+\bea
+h_y(x):=\pi e^{-y\cosh 2\pi x}\label{Fourier-tem}
+\eea
+
+
+Recall the multiplication formula $$\int f\hat g=\int \hat f g.$$
+For $f$ defined on $\R_+$, we extend it to $\R$ via $f(-t)=f(t)$, then
+\bna
+A&=&\frac{2}{\pi^2}t\sinh(\pi t)\int_{y=0}^\infty K_{it}(y)\frac{1}{y}
+\left(\int_{u=0}^\infty f(u) K_{iu}(y)du\right)dy\\
+&=&\frac{1}{\pi^2}t\sinh(\pi t)\int_{y=0}^\infty K_{it}(y)\frac{1}{y}
+\left(\int_{u=-\infty}^\infty f(u) K_{iu}(y)du\right)dy,\quad\\
+&=&\frac{1}{\pi^2}t\sinh(\pi t)\int_{y=0}^\infty K_{it}(y)\frac{1}{y}
+\left(\int_{u=-\infty}^\infty \widehat f(u) \pi e^{-y\cosh 2\pi u}du\right)dy\\
+&=&\frac{1}{2\pi^2}t\sinh(\pi t)\int_{y=0}^\infty K_{it}(y)\frac{1}{y}
+\left(\int_{u=-\infty}^\infty \widehat f(\frac{u}{2\pi}) e^{-y\cosh  u}du\right)dy\\
+&=&\frac{1}{2\pi^2}t\sinh(\pi t)
+\int_{u=-\infty}^\infty \widehat f(\frac{u}{2\pi})
+\left(\int_{y=0}^\infty K_{it}(y)\frac{1}{y}e^{-y\cosh  u} dy \right)du.
+\ena
+Next we applying the formula
+\bea
+\int_{y=0}^\infty e^{-y\cosh u}K_{it}(y)\frac{1}{y}dy=\pi\frac{\cos(tu)}{t\sinh(\pi t)}
+\label{some-formula},
+\eea
+whose proof is in Page 177 in {\it Harmonic analysis on symmetric space},
+one has
+\bna
+A=\int_{u=-\infty}^\infty\widehat f(\frac{u}{2\pi})\frac{\cos(tu)}{2\pi}du
+=f(t)
+\ena
+since $f$ is even. We finish the proof.
+\end{proof}
+\begin{remark}
+
+By \eqref{Fourier-tem},
+\bna
+&&\pi e^{-y\cosh 2\pi x}=\int_{-\infty}^\infty K_{it}(y)e^{-2\pi i t x}dt\\
+&\Leftrightarrow&\pi e^{-y\cosh x}=\int_{-\infty}^\infty K_{it}(y)e^{-i t x}dt
+=\pi e^{-y\cosh (-x)}=\int_{-\infty}^\infty K_{it}(y)e^{i t x}dt\\
+&\Leftrightarrow&
+\pi e^{-y\cosh x}=\int_{-\infty}^\infty K_{it}(y)\frac{ e^{-itx}+ e^{itx}}{2}dt\\
+&\Leftrightarrow&\frac{\pi}{2}\exp(-y\cosh x)=\int_0^\infty K_{it}(y)\cos(tx)dt,\quad \re(y)>0.
+\ena
+Via the integral representation, we can also prove that
+\bna
+\int_0^\infty y^{r-1}K_{s}(y)dy=2^{r-2}\Gamma\left(\frac{r+s}{2}\right)\Gamma\left(\frac{r-s}{2}\right).
+\ena
+
+\end{remark}
+\begin{proof}
+We give another proof as follows. It is sufficient to prove that the kernel function
+\bna
+W_R(x,y)=\frac{1}{\pi^2}\int_{-R}^Rt \sinh(\pi t)
+\frac{K_{it}(x)K_{it}(y)}{\sqrt{xy}}dt
+\ena
+approaches $\delta(x-y)$, as $R\rightarrow\infty$.
+Since the problem is invariant under $SL_2(\R)$, it is sufficient to consider the problem as $x,y\sim 0$.
+
+Note
+\bna
+K_{it}(y)\sim 2^{it-1}\Gamma(it)y^{-it}+2^{-it-1}\Gamma(-it)y^{it},\quad y\rightarrow 0^+
+\ena
+which follows from the relation with $I$-Bessel and the power series for $I$-Bessel.
+Moreover,
+\bna
+\Gamma(it)\Gamma(-it)=\pi (t\sinh(\pi t))^{-1}
+\ena
+implies that
+\bna
+W_R(x,y)\sim \frac{1}{2\pi}\int_{-R}^Ry^{-\frac{1}{2}-it}x^{-\frac{1}{2}+it}dt,
+\quad x,y\rightarrow 0^+.
+\ena
+Thus spectral measure is chosen to cancel the Gamma-factors.
+\end{proof}
+\subsection{Fourier expansion of functions
+in $L^2(\Gamma_\infty\backslash \mk h)$}
+Let
+\bna
+\Gamma_\infty=\left\{\bma 1&n\\&1\ema, n\in \Z\right\}
+\ena
+be a discrete subgroup. We know that elements in $\Gamma_\infty$
+are parabolic, and
+\bna
+\bma 1&n\\&1\ema.z=z+n
+\ena
+has only one fixed point $z=\infty$.
+
+Let $L^2(\Gamma_\infty\backslash \mk h)$
+be the functions  $f:\mk h\rightarrow \C$
+with
+\bna
+&&f\left(\bma 1&n\\&1\ema.z\right)=f(z+n)=f(z),\quad\forall n\in \Z\\
+&&\int_{\Gamma_\infty\backslash \mk h}f(z)\overline{f(z)}\frac{dxdy}{y^2}<\infty.
+\ena
+Here a fundamental mesh is
+\bna
+\Gamma_\infty\backslash\mk h=\{z=x+iy, 0\leq x<1, y>0\}.
+\ena
+
+\begin{prop}
+Let $f(z)$ be eigenfunctions of $\Delta$ with eigenvalue
+$\lambda=s(1-s)$ which satisfies
+\bit
+\item $f(z+m)=f(z)$, $\forall m\in \Z$
+\item $f(z)$ is of moderate growth, i.e.
+\bna
+f(z)=o\left(e^{2\pi y}\right),\quad y\rightarrow\infty
+\ena
+\eit
+Then $f(z)$ has expansion
+\bna
+f(z)=a_{f,0}(y)+\sum_{n\neq 0}a_{f}(n) W_s(nz)
+\ena
+where $a_{f,0}(y)$ is a linear combination of
+$y^s$ and $y^{1-s}$ if $\lambda\neq \frac{1}{4}$,
+and $y^{1/2}$ and $y^{1/2}\log y$ if $\lambda=\frac{1}{4}$; and $a_{f}(n)$
+are some coefficients (depending on $f$, called the Fourier coefficients of $f$).
+\end{prop}
+
+\section{The Hyperbolic Geometry - the Geodesic Polar coordinates}
+Recall that we have defined the distance function. Consider the radius with center $i$, i.e.
+\bna
+d(z,i)=r
+\ena
+It has hyperbolic area $4\pi(\sinh(r/2))^2$ and circumference $2\pi\sinh r$.
+On the other hand, its Euclidean center is $i\cosh r$ and radius $\sinh r$.
+
+\subsection{Cartan decomposition and polar coordinates}
+Recall Cartan decomposition,
+$G=KAK$. For $g\in PSL_2(\R)$,  $g=\kappa(\varphi)a(e^r)\kappa(\theta)$ with
+\bna
+&\kappa(\varpi)=\bma\cos\varphi&\sin\varphi\\ -\sin\varphi&\cos\varphi\ema,
+\quad 0\leq\varphi<\pi&,\\
+&a(e^{-r})=\bma e^{-\frac{r}{2}}\\&e^{r/2}\ema,\quad r\geq 0&\\
+&\kappa(\theta)\in SO(2)&.
+\ena
+It gives the geodesic polar coordinates
+\bna
+z=x+iy=\kappa(\varphi) a(e^{-r}).i=\kappa(\varphi) e^{-r}.i
+\ena
+Here $a(e^{-r})$ selects the point on y-axis  with distance $r$ with $i$ on the geodesic,
+and $\kappa(\varphi)$ gives rotation of angle $2\varphi$.
+With respect to the geodesic polar coordinates,
+\bna
+&ds^2=dr^2+(\sinh r)^2du^2,\quad d\mu(z)=\sinh r dr d\varphi &\\
+&\Delta=-\frac{1}{\sinh r}\frac{\partial}{\partial r}\left(\sinh r\frac{\partial}{\partial r}\right)
+-\frac{1}{\sinh^2 r}\frac{\partial^2}{\partial \varphi^2}
+\ena
+\subsection{Spherical functions and spectral decomposition}
+
+We still want to obtain eigenfunctions of $\Delta$ with eigenvalue $\lambda=s(1-s)$. By separable parameters, eigenfunctions should be of the form
+\bna
+f(\kappa_\theta z)=\chi(\kappa_\theta)f(z),\quad\forall\kappa_\theta\in K
+\ena
+where
+\bna
+\chi:\kappa_\theta\mapsto e^{2i m\theta},\quad 0\leq\theta<\pi.
+\ena
+
+By simlar argument, we start from the function
+\bna
+I_s(z)&=(\im z)^s=(\im \kappa_\varphi e^{-r}.i)^d
+\ena
+and thus to form such $f(z)$ as
+\bna
+f(z)&=&\frac{1}{\pi}\int_{0}^\pi \im (\kappa(-\theta)\kappa(\varphi) e^{-r}.i)^s \chi(\kappa_\theta)d\theta\\
+&=&\frac{1}{\pi}\int_0^\pi(\cosh r+\sinh r\cos2\theta)^{-s}e^{2im(\theta+\varphi)}d\theta\\
+&=&\frac{\Gamma(1-s)}{\Gamma(1-s+m)}P_{-s}^m(\cosh r)e^{2im\varphi}
+\ena
+where $P_{-s}^m$ is the Legendre function defined by
+\bna
+P_\nu(z)&=&F(-\nu,\nu+1,1,\frac{1-z}{2})\\
+P_\nu^m(z)&=&(z-1)^{m/2}\frac{d^m}{dz^m}P_\nu(z)\\
+&=&\frac{\Gamma(\nu+m+1)}{\pi\Gamma(\nu+1)}\int_0^\pi (z+\sqrt{z^2-1}\cos\alpha)^\nu\cos(m\alpha)d\alpha\\
+&=&\frac{\Gamma(\nu+m+1)}{2\pi\Gamma(\nu+1)}\int_0^{2\pi} (z+\sqrt{z^2-1}\cos\alpha)^\nu e^{im\alpha}d\alpha,\quad \re(z)>0
+\ena
+
+\begin{prop}
+The spherical function is defined by
+\bna
+U_s^m(z):=P_{-s}^m(\cosh r)e^{2im\varphi},
+\ena
+Then for any $f\in C_c^\infty(\mk h)$, we have
+\bna
+\widehat f(m,s):=\langle f, U_s^m\rangle=\int_{\mk h}f(z)U_s^m(z)d\mu(z)
+\ena
+and
+\bna
+f(z)=\sum_{m\in \Z}\frac{(-1)^m}{2\pi i}\int_{\re(s)=1/2}
+\widehat f(m,s) U_s^{m}(z) t\tanh (\pi t)ds.
+\ena
+\end{prop}
+\begin{remark}
+Spherical functions of order $m=0$ depends only on the hyperbolic distance.
+\end{remark}
+\begin{proof}
+It follows from Fourier expansion of periodic function with the following inversion formula
+\bna
+g(u)=\int_0^\infty P_{-1/2+it}(u)
+\left(\int_{1}^\infty P_{-1/2+it}(v)g(v)dv\right) t\tanh(\pi t)dt
+\ena
+with $P_s(u):=P_s^0(u)$.
+
+
+It is sufficient to show the kerne
+\bna
+V_R(x,y)=\int_{0}^Rt\tanh(\pi t)P_{-\frac{1}{2}+it}(x)P_{-\frac{1}{2}+it}(y)dt
+\ena
+approaches $\delta(x-y)$ as $R\rightarrow\infty$.
+
+Note
+\bna
+P_{-1/2+it}(x)\sim\frac{\Gamma(it)}{\sqrt{\pi}\Gamma(\frac{1}{2}+it)}(2x)^{-\frac{1}{2}+it}
++
+\frac{\Gamma(-it)}{\sqrt{\pi}\Gamma(\frac{1}{2}-it)}(2x)^{-\frac{1}{2}+it},\quad x\rightarrow\infty
+\ena
+for fixed real $t$,
+ and
+ \bna
+ \frac{\Gamma(it)\Gamma(-it)}{\pi\Gamma(\frac{1}{2}+it)
+ \Gamma(\frac{1}{2}-it)
+ }=\frac{1}{\pi t \tanh(\pi t)}r,
+\ena
+thus
+\bna
+V_R(x,y)\sim\frac{1}{\pi}\int_0^R x^{-\frac{1}{2}+it}y^{-\frac{1}{2}-it}dt,\quad x,y\sim \infty
+\ena
+on right side of which  is a Dirac delta family by Mellin inversion formula.
+\end{proof}
+
+\section{Helgason trasform on $\mk h$}
+Set $B=K/M$ with $M=\{\-I,I\}$, where $B$ is called the `boundary' of $\mk h$.
+
+
+Let $f\in C_c^\infty(\mk h)$.
+For $s\in\C, k\in SO(2)$, we define
+\bna
+\mathcal H f(s,k)=\int_{\mk h} f(z)\overline{\im (kz)^s} \frac{dxdy}{y^2}.
+\ena
+\begin{prop}
+One has
+\bna
+f(z)=\frac{1}{4\pi}\int_{t\in\ R} \frac{1}{2\pi}\int_{\theta=0}^{2\pi}
+\mathcal Hf(\frac{1}{2}+it,k_\theta) \im(k_\theta z)^{\frac{1}{2}+it}
+t\tanh(\pi t) d\theta dt,
+\ena
+where $k_\theta\in SO(2)$.
+
+The map $f\mapsto\mathcal Hf$ takes $C_c^\infty(\mk h)$
+one-to-one, onto the space of $C^\infty$ functions  $G(s,k)$
+on $\C\times SO(2)$ which are holomorphic in $s$.
+It extends to an isometry mapping $L^2(\mk h,\frac{dxdy}{y^2})$
+onto $L^2(\R\times K,\frac{1}{8\pi^2}t\tanh(\pi t)dtd\theta)$
+where $K=SO(2)$ is identified with $(0,2\pi)$
+\end{prop}
+\begin{prop}
+The Helgason transform of $K$-invariant functions is a composition of Harish-Chandra
+and Mellin transforms.
+For $f_0\in C_c^\infty(GL_2(\R)^+,Z_\infty K_\infty)$,
+the action $\pi_{\epsilon_\pi,it_{\pi}}(f_0)$ on  $\phi_0$ is a scalar given by
+\bna
+\mathcal S(f_0)(it_\pi):=\int_{0}^\infty
+\left[y^{-1/2}
+\int_{-\infty}^\infty f_0\left(\bma 1&x\\&1\ema\bma y^{1/2}&\\&y^{-1/2}\ema\right)
+dx\right] y^{it_{\pi}}\frac{dy}{y},
+\ena
+where $\mathcal S(f_0)$ is called the spherical transform of $f_0$. Moreover,
+the spherical transform $\mathcal S$ defines a map
+\bna
+\mathcal S: C_c^\infty(GL_2(\R)^+,Z_\infty K_\infty)\rightarrow PW^\infty(\C)^{\mathrm{even}},\quad f_0\mapsto \mathcal S(f_0)
+\ena
+which is an isomorphism to the Paley-Wiener space of even functions.
+\end{prop}
+
+\section{Automorphic forms for $SL_2(\Z)$}
+\begin{prop}
+$SL_2(\Z)$ is a disconnected subgroup of $SL_2(\R)$. It has two generators, namely
+\bna
+T=\bma 1&1\\&1\ema,\quad S=\bma &-1\\ 1\ema
+\ena
+\end{prop}
+\begin{proof}
+Note that $T^m=\bma 1&m\\&1\ema$ and $S^2=\bma -1\\&-1\ema$.
+Thus if $\bma a&b\\0&d\ema\in SL_2(\Z)$, then $a=d\in\{\pm 1\}$ and $b\in \Z$
+can be expressed by product of $T$ and $S$. This shows that
+\bna
+\Gamma_\infty=\left\{\bma\pm 1&m\\&\pm 1\ema,m\in\Z\right\}
+=\{\gamma\in SL_2(\Z),\gamma.\infty=\infty\}
+\ena
+can be expressed by $T$ and $S^2$.
+
+
+Assume $\gamma=\bma a&b\\c&d\ema\in SL_2(\Z)$ with $c\neq 0$.
+Note that $\det\gamma=ad-bc=1$ which implies that $(a,c)=1$, otherwise
+\bna
+ax+cy=1
+\ena
+has no integral solution $(x,y)\in \Z^2$.
+Multiplying $\bma 1&m\\&1\ema$ on left one has
+\bna
+\bma 1&m\\&1\ema\bma a&b\\c&d\ema=\bma a+mc&b+md\\c&d\ema=\bma a_1&b_1\\c&d\ema
+\ena
+by choosing suitable $m$ we can assume that $0\leq a_1=a+mc<|c|$.
+Next, we multiplying $S$ to obtain
+\bna
+S\bma 1&m\\&1\ema\bma a&b\\c&d\ema=\bma &-1\\1\ema\bma a_1&b_1\\c&d\ema
+=\bma -c&-d\\ a_1&b_1\ema .
+\ena
+Note that $0\leq a_1<|c|.$
+repeat the above steps we will finally obtain a matrix with
+\bna
+\bma a_n&b_n\\ c_n&d_n\ema,\quad c_n=0
+\ena
+which is an element in $\Gamma_\infty$.
+\end{proof}
+
+
+
+\subsection{Fundamental domain}
+we have
+\bna
+\Gamma\backslash \mk h=\{z=x+iy,\quad -\frac{1}{2}\leq x\leq\frac{1}{2},  \sqrt{1-x^2}<y<\infty\}
+\ena
+This is non-compact and of finite volume, and has only one cusp $\infty$.
+
+\subsection{Fourier expansion of $L^2(\Gamma\backslash\mk h)$}
+We have shown that the Fourier expansion of functions $L^2(\Gamma_\infty\backslash \mk h)$
+should be
+\bna
+f(z)=a_{f}(0,y)+\sum_{n\neq 0}a_f(n) \sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e(nx)
+\ena
+where
+\bna
+a_f(0,y)=
+\left\{
+\begin{aligned}
+a_{f,1}(0)y^{s}+a_{f,2}(0)y^{1-s},\quad s=\neq 1/2\\
+a_{f,1}(0)y^{1/2}+ a_{f,2}(0)y^{1/2}\log y,\quad s=1/2
+\end{aligned}
+\right.
+\ena
+\subsection{Cusp forms}
+Note that  we add an compact region to the fundamental domain to consider
+\bna
+\int_{\Gamma\backslash \mk h}|f(z)|^2dz&\leq& \int_{-1/2}^{1/2}\int_{\frac{\sqrt{3}}{2}}^{\infty}|f(z)|^2dz\\
+&=&\int_{\sqrt{3}/2}^\infty |a_f(0,y)|^2\frac{dy}{y^2}
++\sum_{n\neq 0}|a_f(n)|^2\int_{\sqrt{3}/{2}}^\infty |y|\left|K_{s-1/2}(2\pi |n|y)\right|^{2}\frac{dy}{y^2}
+\ena
+The asymptotic formula
+\bna
+K_{s-1/2}(z)\sim
+\sqrt{\frac{\pi}{2z}} e^{-z}
+\ena
+implies the sum over $n\neq 0$ is absolutely convergent.
+
+
+For the constant term,
+\bna
+\int_{\sqrt{3}/2}^{\infty} |y^{2\re(s)}|\frac{dy}{y^2}
+=\int_{\sqrt{3}/2}^{\infty} |y^{2(\re(s)-1)}|dy
+=\infty
+\ena
+unless $\re(s)<\frac{1}{2}$.
+\begin{prop}
+A function $f$ which admits no constant term, namely
+\bna
+\int_{0}^1f(z)dx\neq 0
+\ena
+for all $y$, is called cusp form.
+\end{prop}
+Via the Fourier expansion, and the property of K-Bessel function,
+if $f$ is a cusp form, then it vanishes at $y\rightarrow\infty$.
+
+If we realized $z=x+iy$ as matrix $\bma 1&x\\ &1\ema\bma y^{1/2}\\&y^{-1/2}\ema\kappa_\theta$
+and lifting maass forms as functions on
+\bna
+f:SL_2(\R)\rightarrow\C
+\ena
+The cuspidal condition is equivalently to
+\bna
+\int_{\Z\backslash\R}f\left(\bma 1&x\\&1\ema g\right)dx=0
+\ena
+i.e. $f$ admits no-`trivial` property at $N(\Z\backslash \R)$.
+\section{$L$-function and functional equation of even and odd maass cusp forms}
+\subsection{Even and odd Maass cusp forms}
+We define
+\bna
+\iota:\mk h\rightarrow \mk  h,\quad z=x+iy\mapsto -\overline{z}=-x+iy
+\ena
+Extend it to be an operator
+\bna
+f(z)\mapsto f(\iota z)
+\ena
+One has $\iota^2=id$. Thus if $f$ is eigen function of $\iota$, then the eigenvalues
+should be $\pm 1$.
+\bit
+\item We call $f$ is even Maass cusp form, if $\iota f=f$.
+In this case, by the Fourier expansion of $f(z)$, we have
+\bna
+a_f(-n)=a_f(n),\quad n\in \Z
+\ena
+\item We call $f$ is odd Maass cusp form, if $\iota f=-f$.
+In this case $a_f(-n)=-a_f(n)$.
+\eit
+\begin{remark}
+The operator $\iota$ commutes with $\Delta$ and Hecke operators defined later.
+\end{remark}
+\subsection{L-function asscoaited to even Maass cusp $f$}
+Let $f$ be an even Maass cusp form with spectral parameter $\frac{1}{2}+it$.
+We consider
+\bna
+I(s,f):=\int_0^\infty f(iy)|y|^{s-\frac{1}{2}}\frac{dy}{y}.
+ \ena
+
+ Note that
+\bna
+f(iy)=f(S.iy)=f\left(-\frac{1}{iy}\right)=f(i\frac{1}{y}).
+\ena
+Thus
+\bna
+I(s,f):&=&\int_{1}^\infty f(iy)|y|^{s-\frac{1}{2}}\frac{dy}{y}
++\int_{0}^1f(i\frac{1}{y})|y|^{s-\frac{1}{2}}\frac{dy}{y}\\
+&=&\int_{1}^\infty f(iy)|y|^{s-\frac{1}{2}}\frac{dy}{y}
++\int_{1}^\infty f(iy)|y|^{1-s-\frac{1}{2}}\frac{dy}{y}
+\ena
+and one know that $I(s,f)$ is an entire function for all
+$s\in\C$ and satisfies the functional equation
+\bna
+I(s,f)=I(1-s,f).
+\ena
+
+On the other hand,  for $\re(s)$ large,
+by the Fourier expansion and $f$ is even Maass cusp form.
+\bna
+f(iy)=\sum_{n\neq 0}a_f(n)\sqrt{y}K_{it}(2\pi |n|y)
+=2\sum_{n\geq  1}a_f(n)\sqrt{y}K_{it}(2\pi ny),
+\ena
+we have
+\bna
+I(s,f)&=&2\sum_{n\geq 1}a_f(n)
+\int_0^\infty K_{it}(2\pi ny)  y^{s}\frac{dy}{y}\\
+&=&2\sum_{n\geq 1}a_f(n)\frac{1}{(2\pi n)^{s}}
+\int_0^\infty K_{it}(y)  y^{s}\frac{dy}{y}\\
+&=&2(2\pi)^{-s}\sum_{n\geq 1}\frac{a_f(n)}{n^s}\int_0^\infty K_{it}(y)y^s\frac{dy}{y}
+\ena
+\begin{lemma}
+One has
+\bna
+\int_0^\infty K_{\nu}(y)y^s\frac{dy}{y}=2^{s-2}\Gamma\left(\frac{s+\nu}{2}\right)\Gamma\left(\frac{s-\nu}{2}\right)
+\ena
+which is absolutely convergent if $\re(s)>\re(\nu)$.
+\end{lemma}
+\begin{proof}
+Recall that
+\bna
+K_{\nu}(y)=\frac{1}{2}\int_0^\infty e^{-y(t+\frac{1}{t})/2}t^s\frac{dt}{t}
+\ena
+for all values of $\nu$. Thus
+\bna
+L.H.S.&=&\frac{1}{2}\int_0^\infty\int_0^\infty e^{-\frac{yt}{2}-\frac{y}{2t}}t^{\nu} y^s\frac{dy}{y}\frac{dt}{t}.
+\ena
+We hope to separable parameters and thus take $u=\frac{ty}{2}$ $v=\frac{y}{2t}$ so that
+\bna
+\frac{du}{u}\wedge \frac{dv}{v}=2\frac{dt}{t}\wedge \frac{dy}{y}
+\ena
+and thus
+\bna
+L.H.S.=2^{s-2}\int_0^\infty\int_0^\infty e^{-u-v}u^{(s+\nu)/2} v^{(s-\nu)/2}\frac{du}{u}\frac{dv}{v}
+=R.H.S.
+\ena
+\end{proof}
+\begin{thm}
+Let $f$ be an even maass cusp form  for $SL_2(\Z)$
+with eigenvalue $\lambda=\frac{1}{4}+t^2$ (spectral parameter $\frac{1}{2}+it$).
+Then we have
+\bna
+f(z)=\sum_{n\neq 0}a_f(n)\sqrt{y}K_{it}(2\pi|n|y)e(nx)
+\ena
+with $a_f(-n)=a_f(n)$.
+The $L$-function
+\bna
+L(s,f):=\sum_{n\geq 1}\frac{a_f(n)}{n^s}
+\ena
+is defined for $\re(s)$ large and has analytic continuation to all $s\in\C$.
+Denote by
+\bna
+\Lambda(s,f)=\pi^{-s}\Gamma(\frac{s+it}{2})\Gamma(\frac{s-it}{2})L(s,f)
+\ena
+one has the functional equation
+\bna
+\Lambda(s,f)=\Lambda(1-s,f).
+\ena
+\end{thm}
+\subsection{$L$-function associated to odd maass cusp form}
+
+Assume that $f$ is odd maass cusp form.
+It has Fourier expansion with $a_f(-n)=-a_f(n)$ and we can define
+\bna
+L(s,f)=\sum_{n\geq 1}\frac{a_f(n)}{n^s}
+\ena
+for $\re(s)$ large.
+Since $f$ is odd, the integral $I(s,f)$ vanishes.
+
+To establish the functional equation, on taking
+\bna
+g(z):=\frac{1}{4\pi i}\frac{\partial f}{
+\partial x}(z),
+\ena
+one needs to consider
+\bna
+I(s,g):=\int_{0}^\infty g(iy)y^{s+\frac{1}{2}}\frac{dy}{y}
+\ena
+and  establishes
+\bna
+\Lambda(s,f)&=&\pi^{-s}\Gamma\left(\frac{s+it-1}{2}\right)
+\Gamma\left(\frac{s-it-1}{2}\right)L(s,f)\\
+&=&(-1)\Lambda(1-s,f).
+\ena
+For more information, we refer to page 107 in Bump's book.
+
+\section{The theory of Hecke operators
+-Does the $L$-function admits Euler product}
+Let $\Gamma=SL_2(\Z)$. For any subgroups $G\subset \Gamma$, we have
+\bna
+f(\gamma.z)=f(z),\quad \gamma\in G\subset\Gamma.
+\ena
+To obtain much more information, we consider
+the action of a  much bigger discontinuous subgroup.
+
+Consider
+\bna
+M_2(\Z)=\left\{\bma a&b\\c&d\ema,a,b,c,d\in \Z\right\}
+\ena
+It is the biggest in some sense.
+We decompose $M_2(\Z)$ as
+\bna
+M_2(\Z)=\sum_{n}G_n
+\ena
+where
+\bna
+G_n=\left\{g=\bma a&b\\c&d\ema, \det g =ad-bc=n\right\}.
+\ena
+One has
+\bna
+\Gamma G_n=G_n\Gamma
+\ena
+\begin{remark}
+We are interested in those $G_n$ with $n\geq 1$.
+\end{remark}
+\subsection{Slash operator}
+For $g\in GL_2(\R)$  and $f\in L^2(\Gamma\backslash \mk h)$,
+we define the operator
+\bna
+f\mapsto f|_{g},\quad f|_{g}(z)=f(g.z)
+\ena
+Note that $f$ is automorphic for $\Gamma$ then
+\bna
+f|_{\gamma}(z)=f(\gamma z)=f(z).
+\ena
+
+\begin{remark}
+The slash operator is defined by left translation, which commutes with the
+action of $\Delta$ naturally.
+Thus $f$ is automorphic for $\Gamma$ if and only if
+\bna
+f|_{\gamma}=f,\quad \forall \gamma\in\Gamma.
+\ena
+\end{remark}
+\subsection{The right cosets $\Gamma\backslash G_n$}
+Start from elements in $g\in G_n$, we hope to construct new operators $T_n$
+which map automorphic forms to automorphic forms.
+
+Note that for $\Gamma g$,
+\bna
+f|_{\Gamma g}(z)=f(\Gamma g.z)=f(g.z)=f|_{g}(z)
+\ena
+So we need only consider the right cosets $\Gamma\backslash G$.
+
+
+\begin{lemma}For $G_n$, we have the right coset decomposition
+\bna
+G_n=\bigcup_{g\in \Delta_n}\Gamma g,
+\ena
+where $\Delta_n$ is the set of representative elements given by
+\bna
+\Delta_n=\{\bma a&b\\&d\ema,\quad ad=n,0\leq b<d\}
+\ena
+\end{lemma}
+\begin{proof}
+For any $\rho=\bma a&c\\*&*\ema\in G_n$, and
+ $\gamma=\bma *&*\\ \tau&\delta\ema\in\Gamma$, i.e. $(\tau,\delta)=1$
+\bna
+\gamma\rho=\bma a&*\\  \tau a+\delta c &*\\\ema
+\ena
+Note that  $ax+ cy=0$ always have solutions $(x_0,y_0)\in \Z^2-\{0,0\}$.
+By dividing the greatest common divisor
+$(x_0,y_0)$, we can assume that they are coprime.
+Thus on taking $\tau=x_0$ and $\delta=y_0$, we have $(\tau,\delta)=1$.
+So there exists such $\gamma=\bma *&*\\ \tau&\delta\ema$
+so that
+\bna
+\gamma\rho=\bma *&*\\ 0&*\ema
+\ena
+
+
+So we consider the representative elements in $\{\bma a&*\\&d \ema,\quad ad=n\}$
+By multiplying $\pm I\in\Gamma$, we can assume that $a>0$ and $d>0$.
+
+By multiplying $\bma 1&m\\&1\ema$, with $m\in \Z$
+\bna
+\bma 1&m\\&1\ema \bma a&b\\&d\ema=\bma a&b+md\\&d\ema
+\ena
+and we can assume that $0\leq b_1=b_md\leq d-1$. This shows the final result.
+
+\end{proof}
+
+\begin{lemma}
+There exists an $1-1$ correspondence between
+\bna
+\Delta_n\times\Gamma=\Gamma\times\Delta_n
+\ena
+i.e. for any $\rho,\gamma\in\Gamma$,
+there exists unique $\rho'$ and $\gamma'$ so that
+\bna
+\rho.\gamma=\gamma'.\rho
+\ena
+
+\end{lemma}
+\begin{remark}
+Although elements  $\rho\in \Delta_n$ is not in the normalizer of $\Gamma$,
+\bna
+g.\Gamma=\Gamma.g
+\ena
+But all the set should be. This suggests us to define
+\bna
+T_n f(z):=\sum_{g\in\Delta_n} f|_{g}(z)
+\ena
+Then for any $\gamma\in \Gamma$,
+\bna
+(T_nf)(\gamma.z)&=&\sum_{g\in\Delta_n} f_g(\gamma z)
+=\sum_{g\in\Delta_n} f(g\gamma z)=\sum_{g\in\Delta_n} f(\gamma'g' z)\\
+&=&\sum_{g'\in\Delta_n} f(g' z)=(T_nf)(z).
+\ena
+So $T_n$ maps automorphic forms to be automorphic forms.
+
+
+\end{remark}
+\subsection{Definition of the Hecke operators}
+\begin{prop}
+For $G_n=\{g\in M_2(\Z),\det g=n\}$, we have
+\bna
+\Gamma G_n=G_n\Gamma.
+\ena
+A set of representative elements of the right cosests $\Gamma\backslash G_n$ is
+\bna
+\Delta_n=\left\{\bma a&b\\&d\ema,\quad ad=n, 0\leq b<d\right\}
+\ena
+We define
+\bna
+(T_nf)(z)=\sum_{g\in \Delta_n} f|_{g}(z)
+\ena
+\bit
+\item $T_n$ commutes to each other for all $n\geq 1$, and $T_n$ commutes with $\Delta$
+and $\iota$.
+\item $T_n$  maps automorphic forms to be automorphic forms.
+\eit
+
+\end{prop}
+\begin{remark}
+Thus we can assume an automorphic cuspidal forms are eigenfunction of $\Delta$
+with eigenvalues $\frac{1}{4}+t^2$, even or odd, and is eigenfunctions for all Hecke operators.
+\end{remark}
+\subsection{The action of Hecke operators}.
+Let
+\bna
+f(z)=\sum_{n\neq 0} a_f(n)\sqrt{y}K_{it}(2\pi|n|y) e(nx)
+\ena
+be a Maass cusp form with spectral parameter $\frac{1}{2}+it$.
+Assume that $f(z)$ is an eigenfunction of $T_m$ with eigenvalue $\lambda_f(m)$,
+\bna
+T_m f(z)=\lambda_f(m)f(z)=\sum_{n\neq 0} a_f(n)\lambda_f(m)\sqrt{y}K_{it}(2\pi|n|y) e(nx).
+\ena
+On the other hand,
+\bna
+T_mf(z)=\sum_{ad=m}\sum_{b\mod d} f|_{\bma a&b\\0&d\ema}(z)
+\ena
+Note that
+\bna
+f|_{\bma a&b\\0&d\ema}(z)
+=f\left(\frac{az+b}{d}\right)=
+\sum_{n\neq 0} a_f(n)\lambda_f(m)\sqrt{\frac{a}{d}y}K_{it}(2\pi|n|\frac{a}{d}y) e(n\frac{ax+b}{d}).
+\ena
+Thus $T_mf(z)$ has Fourier expansion
+\bna
+T_m f(z)&=&
+\sum_{ad=m}\sum_{b\bmod d}
+\sum_{n\neq 0} a_f(n)\sqrt{\frac{a}{d}y}K_{it}(2\pi|n|\frac{a}{d}y) e(n\frac{ax+b}{d})\\
+&=&
+\sum_{ad=m}
+\sum_{n\neq 0} a_f(n)\sqrt{\frac{a}{d}y}K_{it}(2\pi|n|\frac{a}{d}y)
+e(n\frac{ax}{d})
+\sum_{b\bmod d}e\left(n\frac{b}{d}\right)
+\ena
+Note that $\sum_{b\bmod d}e\left(n\frac{b}{d}\right)=d\delta_{d\mid n}$.
+One has
+\bna
+T_m f(z)
+&=&
+\sum_{ad=m}
+\sum_{d\mid n} a_f(n)\sqrt{\frac{a}{d}y}K_{it}(2\pi|n|\frac{a}{d}y)
+e(n\frac{ax}{d}) d\\
+&=&\sqrt{m}
+\sum_{ad=m}
+\sum_{d\mid n} a_f(n)\sqrt{y}K_{it}(2\pi|n|\frac{a}{d}y)
+e(n\frac{ax}{d}) \\
+&=&\sqrt{m}
+\sum_{ad=m}
+\sum_{\ell } a_f(d\ell)\sqrt{y}K_{it}(2\pi|d\ell |\frac{a}{d}y)
+e(d\ell \frac{ax}{d}) \\
+&=&\sqrt{m}
+\sum_{a\mid m}
+\sum_{\ell } a_f(\frac{m}{a}\ell)\sqrt{y}K_{it}(2\pi|\ell |ay)
+e(\ell a x) \\
+\ena
+Let $n=\ell a$, then $n\geq 1$ and $a$ satisfies the condition $a\mid n$ and $a\mid m$.
+Thus
+\bna
+T_mf(z)=\sqrt{m}\sum_{n} \sum_{a\mid (m,n)}a_f\left(\frac{mn}{a}\right)
+\sqrt{y} K_{it}(2\pi |n| y)e(nx)
+\ena
+\begin{prop}Define
+\bna
+T_mf(z)=\frac{1}{\sqrt{m}} \sum_{ad=m}\sum_{b\bmod d} f|_{\bma a&b\\&d\ema}(z)
+\ena
+Assume $f(z)$ has Fourier expansion
+\bna
+f(z)=\sum_{n}a_f(n)\sqrt{y} K_{it}(2\pi |n|y) e(nx)
+\ena
+and $f$ is eigenfunction of $T_m$ with eigenvalue $T_mf(z)=\lambda_f(m) f(z)$.
+Then
+\bea
+\lambda_f(m)a_f(n)=\sum_{d\mid (m,n)} a_f\left(\frac{mn}{d^2}\right)\label{tem1}
+\eea
+\end{prop}
+\begin{remark} Assume that $f$ is eigenfunction of  all Hecke operators.
+One has
+\bea
+\lambda_f(n)a_f(\pm 1)=\sum_{d\mid (1,n)}a_f\left(\frac{\pm 1n}{d}\right)=a_f(\pm n)\label{tem2}
+\eea
+So we can write $a_f(n)=a_f(1)\lambda_f(n)$ and thus
+ the Fourier expansion of $f(z)$ is
+\bna
+f(z)=\sum_{n\neq 0}a_f(\mathrm{sign}(n)) \lambda_f(n)
+\sqrt{y}K_{it}(2\pi|n|y)e(nx).
+\ena
+ \end{remark}
+ \subsection{Properties of Hecke eigenvalues}
+Assume that $f$ is eigenfunction of all Hecke operators $T_m$
+with eigenvalues $\lambda_f(m)$.
+ By \eqref{tem1} and \eqref{tem2}, we have the following Hecke relation.
+\bea
+\lambda_f(m_1)\lambda_f(m_2)=\sum_{d\mid (m_1,m_2)}\lambda\left(\frac{m_1m_2}{d^2}\right)
+\eea
+Thus $m\mapsto \lambda_f(m)$ is a multiplicative function with $\lambda_f(1)=1$.
+
+By the Hecke relation, we have the recurrent formula
+\bna
+\lambda_f(p^n)\lambda_f(p)=\lambda_f(p^{n+1})+\lambda_f(p^{n-1})
+\ena
+and thus for $\lambda_f(1)=1$ and $\lambda_f(p)$,
+\bna
+\lambda_f(p^2)&=&-\lambda_f(1)+\lambda_f(p)^2=-1+\lambda_f(p)^2,\\
+\lambda_f(p^3)&=&-\lambda_f(p)+\lambda_f(p)\lambda_f(p^2)
+=-2\lambda_f(p)+\lambda_f(p)^3\\
+\lambda_f(p^4)&=&-\lambda_f(p^2)+\lambda_f(p)\lambda_f(p^3)
+=-\lambda_f(1)+\lambda_f(p)^2+\lambda_f(p)\left(-2\lambda_f(p)+\lambda_f(p)^3\right)\\
+&=&-1-\lambda_f(p)^2+\lambda_f(p)^4\\
+\lambda_f(p^5)&=&-\lambda_f(p^3)+\lambda_f(p)\lambda_f(p^4)
+=-(-2\lambda_f(p)+\lambda_f(p)^3)+\lambda_f(p)(-1-\lambda_f(p)^2+\lambda_f(p)^4)\\
+&=&-\lambda_f(p)
+\ena
+
+\section{Eisenstein series}
+We recall the definition of the Maass forms as follows.
+For
+\bna
+f:\mk h\rightarrow\C
+\ena
+\bit
+\item [1.] $f$ is eigenfunction of $\Delta$ with eigenvalue $\lambda=s(1-s)=\frac{1}{4}+t^2$, $s=\frac{1}{2}+it$.
+\item [2.] $f(\gamma.z)=f(z)$ for $\gamma\in SL_2(\Z)$.
+\item [3.] $f\in L^2(\Gamma\backslash \mk h)$
+\item [3'.] $f$ is of moderate growth, i.e. $f(x+iy)=o(e^{2\pi y})$ for some $N$.
+\eit
+We call $f$ is cusp form, if
+\bna
+\int_{0}^1f(x+iy)dx=0
+\ena
+for all but finite number of $y$, and we know that
+\bna
+&&\mbox{$f$ cusp form}\Leftrightarrow \mbox{$f$ vanishes at the cusp}\\
+&\Leftrightarrow&\mbox{As functions on $SL_2(\R)=N(\R)A(\R)SO(2)$, $f$ vanishes
+on $N(\Z\backslash \R)$}.
+\ena
+\medskip
+
+We will introduce the Eisenstein series which is related to the spectrum of
+\bna
+L^2(\Gamma\backslash \mk h)- L^2_{\mathrm{cusp}}(\Gamma\backslash \mk h)
+\ena
+
+
+\subsection{Definition}
+We start from the function
+\bna
+I_s(z):=(\im z)^s
+\ena
+which is eigenfunction of $\Delta$ with eigenvalue $s(1-s)$ and is $\Gamma_\infty$-invariant.
+To construct function which is invariant under $\Gamma_\infty$, we define
+\bna
+E(z,s):=\sum_{\delta\in\Gamma_\infty\backslash \Gamma}I_s(\delta.z).
+\ena
+
+Formally, $E(z,s)$ is an automorphic forms in $z$ with eigenvalue $s(1-s)$ of $\Delta$.
+However, the sum over $\Gamma_\infty\backslash \Gamma$ is an infinite sum,
+and $E(z,s)$ may be divergent.
+\begin{lemma}\label{lemma-right-cosets}
+A set of the representative elements for $\Gamma_\infty\backslash\Gamma$
+is
+\bna
+\bma 1&0\\0&1\ema, \quad \bma *&*\\ c&d\ema, c>0, d\in\Z, (c,d)=1.
+\ena
+\end{lemma}
+\begin{proof}
+Note that for given $\bma a&b\\c&d\ema$,
+\bna
+I_s\left(\bma a&b\\c&d\ema.z\right)=\frac{y^s}{|cz+d|^{2s}}
+\ena
+so we need only to determine $\bma *&*\\ c&d\ema$ in the representative element
+for $\Gamma_\infty\backslash \Gamma$.
+
+Let $\bma 1&m\\&1\ema\in\Gamma_\infty$ and $\bma a&b\\c&d\ema\in\Gamma$. We have
+\bna
+\bma 1&m\\&1\ema\bma a&b\\c&d\ema
+=\bma a-cm&b-dm\\ c&d\ema=\bma a^*&b^*\\c&d\ema
+\ena
+For fixed $(c,d)=1$, as $m\in\Z$ varies, $(a^*,b^*)$ varies over solutions of
+\bna
+xd-yc=1.
+\ena
+So the representative elements in this equivalence class is uniquely
+ characterized by $(c,d)$.
+
+By multiplying $\pm I$, we can assume either $c>0$, or $c=0$ and $d=1$.
+Thus a representative elements for the  coset $\Gamma_\infty\backslash \Gamma$ are
+\bna
+\bma *&*\\0&1\ema +
+\bigcup_{c> 0}\bigcup_{d\in\Z\atop{(d,c)=1}}\bma *&*\\ c&d\ema
+\ena
+\end{proof}
+By the above lemma, we have formually
+\bna
+E(z,s)&=&\left(\sum_{c=0}\sum_{d=1}+\sum_{c> 0}\sum_{d\in\Z\atop (d,c)=1}\right)
+\frac{y^s}{|cz+d|^{2s}}\\
+&=&\frac{1}{2}\frac{1}{2}\sum_{(c,d)\in \Z^2-\{(0,0)\}\atop (c,d)=1}\frac{y^s}{|cz+d|^{2s}}.
+\ena
+Multiplying $\zeta(2s)$, we can get rid of the coprime condition to obtain
+\bna
+\zeta(2s)E(z,s)
+&=&\sum_{m\geq 1}\frac{1}{m^{2s}}
+\left(\sum_{c=0}\sum_{d=1}+\sum_{c> 0}\sum_{d\in\Z\atop (d,c)=1}\right)
+\frac{y^s}{|cz+d|^{2s}}\\
+&=&
+\left(\sum_{c=0}\sum_{d\geq 1}+
+\sum_{c\geq 1}\sum_{d\in\Z}\right)\frac{y^s}{|cz+d|^{2s}}\\
+&=&\frac{1}{2}\sum_{(c,d)\neq (0,0)}\frac{y^s}{|cz+d|^{2s}}
+\ena
+Thus
+for any fixed $z\in \mk h$,
+the infinite sum over $c$ and $d$ are absolutely convergent if $\re(s)>1$.
+\begin{prop}Let $s\in\C$ be a spectral parameter.
+ The Eisenstein series $E(z,s)$ is defined by
+ \bna
+ E(z,s)=\sum_{\delta\in\Gamma_\infty\backslash\Gamma}I_s(\delta.z)
+ =\frac{1}{2}\sum_{(c,d)\in \Z^2-\{(0,0)\}\atop(c,d)=1}\frac{y^s}{|cz+d|^{2s}}
+ \ena
+ for $\re(s)>1$;
+it is an automorphic form for $SL_2(\Z)$
+in the sense
+\bna
+E(\gamma.z,s)=E(z,s),\quad\gamma\in SL_2(\Z)
+\ena
+and is an eigenfunction of $\Delta$
+with eigenvalue
+\bna
+\lambda=s(1-s).
+\ena
+\end{prop}
+\subsection{Fourier expansion of Eisenstein series}
+For $E(z,s)$ defined as above, we consider the Fourier expansion of $E(z,s)$,
+\bna
+E(z,s)=\sum_n
+a(y,n;s) e(nx)
+\ena
+where
+\bna
+a(y,n;s):&=&\int_{0}^1 E(x+iy,s)e(-nx)dx\\
+&=&\int_{x\in \Z\backslash \R}\sum_{\delta \in \Gamma_\infty\backslash \Gamma}
+I_s\left(\delta.z\right)e(-nx)dx
+\ena
+We need the following proposition which will give the relation
+between the right coset $\Gamma_\infty\backslash\Gamma$ and the double cosets
+$\Gamma_\infty\backslash\Gamma/\Gamma_\infty$.
+\begin{lemma}\label{lemma-doublecoset}
+The double coset of $\Gamma_\infty\backslash\Gamma/\Gamma_\infty$ is
+\bna
+\bigcup_{c\geq 0}\bigcup_{d\bmod c\atop{(d,c)=1}}\bma *&*\\c&d\ema
+=\bma 1&0\\0&1\ema\bigcup \bigcup_{c>0}\bigcup_{d\bmod c\atop(d,c)=1}\bma *&*\\c&d\ema
+\ena
+and thus the representative elements in the right coset $\Gamma_\infty\backslash\Gamma$
+can be expressed as
+\bea
+\bma 1\\&1\ema + \bigcup_{c>0}\bigcup_{d\in\Z\atop(c,d)=1}\bigcup_{m\in\Z}\bma *&*\\ c&d\ema
+\bma 1&m\\&1\ema\label{express-rightcosets-via-double-cosets}
+\eea
+\end{lemma}
+\begin{remark}
+Formula \eqref{express-rightcosets-via-double-cosets} can be obtained directly from
+Lemma \ref{lemma-right-cosets}.
+\end{remark}
+\begin{proof}
+For $\bma 1&m\\&1\ema$ and $\bma 1&n \\&1\ema$ in $\Gamma_\infty$ (multiplying $\pm I$
+if necessary), and $\bma a&b\\c&d\ema\in\Gamma$,
+\bna
+\bma 1&m\\&1\ema\bma a&b\\c&d\ema \bma 1&n\\&1\ema
+=\bma a+mc&b+md\\c&d\ema\bma 1&n\\&1\ema=\bma a+mc& b+md+n(a+mc)\\ c& d+nc\ema
+\ena
+Multiplying $\pm I$ if necessary, we can assume that $c\geq 0$ and $d\geq 0$.
+
+Note that $c\geq 0$, and $d$ is restricted in the reduced class modulo $c$.
+elements in the first row are determined by the same reason in the right coset $\Gamma_\infty\backslash\Gamma$.
+\end{proof}
+By the above lemma, for $\re(s)>1$,
+\bna
+a(y,n;s)&=&\int_0^1 I_s(\bma1\\&1\ema.z)e(-nx)dx \\
+&&+\sum_{c\geq1}\sum_{d\bmod c\atop(d,c)=1}
+\sum_{m\in\Z}\int_0^1 I_s\left(\bma *&*\\ c&d\ema\bma 1&m\\&1\ema.z\right)e(-nx)dn\\
+&=&y^s\int_0^1 e(-nz)dx+\sum_{c\geq 1}\sum_{d \bmod c\atop (d,c)=1}\sum_{m\in\Z}
+\int_{0}^1I_s\left(\bma *&*\\ c&d\ema. (x+m+iy)\right) e(-n(x+m))dx\\
+&=&y^s\delta_{n,0} + \sum_{c\geq 1}\sum_{d\bmod c\atop(c,d)=1}
+\int_{-\infty}^\infty\frac{y^s}{\left((cx+d)^2+c^2y^2\right)^s}e(-nx)dx\\
+&=&y^s\delta_{n,0} + \sum_{c\geq 1}\frac{1}{c^{2s}}\sum_{d\bmod c\atop((c,d)=1)}
+y^s
+\int_{-\infty}^\infty\frac{1}{\left((x+\frac{d}{c})^2+y^2\right)^s}e(-nx)dx\\
+&=&y^s\delta_{n,0} + \sum_{c\geq 1}\frac{1}{c^{2s}}\sum_{d\bmod c\atop((c,d)=1)}e\left(\frac{d}{c}n\right)
+y^s
+\int_{-\infty}^\infty\frac{1}{\left(x^2+y^2\right)^s}e(-nx)dx
+\ena
+\begin{lemma}[Lemma \ref{lemma-integral-Whitaker-Bessel}]\label{lemma-integral-in-bump}
+We have
+\bna
+\pi^{-s}\Gamma(s)y^s\int_{-\infty}^\infty\frac{1}{(x^2+y^2)^s}e(-nx)dx
+=\left\{
+\begin{aligned}
+&\pi^{-s+\frac{1}{2}}\Gamma(s-\frac{1}{2})y^{1-s},\quad && n=0\\
+&2|n|^{s-\frac{1}{2}}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y),\quad &&n\neq 0.
+\end{aligned}
+\right.
+\ena
+\end{lemma}
+\begin{proof}
+Note that
+\bna
+\Gamma(s)=\int_0^\infty e^{-t}t^{s}\frac{dt}{t}.
+\ena
+Thus
+\bna
+&&\pi^{-s}y^s\int_{0}^\infty e^{-t}t^s\frac{dt}{t}
+\int_{-\infty}^\infty\frac{1}{(x^2+y^2)^s}e(-nx)dx\\
+&=&\int_{-\infty}^\infty\left(\int_0^\infty
+\left(\frac{y}{\pi(x^2+y^2)}t\right)^{s} e^{-t}\frac{dt}{t}
+\right)dx
+=\int_{-\infty}^\infty\left(\int_0^\infty
+t^{s} e^{-t\frac{\pi(x^2+y^2)}{y}}\frac{dt}{t}
+\right)dx\\
+&=&\int_0^\infty
+t^{s} e^{-t\pi y}
+\left(\int_{-\infty}^\infty
+ e^{-\frac{\pi t}{y}x^2} e^{-2\pi i n x}dx\right)
+ \frac{dt}{t}
+\ena
+Since
+\bna
+\int_{-\infty}^\infty
+ e^{-\frac{\pi t}{y}x^2} e^{-2\pi i n x}dx=\left\{
+ \begin{aligned}
+ &\sqrt{\frac{y}{t}},\quad &n=0\\
+ &\sqrt{\frac{y}{t}}e^{-\frac{\pi y n^2}{t}},\quad &n\neq 0
+ \end{aligned}
+ \right.
+\ena
+The result follows immediately by the expression of $\Gamma$-function and $K$-Bessel
+function.
+\end{proof}
+\subsubsection{The constant term}
+By the above lemma, the constant term of the normalized  Eisenstein series
+$E^*(z,s)$ is
+\bna
+a^*_0(y,s):=\pi^{-s}\Gamma(s)\zeta(2s)a(y,0;s)
+&=&\pi^{-s}\Gamma(s)\zeta(2s) y^s +\zeta(2s)
+\sum_{c\geq 1}\frac{\varphi(c)}{c^{2s}}
+\pi^{-s+\frac{1}{2}}\Gamma(s-1/2)y^{1-s}\\
+&=&\pi^{-s}\Gamma(s)\zeta(2s) y^s +\zeta(2s)
+\sum_{c\geq 1}\frac{\sum_{d\mid c}\mu(d)\frac{c}{d}}{c^{2s}}
+\pi^{-s+\frac{1}{2}}\Gamma(s-1/2)y^{1-s}
+\ena
+Note that
+\bna
+\sum_{c\geq 1}\frac{\sum_{d\mid c}\mu(d)\frac{c}{d}}{c^{2s}}
+=\sum_{c\geq 1}\frac{\mu(d)}{c^{2s}}\sum_{c\geq 1}\frac{c}{c^{2s}},
+\ena
+thus
+\bna
+a^*_0(y,s)&=&\pi^{-s}\Gamma(s)\zeta(2s)y^s+\pi^{-s+\frac{1}{2}}\Gamma(s-\frac{1}{2})
+\zeta(2s-1)y^{1-s}
+\ena
+and
+\bna
+\zeta(2s-1)=\frac{\pi^{-\frac{1-(2s-1)}{2}}\Gamma\left(\frac{1-(2s-1)}{2}\right)\zeta(1-(2s-1))}
+{\pi^{-\frac{2s-1}{2}}\Gamma(\frac{2s-1}{2})}
+\ena
+Thus finally, the constant of the Eisenstein series is
+\bna
+a^*_0(y,s)=\pi^{-s}\Gamma(s)\zeta(2s)y^s+\pi^{-(1-s)}\Gamma(1-s)\zeta(2-2s)y^{1-s}.
+\ena
+Here $s=\frac{1}{2}$ is a possible pole of $a^*_0(y,s)$, with
+\bna
+\res_{s=\frac{1}{2}}a^*_0(y,s)=\pi^{-\frac{1}{2}}\Gamma(1/2) y^{1/2}\frac{1}{2}
++\pi^{-\frac{1}{2}}\Gamma(1/2) y^{1/2}\frac{-1}{2}=0,
+\ena
+i.e. $s=\frac{1}{2}$ is not a pole; $s=1$ is a simple pole with residue
+\bna
+\res_{s=1}a^*_0(y,s)=\frac{1}{2},\quad \res_{s=0}a^*_0(y,s)=-\frac{1}{2}
+\ena
+\begin{prop}The constant term of $E^*(z,s)$ is
+\bna
+a^*_0(y,s)=\pi^{-s}\Gamma(s)\zeta(2s)y^s+\pi^{-(1-s)}\Gamma(1-s)\zeta(2-2s)y^{1-s},
+\ena
+it has meromorphic continuation for $s\in\C$ with simple poles at $s=1$ and $s=0$
+with the residue
+\bna
+\res_{s=1}a^*_0(y,s)=\frac{1}{2},\quad \res_{s=0}a^*_0(y,s)=-\frac{1}{2}.
+\ena
+Moreover,
+\bna
+a^*_0(y,s)=a^*_0(y,1-s).
+\ena
+\end{prop}
+
+
+\subsubsection{The non-constant term}
+Next, we consider the non-constant term. For $n\neq 0$,
+\bna
+a^*_n(y,s):&=&\pi^{-s}\Gamma(s)\zeta(2s)\int_0^1 E(z,s)e(-nx)dx\\
+&=&\zeta(2s)\sum_{c\geq 1}\frac{1}{c^{2s}}\sum_{d\bmod c\atop(d,c)=1}
+e\left(\frac{d}{c}n\right)2|n|^{s-\frac{1}{2}}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y).
+\ena
+Note that
+\bna
+\sum_{d\bmod c\atop(c,d)=1}e\left(\frac{dn}{c}\right)=
+S(0,n;c)=\sum_{\delta\mid (c,n)}\mu(\frac{c}{\delta})\delta,
+\ena
+is the Ramanujan sum, and
+\bna
+\sum_{c\geq 1}\frac{1}{c^{2s}}S(0,n;c)
+=\sum_{\delta\mid n}\delta \sum_{c\geq 1}\mu(c)\frac{1}{(c\delta)^{2s}}
+=\zeta(2s)^{-1}\sigma_{1-2s}(n).
+\ena
+Thus
+\bna
+a^*_n(y;s)=
+2|n|^{s-\frac{1}{2}}\sigma_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi |n|y).
+\ena
+
+One has
+\bna
+K_{s-\frac{1}{2}}=K_{\frac{1}{2}-s}=K_{1-s-\frac{1}{2}}
+\ena
+and
+\bna
+|n|^{s-\frac{1}{2}}\sigma_{1-2s}(|n|)&=&\sum_{d\mid |n|}
+\left(\frac{|n|}{d^2}\right)^{s-\frac{1}{2}}=\sum_{d_1d_2=|n|}d_1^{s-\frac{1}{2}}d_2^{\frac{1}{2}-s}\\
+&=&
+|n|^{1-s-\frac{1}{2}}\sigma_{1-2(1-s)}(|n|).
+\ena
+This gives the following result.
+\begin{prop}
+The non-constant term
+\bna
+a^*_n(y;s)=
+2|n|^{s-\frac{1}{2}}\sigma_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi |n|y)
+\ena
+has analytic continuation for $s\in\C$ and satisfies
+\bna
+a^*_n(y;s)=a^*_n(y;1-s).
+\ena
+\end{prop}
+\subsubsection{Conclusion}
+\begin{thm}For $E^*(z,s)=\pi^{-s}\Gamma(s)\zeta(2s)E(z,s)$, we have
+\bna
+E^*(z,s)&=&\pi^{-s}\Gamma(s)\zeta(2s)y^{s}
++\pi^{-(1-s)}\Gamma(1-s)\zeta(2-2s)y^{1-s}\\
+&&
++2\sum_{n\neq 0}|n|^{s-\frac{1}{2}}\sigma_{1-2s}(|n|)\sqrt{y} K_{s-\frac{1}{2}}(2\pi |n|y) e(nx).
+\ena
+$E^*(z,s)$ is defined for $\re(s)>1$ and has meromorphic continuation
+to $s\in\C$ and satisfies the functional equation
+\bna
+E^*(z,s)=E^*(z,1-s).
+\ena
+Moreover, $s=1$ and $s=0$ are two simple pole of $E^*(z,s)$,
+and the resiue at $s=1$ is the constant function (in $z$)
+\bna
+\res_{s=1}E^*(z,s)=\frac{1}{2},
+\ena
+and
+\bna
+E^*(x+iy,s)=O\left( y^{\max{\re(s),1-\re(s)}}\right),\quad y\rightarrow\infty.
+\ena
+\end{thm}
+
+\subsection{Orthogonal relation with cusp forms}
+For $E(z,s)$, we know that
+\bna
+\overline{E(z,s)}=\sum_{\delta\in \Gamma_\infty\backslash\Gamma}I_{\overline s}(\delta.z)
+=E(z,\overline s).
+\ena
+For $f\in L^2_{cusp}$,
+\bna
+\langle f,E(,s)\rangle&=&\int_{\Gamma\backslash \mk h} f(z)\overline{E(z,s)}d\mu(z)
+\overset{\mbox{unfold}}{=}\int_{\Gamma\backslash \mk h} \sum_{\delta\in\Gamma_\infty\backslash\Gamma}f(\delta.z)
+I_{s}(\delta.z)d\mu(\delta.z)\\
+&=&\int_{\Gamma_\infty\backslash \mk h} f(z)
+I_{s}(z)d\mu(z)
+=\int_0^\infty y^s\left(\int_0^1 f(x+iy)dx\right)\frac{dy}{y^2}\\
+&=&0.
+\ena
+
+\begin{remark}
+We refer to section \ref{Sec-Eisenstein} for an overview of Eisenstein series in
+representation language.
+\end{remark}
+
+\subsection{Inner product with Eisenstein series}
+For any $h\in L^2(\Gamma\backslash\mk h)$ with  the Fourier expansion
+\bna
+h(z)=a_{h,0}(y)+\sum_{n\neq 0} a_{n,h}(y)e(nx),
+\ena
+and thus
+\bna
+\langle h, E^*(\,\,,\overline{s})\rangle&=&
+\int_{\Gamma\backslash \mk h}h(z)E(z,s)d\mu(z)
+\overset{unfold}{=}\int_{\Gamma_\infty\backslash \mk h}h(z) I_s(z)d\mu(z)\\
+&=&\int_0^\infty\left(\int_0^1 h(x+iy)dx\right)  y^s\frac{dy}{y^2}\\
+&=&\int_0^\infty a_{h,0}(y)  y^{s-1}\frac{dy}{y}
+\ena
+Thus the inner product of $h\in L^2(\Gamma\backslash\mk h)$ with Eisenstein series
+is just the Mellin transform of the constant term $a_{h,0}(y)$ of $h(z)$.
+In the next section, we use this fact to derive the analytic property of the Rankin-Selberg
+$L$-function.
+
+\subsection{Application of Eisenstein series -Rankin-Selberg integrals}
+We start from two cusp forms, $f$ and $g$ with
+\bna
+f(z)&=&\sum_{n\neq 0}a_f(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e(nx),\\
+g(z)&=&\sum_{n\neq 0}a_g(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e(nx),
+\ena
+Note that $f(z)E(z,s)$ and $g(z)$ are both vanishes at the cusp $i\infty$ and thus
+\bna
+I(s,f,g)=\langle fE(*,s), g\rangle =\int_{\Gamma\backslash \mk h}f(z)\overline{g(z)}E(z,s)d\mu(z)
+\ena
+are well defined.
+
+For $\re(s)>1$, by unfolding Eisenstein series we have
+\bna
+I(s,f,g)&=&\int_{\Gamma\backslash\mk h}\sum_{\delta\in\Gamma_\infty\backslash\Gamma}
+f(\delta.z)\overline{g(\delta.z)}I_s(\delta.z)d\mu(\delta.z)\\
+&=&\int_{0}^1\int_{0}^\infty f(z)\overline{g(z)}y^sdx\frac{dy}{y^2}.
+\ena
+Applying the Fourier expansion of $f(z)$ and $g(z)$,
+\bna
+I(s,f,g)&=&\sum_{m\neq  0}\sum_{n\neq 0}a_g(m)\overline{a_f(n)}
+\left\{\int_{0}^\infty
+K_{it_f}(2\pi|m|y)K_{it_g}(2\pi|n|y)
+y^{s+1}\frac{dy}{y^2}
+\right\}\int_0^1 e((m-n)x)dx\\
+&=&\left(a_f(1)\overline{a_g(1)}
++a_f(-1)\overline{a_g(-1)}\right)
+\sum_{m> 0}\lambda_f(m)\overline{\lambda_g(m)}
+\int_{0}^\infty
+K_{it_f}(2\pi|m|y)K_{it_g}(2\pi|n|y)
+y^{s}\frac{dy}{y}.
+\ena
+\begin{lemma}
+We have
+\bna
+\int_{0}^\infty K_{\mu}(y)K_{\nu}(y)y^s\frac{dy}{y}
+=2^{s-3}\frac{\Gamma\left(\frac{s-\mu-\nu}{2}\right)
+\Gamma\left(\frac{s-\mu+\nu}{2}\right)
+\Gamma\left(\frac{s+\mu-\nu}{2}\right)
+\Gamma\left(\frac{s+\mu+\nu}{2}\right)
+}{\Gamma(s)}
+\ena
+\end{lemma}
+\begin{proof}
+Recall \eqref{integral-transform-K-Bessel-in-appendix},
+\bna
+K_s(y)=\frac{1}{2}\int_0^\infty e^{-\frac{y}{2}(t+\frac{1}{t})}t^s\frac{dt}{t}.
+\ena
+Thus
+\bna
+I=2^{-2}\int_0^\infty\int_0^\infty\int_0^\infty
+e^{-\frac{y}{2}(t_1+\frac{1}{t_1})}
+e^{-\frac{y}{2}(t_2+\frac{1}{t_2})}t_1^{\mu}t_2^{\nu}\frac{dt_1}{t_1}
+\frac{dt_2}{t_2} y^s\frac{dy}{y}.
+\ena
+Changing variable in a suitable situation, we will obtain the result.
+\end{proof}
+Therefore,
+\bna
+I(s,f,g)&=&
+\left(a_f(1)\overline{a_g(1)}
++a_f(-1)\overline{a_g(-1)}\right)
+\sum_{m> 0}\lambda_f(m)\overline{\lambda_g(m)}
+(2\pi m)^{-s}
+\int_{0}^\infty
+K_{it_f}(y)K_{it_g}(y)
+y^{s}\frac{dy}{y}\\
+&=&
+\left(a_f(1)\overline{a_g(1)}
++a_f(-1)\overline{a_g(-1)}\right)(2\pi)^{-s}
+\sum_{m> 0}\frac{\lambda_f(m)\overline{\lambda_g(m)}}{m^s}
+2^{s-3}\prod_{\epsilon_f,\epsilon_g\in\{\pm 1\}}
+\frac{\Gamma\left(\frac{s+\epsilon_f it_f+\epsilon_git_g}{2}\right)}{\Gamma(s)}
+\ena
+and
+\bna
+I^*(s,f,g)&=&\pi^{-s}\Gamma(s)\zeta(2s)I(s,f,g)\\
+&=&\frac{\left(a_f(1)\overline{a_g(1)}
++a_f(-1)\overline{a_g(-1)}\right)}{8}
+\pi^{-2s}\prod_{\epsilon_f,\epsilon_g\in\{\pm 1\}}
+\Gamma\left(\frac{s+\epsilon_fit_f+\epsilon_git_g}{2}\right)
+L(s,f\otimes g)
+\ena
+where
+\bna
+L(s,f\otimes g)=\zeta(2s)\sum_{n\geq 1}\frac{\lambda_f(n)\overline{\lambda_g(n)}}{n^s}
+\ena
+is called the Rankin-Selberg convolution $L$-functions. We also denote by
+\bna
+\Lambda(s,f\otimes g)=\pi^{-2s}\prod_{\pm,\pm}\Gamma\left(\frac{s\pm it_f\pm it_g}{2}\right)
+L(s,f\otimes g)
+\ena
+as the complete $L$-function and thus
+\bna
+I(s,f,g)=\frac{a_f(1)\overline{a_g(1)}}{4}\Lambda(s,f\otimes g).
+\ena
+for $f$ and $g$ both even or odd.
+
+
+On the other hand, Recall that
+\bna
+E^*(z,s)=E^*(z,1-s),
+\ena
+and $s=1$ is a simple pole of $E^*(z,s)$ with residue $\frac{1}{2}$,
+ we have
+\bna
+I^*(s,f,g)=I^*(1-s,f,g),
+\ena
+which gives the functional equation
+\bna
+\Lambda(s,f\otimes g)=\Lambda(1-s,f\otimes g),
+\ena
+ and
+\bna
+\res_{s=1}I^*(z,f,g)&=&\frac{a_f(1)\overline{a_g(1)}}{4}\res_{s=1}\Lambda(s,f\otimes g)\\
+&=&\frac{1}{2}\langle f,g\rangle.
+\ena
+\begin{lemma}For $f$ and $g$ be two normalized Maass cusp form,
+\bna
+\langle f,g\rangle =\left\{
+\begin{aligned}
+&\|f\|^2,\quad &f=g\\
+&0,\quad &f\neq g
+\end{aligned}
+\right.
+\ena
+\end{lemma}
+\begin{proof}Note that we choose $f$ and $g$ be orthogonal basis of $L^2_{cusp}$,
+it is obviously.
+\end{proof}
+
+\begin{prop}
+Let $f,g\in\mathcal B_{cusp}$ be two even or odd maass cusp forms.
+ We have
+\bna
+I^*(s,f,g):&=&\int_{\Gamma\backslash\mk h}f(z)\overline{g(z)}E(z,s)d\mu(z)
+=\frac{a_f(1)\overline{a_g(1)}}{4}\Lambda(s,f\otimes g),
+\ena
+where
+\bna
+\Lambda(s,f\otimes g)=\pi^{-2s}\prod_{\pm}\prod_{\pm}\Gamma\left(\frac{s\pm it_f\pm it_g}{2}\right)
+L(s,f\otimes g)
+\ena
+with
+\bna
+L(s,f\otimes g)=\zeta(2s)\sum_{n\geq 1}\frac{\lambda_f(n)\overline{\lambda_g(n)}}{n^s}.
+\ena
+Then $\Lambda (s,f\otimes g)$ has analytic continuation for $s\in\C$ except for a possible simple pole at $s=1$
+and $s=0$ if $f=g$, in which case
+\bna
+\res_{s=1}\Lambda(s,f\otimes f)=\frac{2\langle f,f\rangle }{|a_f(1)|^2}
+=\left\{
+\begin{aligned}
+&\frac{2}{|a_f(1)|^2},\quad &&\mbox{if we normaliz $f$ to be orthornormal basis, i.e. $\langle f,f\rangle=1$}\\
+&2\langle f,f\rangle
+\quad &&\mbox{if we normaliz $f$ to be $a_f(1)=1$.}
+\end{aligned}
+\right.
+\ena
+
+\end{prop}
+\begin{remark}[Real coefficients]
+Note that $\lambda_f(n)$ are eigen values of the Hecke operators, and the Hecke operators
+ are self-dual and thus $\lambda_f(n)$ are real!
+\end{remark}
+
+\subsection{Euler products of Rankin-Selberg $L$-functions}
+Note that
+\bna
+L(s,f)&=&\sum_{n\geq 1}\frac{\lambda_f(n)}{n^s}=\prod_{p}(1-\alpha_1(p)p^{-s})^{-1}
+(1-\alpha_2(p)p^{-s})^{-1}\\
+L(s,g)&=&\sum_{n\geq 1}\frac{\lambda_g(n)}{n^s}=\prod_{p}(1-\beta_1(p)p^{-s})^{-1}
+(1-\beta_2(p)p^{-s})^{-1}
+\ena
+\begin{lemma}[Lemma 1.6.1 in Bump]
+If
+\bna
+\sum_{r=0}^\infty A(r)x^r=(1-\alpha_1x)^{-1}(1-\alpha_2x)^{-1}\\
+\sum_{r=0}^\infty B(r)x^r=(1-\beta_1x)^{-1}(1-\beta_2x)^{-1}
+\ena
+then
+\bna
+\sum_{r=0}^\infty A(r)B(r)x^r=\left(1-\alpha_1\alpha_2\beta_1\beta_2 x^2\right)
+\prod_{i,j=1}^2
+(1-\alpha_i\beta_j x)^{-1}.
+\ena
+\end{lemma}
+
+By the above lemma, we have
+\bna
+L(s,f\otimes g)=\prod_{p}\prod_{i=1}^2\prod_{j=1}^2
+\left(1-\alpha_i(p)\beta_j(p)p^{-s}\right)^{-1}
+\ena
+Specially, if $f=g$,
+\bna
+L(s,f\otimes f)
+&=&\prod_p\prod_{i,j=1}^2\left(1-\alpha_i(p)\overline\alpha_j(p)p^{-s}\right)\\
+&=&\zeta(s)\prod_{p}(1-\alpha_1^2(p)p^{-s})^{-1}(1-p^{-s})^{-1}(1-\alpha_2^2p^{-s})^{-1}\\
+&=&\zeta(s)L(s,sym^2f).
+\ena
+and
+\bna
+\res_{s=1}L(s,f\otimes f)=L(1,sym^2f).
+\ena
+The symmetric square $L$-function is another story.
+
+
+
+
+\section{Poincare series 1 - General definition}
+The Eisenstein series is constructed as follows.
+We start from the function
+\bna
+\tilde h_0(z):=I_s(z)
+\ena
+which is an eigenfunction of $\Delta$, invariant under $\Gamma_\infty$,
+ and then construct
+ \bna
+ E(z,s):=\sum_{\gamma\in\Gamma_\infty\backslash\Gamma}f_0(\gamma.z)
+ \ena
+The most important property is that the inner product of Eisenstein series
+ and automorphic forms involves the constant term in the Fourier expansion
+ of $f$,
+ \bna
+ \langle f,E(z,\overline s)
+ \rangle
+ =\int_{0}^1\int_{0}^\infty f(z) h_0(z)\frac{dxdy}{y^2}
+ =\int_0^\infty\left( \int_0^1f(x+iy)e_n(x)dx\right)y^s\frac{dy}{y^2}
+ \ena
+
+\subsection{Poincare series - definition}
+Following the idea above, we can construct a lot of automorphic forms as follows.
+\bit
+\item We consider $\Gamma_\infty$-functions. Set
+\bna
+\tilde h(z):=h(\im z)e(m\re z)
+\ena
+with $m\in \Z$ and $f\in C_c^\infty((0,\infty))$. It is naturally a function which
+is invariant under $\Gamma_\infty$.
+As $m\in\Z$ and $h\in C_c^\infty((0,\infty))$ varies, it varies over allmost all
+these functions.
+\item We construct
+\bna
+\sum_{\gamma\in\Gamma_\infty\backslash \Gamma} h(\im \delta. z)e(m\re \delta z)
+\ena
+\item Note that $e(mz)=e(mx)e^{-2\pi y}$.
+Instead of the above defintion, Kuznetsov us
+\bna
+P_m(z,h):=\sum_{\gamma\in\Gamma_\infty\backslash \Gamma} h(\im \delta. z)e(m z)
+\ena
+which is called the Poincare series. It is well-defined by the following lemma.
+\eit
+
+\begin{lemma}Let $T>0$. Let $z$ be in the fundamental domain.
+The number
+\bna
+\{\gamma\in\Gamma_\infty\backslash\Gamma,\quad \im\delta.z>T\}
+\ena
+is finite.
+\end{lemma}
+\begin{proof}
+Recall that
+\bna
+\Gamma_\infty\backslash\Gamma=
+\bma 1\\&1\ema\bigcup \{\bma *&*\\ c&d\ema\bma 1&m\\&1\ema,\quad c>0,b\bmod c,(b,c)=1,m\in\Z\}
+\ena
+Note that for fixed $z=x_0+iy_0\in\mathcal F$ and  $\delta=\bma &\\ c&d\ema\bma 1&m\\&1\ema$ be a representative element in the coset $\Gamma_\infty\backslash\Gamma$,
+ \bna
+ \im \delta. z=\frac{y_0}{|c(x_0+m+iy_0)+d|^2}>T
+ \leftrightarrow (cx_0+m+d)^2+ c^2y_0^2<\frac{y_0}{T}
+ \ena
+ Obviously there are only finite number choice of such pair $c>0$,
+  and hence $d\bmod c$ with $(d,c)=1$, and hence $m$.
+\bna
+\ena
+\end{proof}
+
+\subsection{Poncare series - Inner product with automorphic forms}
+Now,
+\bea
+\nonumber\langle f,P_m(z,h)\rangle
+&=&\int_{\Gamma_\infty\backslash\Gamma}f(z)\overline{P_m(z,h)}\frac{dxdy}{y^2}\\
+\nonumber&=&\int_0^\infty \overline{h(y)}e^{-2\pi my} \left(\int_0^\infty f(x+iy)e(-mx)dx\right)\frac{dy}{y^2}\\
+&=&\int_0^\infty \overline{h(y)} e^{-2m\pi y} a_f(m,y)\frac{dy}{y^2}
+\label{inner-product-with-Poincare-series}
+\eea
+where $a_f(m,y)$ is the $m$-th Fourier coefficients of $f$.
+
+Note that for $f\in L^2(\Gamma\backslash\mk h)$, $f(z)=\sum_{n} a_f(n,y)e(nx)$,
+we know $f\equiv 0$ iff $a_f(n,y)=0$ for all $n$.
+The inner product of $f$ with $P_m(z,h)$ implies that
+\bna
+\left\{ P_{m}(z,h),\quad m\in \Z, h\in C_c^\infty(\mk h)\right\}
+\ena
+spans $L^2(\Gamma\backslash \mk h)$.
+Especially, for the case $m=0$, i.e.
+\bna
+P(z,h):=P_0(z,h)=\sum_{\delta\in\Gamma_\infty\backslash\Gamma}h(\im(\delta.z)),
+\ena
+called Pseudo-Eisenstein series, which are orthogonal to $L^2_{cusp}$ and spans $L^2-L^2_{cusp}$.
+\begin{prop}
+Poincare series $P_m(z,h)$ span $L^2$, and Pseudo-Eisenstein series $P(z,h)$
+span $L^2-L^2_{cusp}$.
+\end{prop}
+\begin{remark}
+To study $L^2_{cusp}$, we need to express $P(z,h)$ in terms of sum (integral)
+over eigenfunctions of $\Delta$.
+\end{remark}
+
+\subsection{Poincare series - Fourier expansion}
+We consider the $n$-th Fourier coefficients of $P_m(z,h)$, namely
+\bna
+a_{m,h}(n)=\int_0^1 P_m(z,h)e(-nx)dx
+\ena
+By double coset decomposition in Lemma \ref{lemma-doublecoset}, we have
+\bna
+a_{m,h}(n)&=&\int_0^1 h(\im (z))e(m z)e(-nx)dx\\
+&&+\int_0^1\sum_{c\geq 1}\sideset{}{^*}\sum_{d\bmod c}\sum_{\ell\in\Z}
+h\left(\im\left(\bma a&b\\c&d\ema\bma1&\ell\\&1\ema.z\right)\right)
+e\left(m\bma a&b\\c&d\ema\bma1&\ell\\&1\ema.z\right)
+e(-nx)dx\\
+&=&
+h(y)e^{-2\pi my}\delta_{m,n}+
+\sum_{c\geq 1}\sideset{}{^*}\sum_{d\bmod c}
+\int_{-\infty}^\infty
+h\left(\frac{y}{(cx+d)^2+c^2y^2}\right)
+e\left(m\frac{ax+b+iay}{cx+d+icy}\right)
+e(-nx)dx\\
+&\overset{x+\frac{d}{c}\mapsto x}=&
+h(y)e^{-2\pi my}\delta_{m,n}+
+\sum_{c\geq 1}\sideset{}{^*}\sum_{d\bmod c}
+\int_{-\infty}^\infty
+h\left(\frac{y}{c^2x^2+c^2y^2}\right)
+e\left(m\frac{a(x-\frac{d}{c})+b+iay}{c(x-\frac{d}{c})+d+icy}\right)
+e(-n(x-\frac{d}{c}))dx\\
+&=&
+h(y)e^{-2\pi my}\delta_{m,n}+
+\sum_{c\geq 1}\sum_{ad\equiv 1\bmod c}e\left(\frac{am+dn}{c}\right)
+\int_{-\infty}^\infty
+h\left(\frac{y}{c^2x^2+c^2y^2}\right)
+e\left(-\frac{m}{c^2x+ic^2y}-nx\right)dx
+\ena
+
+\subsection{A Remark on Mellin transform}
+We use the following notation,
+\bna
+H(s):=\int_0^\infty h(t)t^{\color{red}-s}\frac{dt}{t},
+\quad h(y)=\frac{1}{2\pi i}H(s)y^{\color{red}s}ds
+\ena
+which coincides with the notation in Arthur's notes, and is different with the original Mellin transfrom.
+\section{Pseudo Eisenstein series and the spectrum decomposition}
+We are interested in $L^2-L^2_{cusp}$.
+Note that for $m=0$,
+\bna
+P(z,h)=P_0(z,h)=\sum_{\delta\in\Gamma_\infty\backslash\Gamma}h(\delta.z)
+\ena
+which  is orthogonal to $L^2_{cusp}$, called \underline{Psudo-Eisenstein series}.
+\subsection{Relation with Eisenstein series}
+Note that $h\in C_c^\infty((0,\infty))$. We need the spectral decomposition of $L^2(0,\infty)$, which is related to Mellin transform, namely
+\bna
+H(s):=\langle f,*^{s}\rangle= \int_0^\infty f(y)y^{-s}\frac{dy}{y},
+\quad
+h(y)=\frac{1}{2\pi i}\int_{\re(s)=\sigma}H(s) y^{s}ds
+\ena
+Applying this one has
+\bna
+P(z,h)&=&\sum_{\delta\in\Gamma_\infty\backslash\Gamma}h(\delta.z)=\sum_{\delta\in\Gamma_\infty\backslash\Gamma}
+\frac{1}{2\pi i}\int_{\re(s)=\sigma}H(s) I_{s}(\delta.z)ds\\
+&=&\frac{1}{2\pi i}\int_{\re(s)=\sigma} H(s)E(z,s)ds
+\ena
+
+
+\subsection{Constant term}
+Psudo Eisenstein series is orthogonal to cusp forms.
+By the double coset decomposition, its constant term is
+\bna
+\int_0^1P(z,h)dx&=&h(y) + \sum_{c\geq 1}\sideset{}{^*}\sum_{d\bmod c}\int_{-\infty}^\infty h\left(\frac{y}{(cx+d)^2+c^2y^2}\right)dx\\
+&=&h(y) + \sum_{c\geq 1}\varphi(c)\int_{-\infty}^\infty h\left(\frac{y}{c^2(x^2+y^2)}\right)dx\\
+\ena
+For $h\in C_c^\infty(0,\infty)$,  we decompose $h(y)$
+as integral (sum) with the power function $y^s$ in $y$.
+Recall that for $h(y)$, we have
+\bna
+H(s)=\int_0^\infty h(t)t^{-s}\frac{dt}{t},\quad h(y)=\frac{1}{2\pi i}
+\int_{(\sigma)}H(s)y^{s}ds.
+\ena
+Thus
+\bna
+\int_0^1P(z,h)dx=h(y) + \int_{(\sigma)}
+\frac{1}{2\pi i}H(s)
+\sum_{c\geq 1}\varphi(c)
+\frac{y^s}{c^{2s}}
+\left\{\int_{-\infty}^\infty \left(\frac{1}{x^2+y^2}\right)^sdx\right\}
+\ena
+
+By lemma \ref{lemma-integral-in-bump}, we have
+\bna
+\int_{-\infty}^\infty \frac{1}{(x^2+y^2)^s}dx=\pi^{1/2}\frac{\Gamma(s-\frac{1}{2})}{\Gamma(s)}y^{1-2s}.
+\ena
+and hus
+\bna
+&&\sum_{c\geq 1}\varphi(c)\frac{1}{c^{2s}}y^s\int_{-\infty}^\infty \frac{1}{(x^2+y^2)^s}dx
+=y^{1-s}\pi^{1/2}\frac{\Gamma(s-\frac{1}{2})}{\Gamma(s)}\sum_{c\geq 1}\frac{\varphi(c)}{c^{2s}}\\
+&=&y^{1-s}\frac{\pi^{-(s-\frac{1}{2})}\Gamma(s-\frac{1}{2})\zeta(2s-1)}{\pi^{-s}\Gamma(s)\zeta(2s)}
+=y^{1-s}\frac{\xi(2s-1)}{\xi(2s)}
+\ena
+This gives that
+\bea
+\int_0^1P(z,h)dx=h(y) +
+\frac{1}{2\pi i}\int_{\sigma} H(s)y^{1-s}\frac{\xi(2s-1)}{\xi(2s)}ds.\label{constant-term-P-Eisenstein-series}
+\eea
+\subsection{Inner products of Pseudo-Eisenstein series}
+Now, we consider
+\bna
+\langle P(,h_1),P(,h_2)\rangle&=&\int_0^\infty \overline {h_2(y)}
+\left(h_1(y) + \sum_{c\geq 1}\varphi(c)\int_{-\infty}^\infty h_1\left(\frac{y}{c(x^2+y^2)}\right)dx\right)
+\frac{dy}{y^2}\\
+&=&\int_{0}^\infty h_1(y)\overline{h_2(y)}\frac{dy}{y^2}
++\int_{0}^\infty\overline{h_2(y)} \left(\sum_{c\geq 1}\varphi(c)\int_{-\infty}^\infty h_1\left(\frac{y}{c(x^2+y^2)}\right)dx\right)\frac{dy}{y^2}.
+\ena
+
+As a function in $y$,
+\bna
+y\mapsto \sum_{c\geq 1}\varphi(c)\int_{-\infty}^\infty h_1\left(\frac{y}{c(x^2+y^2)}\right)dx
+\ena
+is not compactly supported on $(0,\infty)$,
+To tackle this problem,  we apply the Mellin transform (valid for $\re(s)=\sigma$ large), see \eqref{constant-term-P-Eisenstein-series}, one has
+\bna
+\langle P(,h_1),P(,h_2)\rangle&=&\int_0^\infty \overline {h_2(y)}
+\left(h_1(y) +
+\frac{1}{2\pi i}\int_{\sigma} H_1(s)y^{1-s}\frac{\xi(2s-1)}{\xi(2s)}ds\right)
+\frac{dy}{y^2}\\
+&=&\int_0^\infty h_1(y)\overline{h_2(y)}\frac{dy}{y^2}
++\int_0^\infty \overline {h_2(y)}
+\frac{1}{2\pi i}\int_{\sigma} H_1(s)y^{1-s}\frac{\xi(2s-1)}{\xi(2s)}ds
+\frac{dy}{y^2}\\
+&=&\int_0^\infty h_1(y)\overline{h_2(y)}\frac{dy}{y^2}
++
+\frac{1}{2\pi i}\int_{(\sigma)}\frac{\xi(2s-1)}{\xi(2s)}H_1(s)
+\left\{\int_0^\infty \overline {h_2(y)}y^{1-s}\frac{dy}{y^2}\right\}ds\\
+&=&\int_0^\infty h_1(y)\overline{h_2(y)}\frac{dy}{y^2}
++
+\frac{1}{2\pi i}\int_{(\sigma)}\frac{\xi(2s-1)}{\xi(2s)}H_1(s)
+\left\{\overline {\int_0^\infty h_2(y)y^{-\overline{s}}\frac{dy}{y}}\right\}ds\\
+&=&\int_0^\infty h_1(y)\overline{h_2(y)}\frac{dy}{y^2}
++
+\frac{1}{2\pi i}\int_{(\sigma)}\frac{\xi(2s-1)}{\xi(2s)}H_1(s)\overline{H_2(\overline s)}ds
+\ena
+\begin{remark}
+Note that the convergence problem are now
+\bna
+\frac{\xi(2s-1)}{\xi(2s)}
+\ena
+which has meromoprhic continuation now.  So we can move the integral line from
+$\re(s)=\sigma>1$ to $\re(s)=1/2$, passing simple pole at $s=1$.
+\end{remark}
+The first term has no convergence problem, and one has
+\bna
+\int_0^\infty h_1(y)\overline{h_2(y)}\frac{dy}{y^2}
+&=&
+\int_0^\infty
+\left\{\frac{1}{2\pi i}\int_{(\sigma)}H_1(s)y^{s}ds\right\}
+\overline{h_2(y)}\frac{dy}{y^2}\\
+&=&\frac{1}{2\pi i}\int_{(\sigma)}H_1(s)\left\{
+\overline{\int_0^\infty h_2(y) y^{-(1-\overline{s})} \frac{dy}{y}}\right\}ds\\
+&=&\frac{1}{2\pi i}\int_{\sigma}H_1(s)\overline{H_2(1-\overline s)}ds\\
+&\overset{\sigma=1/2}=&\frac{1}{2\pi }\int_{-\infty}^\infty H_1(\frac{1}{2}+it)\overline{H_2(\frac{1}{2}+it)}dt,
+\ena
+and the second term, we move the line of integration to $\re(s)=1/2$, passing a simple pole at $s=1$ coming from $\zeta(2s-1)$, one has
+\bna
+&&\frac{1}{2\pi i}\int_{(\sigma)}\frac{\xi(2s-1)}{\xi(2s)}H_1(s)\overline{H_2(\overline s)}ds\\
+&=&\frac{1}{2\pi}\int_{-\infty}^\infty
+\frac{\xi(2it)}{\xi(1+2it)}
+H_1(\frac{1}{2}+it)\overline{H_2(\frac{1}{2}-it)}dt+ H_1(1)\overline{H_2(1)}
+\frac{1}{2}\frac{\pi^{-1/2}\Gamma(1/2)}{\pi^{-1}\Gamma(1)\zeta(2)}\\
+&=&\frac{3}{\pi} H_1(1)\overline {H_2(1)}+\frac{1}{2\pi}\int_{-\infty}^\infty
+H_1(1/2+it)\overline{H_2(1/2-it)}
+\frac{\xi(1-2it)}{\xi(1+2it)}
+dt
+\ena
+and thus we have
+\bna
+\langle P(,h_1),P(,h_2)\rangle
+=\frac{3}{\pi}H_1(1)\overline{H_2(1)}+
+\frac{1}{2\pi }\int_{-\infty}^\infty H_1(\frac{1}{2}+it)\overline{
+\left\{
+H_2(\frac{1}{2}+it)+\frac{\xi(1+2it)}{\xi(1-2it)}H_2(\frac{1}{2}-it)\right\}
+}dt.
+\ena
+Moreover,
+note that
+\bna
+I&=&\frac{1}{2\pi }\int_{-\infty}^\infty H_1(\frac{1}{2}+it)\overline{
+\left\{
+H_2(\frac{1}{2}+it)+\frac{\xi(1+2it)}{\xi(1-2it)}H_2(\frac{1}{2}-it)\right\}
+}dt\\
+&\overset{-t\mapsto t}=&
+\frac{1}{2\pi }\int_{-\infty}^\infty H_1(\frac{1}{2}-it)\overline{
+\left\{
+H_2(\frac{1}{2}-it)+\frac{\xi(1-2it)}{\xi(1+2it)}H_2(\frac{1}{2}+it)\right\}
+}dt\\
+&=&
+\frac{1}{2\pi }\int_{-\infty}^\infty H_1(\frac{1}{2}-it)
+\overline{\frac{\xi(1-2it)}{\xi(1+2it)}}\overline{
+\left\{\frac{\xi(1+2it)}{\xi(1-2it)}
+H_2(\frac{1}{2}-it)+H_2(\frac{1}{2}+it)\right\}
+}dt\\
+&=&
+\frac{1}{2\pi }\int_{-\infty}^\infty H_1(\frac{1}{2}-it)
+\frac{\xi(1+2it)}{\xi(1-2it)}\overline{
+\left\{\frac{\xi(1+2it)}{\xi(1-2it)}
+H_2(\frac{1}{2}-it)+H_2(\frac{1}{2}+it)\right\}
+}dt
+\ena
+and thus
+\bna
+I=\frac{1}{4\pi}\int_0^\infty\left(H_1(\frac{1}{2}+it)+\frac{\xi(1+2it)}{\xi(1-2it)}
+H_1(\frac{1}{2}-it)\right)
+\overline{\left(H_2(\frac{1}{2}+it)+\frac{\xi(1+2it)}{\xi(1-2it)}
+H_2(\frac{1}{2}-it)\right)}dt
+\ena
+Therefore, finally we have the following proposition.
+\begin{prop}\label{prop-main-prop-on-innerproduct}
+We have
+\bna
+\langle P(,h_1),P(,h_2)\rangle
+&=&\frac{3}{\pi}H_1(1)\overline{H_2(1)}\\
+&&+\frac{1}{4\pi}\int_0^\infty\left(H_1(\frac{1}{2}+it)+\frac{\xi(1+2it)}{\xi(1-2it)}
+H_1(\frac{1}{2}-it)\right)
+\overline{\left(H_2(\frac{1}{2}+it)+\frac{\xi(1+2it)}{\xi(1-2it)}
+H_2(\frac{1}{2}-it)\right)}dt.
+\ena
+\end{prop}
+Recall
+\bna
+P(z,h)=\frac{1}{2\pi i}\int_{\sigma}H_1(s)E(z,s)ds.
+\ena
+We have the following.
+\bit\item Firstly,
+\bna
+\langle P(z,h),1\rangle&=&
+\int_{\Gamma\backslash\mk h}P(z,h) \overline {1}d\mu(z)
+\overset{unfold}=\int_{0}^\infty h(y)\frac{dy}{y^2}\\
+&=&\int_{0}^\infty h(y)y^{-1}\frac{dy}{y}=
+H(1),
+\ena
+\item For $s=\frac{1}{2}+it$,
+\bna
+\langle P(z,h),E(z,1/2+it)\rangle
+&  =&\int_{\Gamma\backslash\mk h} P(z,h) E(z,\overline s)d\mu(z)\\
+&\overset{\mbox{\tiny unfold $P(z,h)$}}=&
+\int_{0}^\infty h(y)\left\{\int_{0}^1 E(z,\overline{s})dx\right\}\frac{dy}{y^2}\\
+&=&\int_0^\infty h(y) \left(y^{\overline s}+\frac{\xi(2\overline s-1)}{\xi(2\overline s)}y^{1-\overline s}\right)\frac{dy}{y^2}\\
+&=&\int_0^\infty h(y)y^{-(\frac{1}{2}+it)}\frac{dy}{y}
++\frac{\xi(-2it)}{\xi(1-2it)}\int_0^\infty h(y)y^{-(\frac{1}{2}-it)}\frac{dy}{y}\\
+&=&H(\frac{1}{2}+it)+\frac{\xi(1+2it)}{\xi(1-2it)}H(\frac{1}{2}-it)
+\ena
+\eit
+By the above argument, the main proposition in prop \ref{prop-main-prop-on-innerproduct} can be expressed as the following.
+
+\begin{thm}\label{main-thm-inner product-of-P-series}
+We have
+\bna
+\langle P(,h_1),P(,h_2)\rangle
+&=&\frac{3}{\pi}\langle P(,h_1),1\rangle
+\overline{\langle P(,h_2),1\rangle}\\
+&&+\frac{1}{4\pi}
+\int_{-\infty}^\infty
+\langle P(,h_1),E(,1/2+it)\rangle
+\overline{\langle P(,h_2),E(,1/2+it)\rangle}
+dt.
+\ena
+It gives that
+\bna
+P(z,h)=\frac{3}{\pi}\langle P(,h),1\rangle+\frac{1}{4\pi}
+\int_{-\infty}^\infty \langle P(z,h),E(z,1/2+it)\rangle E(z,1/2+it)dt.
+\ena
+\end{thm}
+
+\subsection{Main theorem on the spectral decomposition}
+\begin{thm}We have $L^2=L^2_{cusp}+L^2_{res}+L^2_{cont}$,
+where $L^2_{cusp}$ is the space of cusp forms,
+$L^2_{cont}$ is the space of continuous spectrum, consisting of $E(z,\frac{1}{2}+it)$, and $L^2_{res}$ is the residue spectrum coming from the residue of Eisenstein series. Moreover, $L^2_{cusp}+L^2_{res}=L^2_{disc}$ is the space
+ of discrete spectrum.
+ Given $f\in L^2$, we have
+ \bna
+ f(z)&=&\sum_{\varphi\in\mathfrak B_{cusp}}\frac{\langle f,\varphi \rangle}{\langle\varphi,\varphi\rangle}
+ +\frac{3}{\pi}\int_{\Gamma\backslash\mk h}f(z)d\mu(z)+\frac{1}{4\pi}\int_{-\infty}^\infty \langle f, E(*,\frac{1}{2}+it)\rangle
+ E(z,\frac{1}{2}+it)dt.
+ \ena
+\end{thm}
+\begin{thm}\label{Parseval-identity}
+We have the Parseval identity
+and the Parseval identity
+\bea
+\langle f,g\rangle
+&=&\frac{3}{\pi}\langle f,1\rangle
+\overline{\langle g,1\rangle}\nonumber\\
+&&+\frac{1}{4\pi}+\sum_{\varphi\in\mathcal B_{cusp}}\frac{\langle f,\varphi\rangle\overline{\langle g,\varphi\rangle}}{\langle\varphi,\varphi\rangle}
+\int_{-\infty}^\infty
+\langle f,E(,1/2+it)\rangle
+\overline{\langle g,E(,1/2+it)\rangle}
+dt.\label{Parseval-identity}
+\eea
+
+\end{thm}
+\subsection{Another way}
+Instead of the constant term of the Eisenstein series,
+we can obtain the spectral decomposition (formally) via the relation between
+$P$-series an Eisenstein series an the global propery of $E(z,s)$ as follows.
+
+For $\re(s)>1$, by the definition of the Eisenstein series, we have
+\bna
+P(z,h_1)=\frac{1}{2\pi i}\int_{(\sigma)}H_1(s)E(z,s)ds.
+\ena
+Thus
+\bna
+\langle P(,h_1),P(,h_2)\rangle=\int_{\Gamma\backslash\mk h}
+\left\{\frac{1}{2\pi i}\int_{\sigma}H_1(s)E(z,s)ds\right\}\overline{P(z,h_2)}dz
+\ena
+Moving the line of the integration to $\re(s)=1/2$, passing a simple pole at $s=1$
+with  the residue
+\bna
+&&\frac{1}{2\pi^{-1}\Gamma(1)\zeta(2)}\int_{\Gamma\backslash\mk h}H_1(1)\overline{P(z,h_2)}d\mu(z)\\
+&=&\frac{3}{\pi}H_1(1)\int_{\Gamma\backslash\mk h} \overline{P(z,h_2)}d\mu(z),
+\ena
+one has
+\bna
+\langle P(,h_1),P(,h_2)\rangle
+&=&H_1(1)\int_{\Gamma\backslash\mk h}\frac{3}{\pi} \overline{P(z,h_2)}d\mu(z)
++\frac{1}{2\pi}\int_{-\infty}^\infty H_1(\frac{1}{2}+it)
+\int_{\Gamma\backslash \mk h}E(z,\frac{1}{2}+it)\overline{P(z,h_2)}d\mu(z)dt.
+\ena
+
+Next, by the functional equation of the Eisenstein series,
+\bna
+E(z,s)=\frac{\xi(2s-1)}{\xi(2s)}E(z,1-s),
+\ena
+we have
+\bna
+\langle P(,h_1),P(,h_2)\rangle
+&=&H_1(1)\int_{\Gamma\backslash\mk h}\frac{3}{\pi} \overline{P(z,h_2)}d\mu(z)\\
+&&+\frac{1}{4\pi}\int_{-\infty}^\infty H_1(\frac{1}{2}+it)
+\int_{\Gamma\backslash \mk h}E(z,\frac{1}{2}+it)\overline{P(z,h_2)}d\mu(z)dt.\\
+&&+\frac{1}{4\pi}\int_{-\infty}^\infty H_1(\frac{1}{2}+it)
+\frac{\xi(2it)}{\xi(1+2it)}
+\int_{\Gamma\backslash \mk h}E(z,\frac{1}{2}-it)\overline{P(z,h_2)}d\mu(z)dt\\
+&=&H_1(1)\int_{\Gamma\backslash\mk h}\frac{3}{\pi} \overline{P(z,h_2)}d\mu(z)\\
+&&+\frac{1}{4\pi}\int_{-\infty}^\infty
+\left(H_1(\frac{1}{2}+it)+\frac{\xi(2it)}{\xi(1+2it)}H_1(\frac{1}{2}-it)\right)
+\int_{\Gamma\backslash \mk h}E(z,\frac{1}{2}+it)\overline{P(z,h_2)}d\mu(z)dt.
+\ena
+This gives
+\bna
+P(z,h)
+=H_1(1)\frac{3}{\pi}+\frac{1}{4\pi}\int_{-\infty}^\infty
+\left(H_1(\frac{1}{2}+it)   +
+\frac{\xi(2it)}{\xi(1+2it)}
+H_1(\frac{1}{2}-it)\right)E(z,\frac{1}{2}+it)dt.
+\ena
+
+
+
+\section{Poincare series and the Kuznetsov's trace formfula}
+We know that
+\bna
+L^2(\Gamma\backslash\mk h)=L^2_{cusp}\oplus L^2_{res}\oplus L^2_{cont}
+\ena
+The space $L^2_{res}\oplus L^2_{cont}$ is clearly.
+The problem is, how about the space $L^2_{cusp}$? How to study
+the basis of $L^2_{cusp}$?
+
+\subsection{Redefine the Poincare series}
+Recall that Poincare series
+\bna
+P_m(z,h):=\sum_{\delta\in\Gamma_\infty\backslash\Gamma}h(\im \delta.z)e(m\delta.z)
+\ena
+spans $L^2(\Gamma\backslash\mk h)$. For $m>0$,
+\bna
+y\mapsto e^{-2\pi my}
+\ena
+is exponential decay as $y\rightarrow\infty$, even if we replace $h(y)$ by $y^s$ for any $s$.
+
+
+\begin{definition}We redefine the Poincare series as
+\bna
+U_m(z,s):=\sum_{\delta\in\Gamma_\infty\backslash\Gamma}I_s(\delta.z)e(mz)
+\ena
+Note that for the case $m=0$, it is Eisenstein series.
+\end{definition}
+
+\begin{remark}
+At least, the series is absolutely convergent for $\re(s)>1$ just like the argument as the Eisenstein series.
+Moreover, by Mellin transform, $h(y)=\frac{1}{2\pi i}\int_{(\sigma)}H(s)y^s\frac{dy}{y}$ and thus
+\bna
+P_m(z,h)=\frac{1}{2\pi i}\int_{(\sigma)} H(s)\sum_{\delta\in\Gamma_\infty\backslash\Gamma}\im(\delta.z)^{s} e(m\delta.z)ds
+=\frac{1}{2\pi i}\int_{(\sigma)}H(s) U_m(z,s)ds.
+\ena
+Following \cite{DeIw1982}, we study $U_m(z,s)$.
+\end{remark}
+Firstly, note that for $m\geq 1$, $U_m(z,s)\in L^2(\Gamma\backslash\mk h)$.
+It is due to the fact that
+\bna
+I_s(z)e(mz)=y^{s}e^{-2\pi my} e(2\pi i m x)
+\ena
+which is exponential decay as $y\rightarrow\infty$.
+
+
+\subsection{Fourier coefficients of Poincare series}
+We consider the $n$-th Fourier coefficients of Poincare series,
+\bna
+a_{m,s}(n,y)=\int_0^1 U_{m}(x+iy,s) e(-nx)dx
+=\int_0^ 1 \sum_{\delta\in \Gamma_\infty\backslash\Gamma}I_s(\delta.z)e(m\delta.z)e(-nx)dx
+\ena
+By the double coset decomposition, we have
+\bna
+a_{m,s}(n,y)&=&\delta_{m,n}y^{s}e^{-2\pi n y}
++\sum_{c\geq 1}\sideset{}{^*}\sum_{d\bmod c}
+\int_{-\infty}^\infty
+\left(\frac{y}{(cx+d)^2+c^2y^2}\right)^s e\left(m\frac{az+b}{cz+d}\right)e(-nx)dx\\
+&\overset{x+\frac{d}{c}\mapsto x}=&
+\delta_{m,n}y^{s}e^{-2\pi n y}
++\sum_{c\geq 1}\sideset{}{^*}\sum_{d\bmod c}
+\int_{-\infty}^\infty
+\left(\frac{y}{(cx)^2+c^2y^2}\right)^s e\left(m\frac{a(x-\frac{d}{c})+b+iay}{c(x-\frac{d}{c})+d+ icy}\right)e(-n(x-\frac{d}{c}))dx\\
+&=&\delta_{m,n}y^{s}e^{-2\pi n y}
++\sum_{c\geq 1}\frac{y^s}{c^{2s}}\sideset{}{^*}\sum_{d\bmod c}e\left(\frac{ma+nd}{c}\right)
+\int_{-\infty}^\infty
+\left(\frac{1}{x^2+y^2}\right)^s e\left(m\frac{-\frac{ad-bc}{c})}
+{cx+ icy}\right)e(-nx)dx\\
+&=&\delta_{m,n}y^{s}e^{-2\pi ny}
++y^s\sum_{c\geq 1}\frac{1}{c^{2s}}S(m,n;c)
+\int_{-\infty}^\infty
+\left(\frac{1}{x^2+y^2}\right)^s e\left(\frac{-m}
+{c^2(x+ iy)}-nx\right)dx.
+\ena
+
+\subsection{Poincare series spans $L^2(\Gamma\backslash\mk h)$}
+Note that
+\bna
+\overline{U(z,s)}=\sum_{\delta\in\Gamma_\infty\backslash\mk h}\overline{I_s(\delta.z)e(mz)}
+=\sum_{\delta\in\Gamma_\infty\backslash\mk h}I_{\overline{s}}(\delta.z)e(-m\overline z).
+\ena
+
+Let $\mathfrak S$ be the space spanned by all Poincare series $U_m(z,s)$.
+For $f\in L^2(\Gamma\backslash\mk h)$, we have the inner product
+\bea
+\langle f,U_m(z,\overline s)\rangle
+=\int_0^\infty y^{s-1} e^{-2m\pi y}
+\left\{\color{blue}\int_0^1 f(x+iy) e(-mx)dx\right\}\frac{dy}{y}.\label{Inner-product-Poincare-autoform}
+\eea
+Thus if $f$ is orthogonal to the space $\mathfrak S$, then the Mellin transform
+of all the Fourier coefficients of $f$ should be zero, and hence $f$ is zero.
+This shows that the Poincare sereis spans $L^2(\Gamma\backslash\mk h)$.
+
+\subsection{Inner product of Poincare series 1 - the geometric side}
+Note that
+\bna
+\overline{U_m(z;s)}= U_m(-\overline{z};\overline s).
+\ena
+and
+\bna
+\overline{U_m(z,\overline s)}=\sum_{\delta\in\Gamma_\infty\backslash\Gamma}
+I_s(\delta.z) e(-mx)e^{-2\pi m y}.
+\ena
+We consider
+\bna
+&&\langle
+U_n(z,s_1),
+U_m(z,\overline s_2)
+\rangle \\
+&=&\int_0^\infty y^{s_2-1}e^{-2\pi m y}\int_0^1 U_n(z,s_1)e(-mx)dx\frac{dy}{y}\\
+&=&
+\int_0^\infty y^{s_2-1}e^{-2\pi m y}
+\delta_{m,n}y^{s_1}e^{-2\pi ny}\frac{dy}{y}\\
+&&
++
+\int_0^\infty y^{s_2-1}e^{-2\pi my}
+y^{s_1}\sum_{c\geq 1}\frac{1}{c^{2s_1}}
+S(n,m;c)
+\int_{-\infty}^\infty\left(\frac{1}{x^2+y^2}\right)^{s_1} e\left(-\frac{n}{c^2(x+iy)}-mx\right)dx\frac{dy}{y}\\
+&=&\delta_{m,n}\int_{0}^\infty e^{-2\pi(m+n)y}y^{s_1+s_2-1}\frac{dy}{y}
++\sum_{c\geq 1}\frac{1}{c^{2s_1}}S(m,n;c)
+I(s_1,s_2,m,n,c)
+\ena
+where we have
+\bna
+\int_{0}^\infty e^{-2\pi(m+n)y}y^{s_1+s_2-1}\frac{dy}{y}
+=\frac{1}{(2\pi(m+n))^{s_1+s_2-1}}\Gamma(s_1+s_2-1)
+\ena
+and (Lemma 4.1 in \cite{DeIw1982})
+\bna
+I(s_1,s_2,m,n,c)
+&=&\int_0^\infty  y^{s_1+s_2-1}e^{-2\pi m y}
+\int_{-\infty}^\infty \frac{1}{(x^2+y^2)^{s_1}}
+e\left(-\frac{n}{c^2(x+iy)}-mx\right)dx\frac{dy}{y}\\
+&=&-i2^{3-s_1-s_2}c^{s_1-s_2}
+\left(\frac{m}{n}\right)^{\frac{s_1-s_1}{2}}
+\int_{-i}^iK_{s_1-s_2}\left(\frac{4\pi\sqrt{ mn}}{c}\theta\right)
+\left(\theta+\frac{1}{\theta}\right)^{s_1+s_2-2}\frac{d\theta}{\theta}.
+\ena
+where the integral is performed though the half circle $|z|=1$, $\re(z)>0$ starting
+from the point $-i$.
+
+The above argument gives the analytic continuation of the inner product of Poincare series for $\re(s_1)>\frac{3}{4}$ and $\re(s_2)>\frac{3}{4}$.
+On taking $s_1=1+it$ and $s_2=1-it$,
+we have the following proposition (Lemma 4.2 in \cite{DeIw1982}).
+\begin{prop}\label{prop-tr1-geometr}
+We have
+\bna
+\langle U_{n}(z,1+it),U_{m}(z,1+it)\rangle
+=\frac{\delta_{m,n}}{4\pi\sqrt{mn}}
+-2i\left(\frac{m}{n}\right)^{it}\sum_{c\geq 1}\frac{S(m,n;c)}{c^2}
+\int_{-i}^iK_{2it}\left(\frac{4\pi\sqrt{mn}}{c}\theta\right)\frac{d\theta}{\theta}.
+\ena
+\end{prop}
+\subsection{Inner products of Poincare series 1 - the spectral side}
+By Parseval identity, for $f\in\mathcal B$ a basis of $L^2(\Gamma\backslash\mk h)$,
+\bna
+\langle U_n(z,s_1),U_m(z,\overline{s_2})\rangle
+=\int_{f\in\mathcal B}\langle U_n(z,s_1),f\rangle
+\overline{\langle U_m(z,\overline s_2),f\rangle} df.
+\ena
+So we need the inner product of Poincare series with respect to the basis.
+\subsubsection{}
+Since $m\geq 1$, obviously one has
+\bea
+\langle 1, U_m(z,\overline s)\rangle =0
+\label{Poincare-inner-wt-residue}
+\eea
+
+\subsubsection{}
+If  $f\in \mathfrak B_{cusp}$ with eigenvalues $\lambda=\frac{1}{4}+\nu_f^2$ and
+\bna
+f(z)=\sum_{n\neq 0}a_f(n)\sqrt{y} K_{i\nu_f}(2\pi |n|y) e(nx)
+\ena
+with  $a_f(n)=\lambda_f(|n|)a_f(\mbox{sign}(n))$.
+We have
+\bea
+\nonumber\langle f, U_m(z,\overline s)\rangle
+&=&a_f(m)\int_0^\infty y^{s-1}e^{-2\pi my}\sqrt{y}K_{i\nu_f}(2\pi |m| y)\frac{dy}{y}\\
+\nonumber&=&a_f(n)\int_0^\infty y^{s-\frac{1}{2}}e^{-2\pi my}K_{i\nu_f}(2\pi |m| y)\frac{dy}{y}\\
+&=&\frac{a_f(m)}{(2\pi m)^{s-\frac{1}{2}}}
+\pi^{1/2}2^{\frac{1}{2}-s}\frac{\Gamma(s-\frac{1}{2}-i\nu_f)
+\Gamma(s-\frac{1}{2}+i\nu_f)}{\Gamma(s)}\nonumber\\
+&=&\frac{a_f(m)}{(4\pi m)^{s-\frac{1}{2}}}
+\pi^{1/2}\frac{\Gamma(s-\frac{1}{2}-i\nu_f)
+\Gamma(s-\frac{1}{2}+i\nu_f)}{\Gamma(s)}.
+\label{Poincare-inner-wt-cusp}
+\eea
+where we have use the following formula  (see Lemma \ref{lemma-K-bessel-eq})
+\bea
+\int_0^\infty  e^{-y}y^{s-\frac{1}{2}}K_{\nu}(y)\frac{dy}{y}
+=\pi^{1/2}2^{\frac{1}{2}-s}\frac{\Gamma(s-\frac{1}{2}-\nu)\Gamma(s-\frac{1}{2}+\nu)}{\Gamma(s)}
+\label{K-bessel-integral-eq}.
+\eea
+Thus the cuspidal spectrum contributes to  $\langle U_n(z,s_1),U_m(z,\overline{s_2})
+\rangle $ is
+\bna
+&&\sum_{f\in\mathfrak B_{cusp}}
+\frac{
+\overline{\langle f, U_n(z,s_1)\rangle}
+\langle f,U_m(z,\overline {s_2})\rangle}
+{\langle f,f\rangle}\\
+&=&\sum_{f\in\mathfrak B_{cusp}}
+\frac{1}{\langle f,f\rangle}
+\overline{
+\frac{a_f(n)}{(4\pi n)^{\overline s_1-\frac{1}{2}}}\pi^{1/2}
+\frac{\Gamma(\overline s_1-1/2-i\nu_f)
+\Gamma(\overline s_1-1/2+i\nu_f)
+}{\Gamma(\overline s_1)}
+}\\
+&&\qquad
+\frac{a_f(m)}{(4\pi m)^{ s_2-\frac{1}{2}}}\pi^{1/2}
+\frac{\Gamma(s_2-1/2-i\nu_f)
+\Gamma( s_2-1/2+i\nu_f)
+}{\Gamma(s_2)}\\
+&=&\frac{\pi n^{-s_1+\frac{1}{2}}m^{-s_2+\frac{1}{2}}
+}{(4\pi)^{s_1+s_2-1}}
+\frac{1}{\Gamma(s_1)\Gamma(s_2)}
+\sum_{f\in\mathfrak B_{cusp}}\frac{a_f(m)\overline{a_f(n)}}{\langle f,f\rangle}
+\prod_{i=1,2}\prod_{\pm}\Gamma(s_i-\frac{1}{2}\pm i\nu_f)
+\ena
+
+\subsubsection{}
+Recall
+\bna
+E(z,\frac{1}{2}+i\nu)&=&y^{\frac{1}{2}+i\nu}
++\frac{\xi(2i\nu)}{\xi(1+2i\nu)}y^{\frac{1}{2}-i\nu}\\
+&&
++2\frac{1}{\xi(1+2i\nu)}\sum_{n\neq 0}|n|^{i\nu}\sigma_{-2i\nu}(|n|)\sqrt{y} K_{i\nu}(2\pi |n|y) e(nx).
+\ena
+Thus
+\bna
+\langle E(z,\frac{1}{2}+i\nu),U_m(z,\overline s)\rangle
+&=&\int_0^\infty y^{s-1}e^{-2\pi my}
+2\frac{1}{\xi(1+2i\nu)} m^{i\nu}\sigma_{-2i\nu}(m)\sqrt{y} K_{i\nu}(2\pi my)\frac{dy}{y}\\
+&=&2\frac{1}{\xi(1+2i\nu)} m^{i\nu}\sigma_{-2i\nu}(m)\int_0^\infty y^{s-\frac{1}{2}}e^{-2\pi my}K_{i\nu}(2\pi my)\frac{dy}{y}.
+\ena
+By \eqref{K-bessel-integral-eq} again, we have
+\bea
+\nonumber\langle E(z,\frac{1}{2}+i\nu),U_m(z,\overline s)\rangle
+&=&2\frac{1}{\xi(1+2i\nu)} m^{i\nu}\sigma_{-2i\nu}(m)\frac{1}{(2\pi m)^{s-\frac{1}{2}}}
+\pi^{1/2}2^{\frac{1}{2}-s}\frac{\Gamma(s-\frac{1}{2}-i\nu)\Gamma(s-\frac{1}{2}+i\nu)}
+{\Gamma(s)}\\
+&=&2\frac{m^{i\nu}\sigma_{-2i\nu}(m)}{\xi(1+2i\nu)} \frac{1}{(4\pi m)^{s-\frac{1}{2}}}
+\pi^{1/2}\frac{\Gamma(s-\frac{1}{2}-i\nu)\Gamma(s-\frac{1}{2}+i\nu)}{\Gamma(s)}
+\label{Poincare-inner-wt-Eisen}
+\eea
+and thus this part contributes
+\bna
+&&\frac{1}{4\pi}
+\int_{-\infty}^\infty
+\langle U_n(z,s_1),E(z,1/2+i\nu)\rangle
+\overline{\langle U_m(z,\overline s_2),E(z,1/2+i\nu)\rangle }d\nu\\
+&=&\frac{1}{4\pi}
+\int_{-\infty}^\infty
+\frac{\pi}{(4\pi)^{s_1+s_2-1}n^{s_1-\frac{1}{2}}m^{s_2-\frac{1}{2}}}
+\frac{1}{\Gamma(s_1)\Gamma(s_2)}
+\left\{\overline{\frac{2n^{i\nu}\sigma_{-2i\nu}(n)}{\xi(1+2i\nu)}}\frac{2m^{i\nu}\sigma_{-2i\nu}(m)}{\xi(1+2i\nu)}\right\}
+\prod_{i=1,2}\prod_{\pm}\Gamma(s_i-\frac{1}{2}\pm i\nu)
+d\nu\\
+&=&
+\frac{\pi n^{-s_1+\frac{1}{2}}m^{-s_2+\frac{1}{2}}}{(4\pi)^{s_1+s_2-1}}
+\frac{1}{\Gamma(s_1)\Gamma(s_2)}
+\frac{1}{\pi}
+\int_{-\infty}^\infty
+\left(\frac{m}{n}\right)^{i\nu}\frac{\sigma_{2i\nu}(n)}{\xi(1-2i\nu)}
+\frac{\sigma_{-2i\nu}(m)}{\xi(1+2i\nu)}
+\prod_{i=1,2}\prod_{\pm}\Gamma(s_i-\frac{1}{2}\pm i\nu)
+d\nu.
+\ena
+Note that
+\bna
+\xi(1-2i\nu)
+\xi(1+2i\nu)=\pi^{-1}\Gamma(\frac{1}{2}-i\nu)\Gamma(\frac{1}{2}+i\nu)
+\zeta(1-2i\nu)\zeta(1+2i\nu),
+\ena
+and thus
+\bna
+&&\frac{1}{4\pi}
+\int_{-\infty}^\infty
+\langle U_n(z,s_1),E(z,1/2+i\nu)\rangle
+\overline{\langle U_m(z,\overline s_2),E(z,1/2+i\nu)\rangle }d\nu\\
+&=&\frac{\pi n^{-s_1+\frac{1}{2}}m^{-s_2+\frac{1}{2}}}{(4\pi)^{s_1+s_2-1}}
+\frac{1}{\Gamma(s_1)\Gamma(s_2)}
+\int_{-\infty}^\infty
+\left(\frac{m}{n}\right)^{i\nu}\frac{\sigma_{2i\nu}(n)}{\zeta(1-2i\nu)}
+\frac{\sigma_{-2i\nu}(m)}{\zeta(1+2i\nu)}
+\frac{\prod_{i=1,2}\prod_{\pm}\Gamma(s_i-\frac{1}{2}\pm i\nu)}{\Gamma(\frac{1}{2}+i\nu)\Gamma(\frac{1}{2}-i\nu)}
+d\nu.
+\ena
+Therefore, we have the following result.
+
+\begin{lemma}We have
+\bna
+\langle U_n(z,s_1),U_m(z,\overline s_2)\rangle
+&=&\frac{\pi n^{-s_1+\frac{1}{2}}m^{-s_2+\frac{1}{2}}
+}{(4\pi)^{s_1+s_2-1}}
+\frac{1}{\Gamma(s_1)\Gamma(s_2)}\\
+&&\left\{
+\sum_{f\in\mathfrak B_{cusp}}\frac{a_f(m)\overline{a_f(n)}}{\langle f,f\rangle}
+\prod_{i=1,2}\prod_{\pm}\Gamma(s_i-\frac{1}{2}\pm i\nu_f)\right.\\
+&&\quad + \left.
+\int_{-\infty}^\infty
+\left(\frac{m}{n}\right)^{i\nu}\frac{\sigma_{2i\nu}(n)}{\zeta(1-2i\nu)}
+\frac{\sigma_{-2i\nu}(m)}{\zeta(1+2i\nu)}
+\frac{\prod_{i=1,2}\prod_{\pm}\Gamma(s_i-\frac{1}{2}\pm i\nu)}{\Gamma(\frac{1}{2}+i\nu)\Gamma(\frac{1}{2}-i\nu)}
+d\nu.
+\right\}
+\ena
+\end{lemma}
+
+On taking $s_1=1+it$ and  $s_2=1-it$,
+by the facts
+\bna
+|\Gamma(\frac{1}{2}+ib)|^2=\frac{\pi}{\cosh(\pi b)},\quad
+|\Gamma(ib)|^2=\frac{\pi}{b\sinh(\pi b)},
+\quad \Gamma(s+1)=s\Gamma(s),
+\ena
+we have
+\bna
+\Gamma(1/2+i\nu)\Gamma(1/2-i\nu)&=&
+\frac{\pi}{\sin\pi(1/2-i\nu)}=\frac{\pi}{\cos(i\nu\pi)}
+=\frac{\pi}{\cosh(\pi\nu)}\\
+\prod_{\pm}\prod_{\pm}
+\Gamma(1/2\pm i\nu\pm it)\Gamma(1/2\pm i\nu\pm it)
+&=&\frac{\pi^2}{\cosh(\pi(t+\nu))
+\cosh(\pi(t-\nu))}\\
+\Gamma(1+2it)\Gamma(1-2it)
+&=&2it\Gamma(2it) (-2it)\Gamma(-2it)=4t^2\frac{\pi}{2t\sinh(2\pi t)}.
+\ena
+we have the following results on the spectral side.
+\begin{prop}[Lemma 4.5 in \cite{DeIw1982}]\label{prop-tr1-spectral}
+We have
+\bna
+\langle U_n(z,1+it),U_m(z,1+it)\rangle
+&=&
+\frac{1}{4\sqrt{mn}}\left(\frac{m}{n}\right)^{it}
+\frac{\sinh(\pi t)}{t}
+\left\{\pi\sum_{f\in\mathfrak B_{cusp}}\frac{|a_f(1)|^2}{\langle f,f\rangle}
+\frac{\lambda_{f}(m)\lambda_f(n)}{\cosh(\pi(\nu_f-t))\cosh(\pi(\nu_f+t))}\right.\\
+&&\qquad
+\left.+\int_{-\infty}^\infty
+\left(\frac{m}{n}\right)^{i\nu}\frac{\sigma_{-2i\nu}(m)\sigma_{2i\nu}(n)}{|\zeta(1+2i\nu)|^2}
+\frac{\cosh\pi\nu}{\cosh\pi(\nu-t)\cosh\pi(\nu+t)}d\nu
+\right\}
+\ena
+\end{prop}
+
+\subsection{Inner products of Poincare series 1 - the pre trace formula}
+By propositions \ref{prop-tr1-spectral} and \ref{prop-tr1-geometr},
+we take
+\bna
+H(\nu,t):&=&\frac{\cosh (\pi\nu)}{\cosh(\pi(\nu-t))
+\cosh(\pi(\nu+t))}\\
+D_{2it}(x)&=&-\frac{2it}{\sinh(\pi t)}
+\int_{-i}^i K_{2it}(x\theta)\frac{d\theta}{\theta}
+=\frac{t}{\sinh(2\pi t)}\int_{x}^\infty (J_{2it}(\theta)+J_{-2it}(\theta))\frac{d\theta}{\theta},
+\ena
+we have the following result.
+\begin{prop}\label{prop-tr1}
+We have
+\bna
+&&
+\frac{t}{\pi\sinh(\pi t)}
+\delta_{m,n}
+-\sum_{c\geq 1}\frac{4\pi\sqrt{mn}}{c^2}S(m,n;c)
+D_{2it}\left(\frac{4\pi\sqrt{mn}}{c}\right)
+\\
+&=&\pi\sum_{f\in\mathfrak B_{cusp}}\frac{|a_f(1)|^2}{\langle f,f\rangle}
+\frac{H(\nu_f,t)}{\cosh(\pi\nu_f)}\lambda_{f}(m)\lambda_f(n)
++\int_{-\infty}^\infty
+\left(\frac{m}{n}\right)^{i\nu}
+\frac{\sigma_{-2i\nu}(m)\sigma_{2i\nu}(n)}{|\zeta(1+2i\nu)|^2}
+H(\nu,t)
+d\nu
+\ena
+\end{prop}
+\subsection{Inner products of Poincare series 2}
+If one consider
+\bna
+\langle U_n(z,1+it), \overline{U_m(z,1-it)}\rangle
+\ena
+(see lemma 4.4 in \cite{DeIw1982} for the calculation of the geometric side), one has another pre-trace formula as follows.
+\begin{prop}[Lemma 4.8 in \cite{DeIw1982}]We have
+\bna
+&&\pi\sum_{f\in\mathfrak B_{cusp}}
+\frac{a_f(m)a_f(n)}{\langle f,f\rangle}\frac{H(\nu_f,t)}{\cosh(\pi \nu_f)}
++\int_{-\infty}^\infty(mn)^{i\nu}
+\frac{\sigma_{-2i\nu}(m)\sigma_{-2i\nu}(n)}{\xi(1+2i\nu)^2}
+H(\nu,t)d\nu\\
+&=&\sum_{c\geq 1}\frac{4\pi\sqrt{mn}}{c^2}S(m,n;c)K_{2it}\left(\frac{4\pi\sqrt{mn}}{c}\right).
+\ena
+\end{prop}
+\begin{remark}In this formula, since $m,n\geq 1$, $\int_0^1e((m+n)x)dx=0$, i.e. the diagonal term
+vanishes.
+\end{remark}
+
+\subsection{Test function and integral transform}We refer to this part
+in page 228 in \cite{DeIw1982}.
+
+Let $\varphi\in C_c^3(0,\infty)$.
+For real $t$, set
+\bna
+g(t)&=&-\int_0^\infty(J_{2it}(x)+J_{-2it}(x))\left(\frac{\varphi(x)}{x}\right)'dx\\
+\hat\varphi(r)&=&\frac{\pi}{\sinh (\pi r)}\int_{0}^\infty\frac{J_{2ir}(x)-J_{-2ir}(x)}{2i}\varphi(x)\frac{dx}{x}\\
+\check{\varphi}(r)&=&\frac{4}{\pi}\cosh(\pi r)\int_0^\infty K_{2ir}(x)\varphi(x)\frac{dx}{x}\\
+\tilde\varphi(\ell)&=&\int_0^\infty J_\ell(y)\varphi(y)\frac{dy}{y}\\
+\varphi_B(x)&=&\sum_{k>0\atop k\mbox{\,odd}}2k\tilde\varphi(k)J_k(x)\\
+\varphi_H&=&\varphi-\varphi_B
+\ena
+Applying the following integral transform
+\bna
+-\int_{-\infty}^\infty t\sinh(2\pi t)H(r,t)K_{2it}(\theta)dt
+&=&\theta K_{2ir}(\theta)\\
+\int_{-\infty}^\infty \frac{tg(t)}{\sinh(\pi t)}dt&=&\int_0^\infty J_0(x)\varphi(x)dx\\
+x\int_x^\infty \int_{-\infty}^\infty \frac{tg(t)}{\sinh(\pi t)}(J_{2it}(u)+J_{-2it}(u))dt\frac{du}{u}&=&\varphi_H(x)\\
+\int_{-\infty}^\infty H(r,t)g(t)dt&=&\frac{2}{\pi}\hat\varphi(t).
+\ena
+One has the following
+\begin{thm}[Prop 2 in \cite{DeIw1982}]
+For $\varphi\in C_c^3(0,\infty)$, we have
+\bna
+&&\sum_{f\in\mathcal B_{cusp}}\frac{|a_f(1)|^2}{\langle f,f\rangle}
+\frac{\lambda_f(m)\lambda_f(n)}{\cosh(\pi\nu_f)}\widehat\varphi(\nu_f)
++\int_{-\infty}^\infty \left(\frac{m}{n}\right)^{-i\nu}\frac{
+\sigma_{-2i\nu}(n)\sigma_{2i\nu}(m)
+}{|\zeta(1+2i\nu)|^2}\hat\varphi(\nu)d\nu\\
+&=&
+\frac{\delta_{m,n}}{2\pi}\int_0^\infty J_0(x)\varphi(x)dx
++\sum_{c\geq 1}\frac{S(m,n;c)}{c}\varphi_H\left(\frac{4\pi\sqrt{mn}}{c}\right).
+\ena
+\end{thm}
+
+\subsection{Kunzetsov's trace formula - Final version}
+This is a formula in Li Xiaoqing's paper.
+\begin{prop}
+Assume $u_j\in\mathfrak B_{cusp}$ with $\langle u_j,u_j\rangle=1$ with $\lambda_j=\frac{1}{4}+ t_j^2$ the following
+\bna
+u_j(z)=\sum_{n\neq 0}\rho_j(n)\sqrt{y}K_{it_j}(2\pi |n|y)e(nx).
+\ena
+Let $h(z)$ be a test function satisfying the following.
+\bit
+\item $h(z)$ is holomorphic in $|\im(z)|\leq\sigma$
+\item $h(z)\ll (1+|z|)^{-\theta}$ in the strip with $\sigma>1/2$ and $\theta>2$
+\eit
+One has
+\bna
+&&\sum_{j\geq 1}h(t_j)\frac{\rho_j(n)\overline{\rho_j(m)}}{\cosh(\pi t_j)}
++\frac{1}{\pi}\int_{-\infty}^\infty\left(\frac{m}{n}\right)^{ir}
+\sigma_{2ir}(n)\sigma_{-2ir}(m)\frac{h(r)}{|\zeta(1+2ir)|^2}dr\\
+&=&\frac{\delta_{m,n}}{\pi^2}\int_{-\infty}^\infty
+r\tanh(\pi r)h(r)dr + \sum_{c\geq 1}\frac{S(n,m;c)}{c}h^+\left(\frac{4\pi\sqrt{mn}}{c}\right),
+\ena
+with
+\bna
+\sigma_\nu(n)=\sum_{d\mid n}d^{\nu},\qquad
+h^+(x)=\frac{2i}{\pi}\int_{-\infty}^\infty J_{2ir}(x)\frac{h(r)r}{\cosh \pi r}dr.
+\ena
+\end{prop}
+\begin{remark}
+Note that the L.H.S. in the cuspidal parameter should be
+\bna
+\sum_{j\geq 1}\frac{|\rho_{j}(1)|^2}{\langle u_j,u_j\rangle}
+\lambda_j(m)\lambda_j(n)\frac{\phi(t_j)}{\cosh(\pi t_j)}.
+\ena
+\end{remark}
+
+\begin{remark}
+For the proof of the Kuznetsov's trace formula via the relative trace formula,
+we refer to V. Blomer,
+{\it The relative trace formula in analytic number theory},
+arXiv:1912.08137.
+
+\end{remark}
+
+\section{Truncated Eisenstein series and Maass-Selberg Relation}
+Now, Let $T$ be a sufficiently large parameter, we define the truncated spectral function
+\bna
+I_s^T(z)=\Lambda^TI_s(z)=\left\{
+\begin{aligned}
+&y^s,\quad&& y=\im z\leq T\\
+&0,\quad&& y>T
+\end{aligned}
+\right.
+\ena
+Then we set
+\bna
+\Lambda^TE(z,s)=
+E^T(z,s):=\sum_{\delta\in\Gamma_\infty\backslash\Gamma}I_s^T(\delta.z)
+\ena
+which is called Truncated Eisenstein series.
+
+
+
+
+
+\newpage
+
+\appendix
+\section{Bessel equations}\label{appendix-Bessel-equ}
+This part is a note on Chapter 7 in {\it
+(Te Shu Han Shu Gai Lun, Chinese verion, Wang Zhuxi and Guo dunren)}.
+
+
+We change variables in \eqref{Bessel-real} as follows.
+Let $F(z)=G(iz)$.
+One has
+\bna
+F(z)=G(i z),\quad   F'(z)=iG'(i z), \quad F''(z)=-G''(i z)
+\ena and thus \eqref{Bessel-real} is
+\bna
+-G''(i z)+\frac{1}{z}iG'(i\zeta)-\left(1+\frac{(it)^2}{z^2}\right)G(iz)=0
+\ena
+on taking $iz=\zeta$, one has
+\bea
+G''(\zeta)+\frac{1}{\zeta}G'(\zeta)+\left(1-\frac{(it)^2}{\zeta^2}\right)G(\zeta)=0
+\label{Bessel-original}
+\eea
+Here $\nu=it$ is called the order of the Bessel function.
+
+\subsection{Basic solutions}
+\subsubsection{}
+
+Assume $2\nu\notin\Z$. We rewrite \eqref{Bessel-original} as
+\bna
+\zeta^2 G''+\zeta G'+(\zeta^2-\nu^2)G=0.
+\ena
+So we assume that $G=\sum_{k\geq 0} c_k z^{k+\rho}$ with $c_0\neq 0$ to obtain
+the solutions
+\bna
+J_{\pm\nu}(\zeta)=\sum_{k\geq 0}\frac{(-1)^k}{k!}\frac{1}{\Gamma(\pm\nu+k+1)}
+\left(\frac{\zeta}{2}\right)^{2k\pm\nu}
+\ena
+which are linear independent since $2\nu\notin\Z$.
+They are  \underline{Bessel function of the  first kind}.
+\subsubsection{}If $\nu=n\in \mathbb N\cup\{0\}$,
+we know that $\Gamma(-n+k+1)\rightarrow\infty$ ($k<n$).
+Thus
+\bna
+J_{-n}(\zeta)&=&\sum_{k\geq n}
+\frac{(-1)^k}{k!}\frac{1}{\Gamma(-n+k+1)}
+\left(\frac{\zeta}{2}\right)^{2k-n}
+=\sum_{k\geq 0}
+\frac{(-1)^{k+n}}{(k+n)!}\frac{1}{\Gamma(k+1)}
+\left(\frac{\zeta}{2}\right)^{2k+n}\\
+&=&(-1)^nJ_{n}(\zeta),
+\ena
+which are linear dependent. In this case, \underline{$J_n(\zeta)$ is entire function}.
+So we need another linear independent solution, which is  $Y_n(\zeta)$ with
+\bna
+Y_\nu(\zeta):=\frac{\cos(\pi\nu) J_\nu(\zeta)-J_{-\nu}(
+\zeta)}{\sin (\pi\nu)}
+\ena
+which are \underline{Bessel function of the second kind}.
+
+\subsubsection{}If $2\nu\in\Z-2\Z$, i.e. $\nu=n+\frac{1}{2}$ with $n\in \Z$,
+the $J_{n+\frac{1}{2}}(\zeta)$ can be expressed via elementary functions as follows.
+\bna
+J_{1/2}(\zeta)&=&\sum_{k\geq 0}\frac{(-1)^k}{k!}\frac{1}{\Gamma(k+\frac{3}{2})}
+\left(\frac{\zeta}{2}\right)^{2k+\frac{1}{2}}
+\ena
+Note that
+\bna
+\Gamma(k+\frac{3}{2})=\Gamma(2k+2)2^{-2k-1}\sqrt{\pi}/\Gamma(k+1),
+\ena
+one has
+\bna
+J_{1/2}(\zeta)=\sqrt{\frac{2}{\pi \zeta}}\sum_{k\geq 0}\frac{(-1)^k}{(2k+1)!}\zeta^{2k+1}
+=\sqrt{\frac{2}{\pi\zeta}}\sin\zeta.
+\ena
+and similarly,
+\bna
+J_{-1/2}(\zeta)
+=\sqrt{\frac{2}{\pi\zeta}}\cos\zeta.
+\ena
+\begin{remark}
+Another basis solutions are expressed as
+\bna
+H^1_\nu(z):=J_\nu(z)+iY_\nu(z),\qquad H^2_\nu(z):=J_{\nu}(z)-iY_{\nu}(z)
+\ena
+which are called Bessel function of the third kind.
+\end{remark}
+\subsection{Solutions of \eqref{Bessel-real}}
+Consider \eqref{Bessel-real}.
+We know $\nu=it\notin\Z$ and  $F(z)=G(iz)=G(\zeta)$.
+Solutions for \eqref{Bessel-real} are
+\bna
+J_{it}(iz),\quad J_{-it}(iz)
+\ena
+which are linear independent.
+
+We introduce new functions defined by
+\bna
+I_\nu(z)&=&
+\left\{
+\begin{aligned}
+e^{-\nu\frac{\pi i}{2}}J_\nu(ze^{\frac{\pi i}{2}}),\quad (-\pi<\arg z<\frac{\pi}{2})\\
+e^{\nu\frac{3\pi i}{2}}J_\nu(z^{-\frac{3\pi i}{2}}),\quad (\frac{\pi}{2}<\arg z<\pi)
+\end{aligned}
+\right.\\
+&=&\left(\frac{z}{2}\right)^{\nu}
+\sum_{k=0}^\infty\frac{1}{k!}\frac{1}{\Gamma(\nu+k+1)}\left(\frac{z}{2}\right)^{2k}
+\ena
+Then we know $I_{it}(z)$ are one of the solution of \eqref{Bessel-real}.
+\bit
+\item
+If $\nu\notin\Z$, $I_{\pm\nu}(z)$ are two linear independent solutions.
+One define
+\bna
+K_{\nu}(z)=\frac{\pi}{2\sin(\pi\nu)}(I_{-\nu}(z)-I_{\nu}(z))
+\ena
+and use $K_\nu(z)$ and $I_\nu(z)$ as linear independent solutions of \eqref{Bessel-real}.
+\item
+If $\nu=n\in\Z$, $I_{-n}(z)=I_n(z)$.
+In this case, $K_\nu(z)$ and $I_\nu(z)$ are still linear independent.
+
+\eit
+Therefore, we have the following result.
+\begin{prop}Two linear independent solutions of \eqref{Bessel-real}
+are
+\bna
+K_{it}(z)\quad\mbox{and}\quad I_{it}(z).
+\ena
+\end{prop}
+
+\subsection{Important property of $J$-Bessel function}
+We have
+\bna
+J_{\pm \nu}(z):=\sum_{k\geq 0}\frac{(-1)^k}{k!}\frac{1}{\Gamma(\pm\nu+k+1)}\left(\frac{z}{2}\right)^{2k\pm \nu},
+\qquad \re(\nu)\geq 0
+\ena
+Special values are given as
+\bna
+J_{-n}(z)=(-1)^nJ_n(z),\quad
+J_{1/2}(z)=\sqrt{\frac{2}{\pi z}}\sin z,
+\quad J_{-1/2}(z)=\sqrt{\frac{2}{\pi z}}\cos z
+\ena
+\underline{and the  fact that $J_n(z)$ is entire function in $z$}.
+
+The recurrent differential formula are
+\bna
+&\frac{d}{dz}(z^\nu J_\nu)=z^{\nu} J_{\nu-1},\quad
+\frac{d}{dz}(z^{-\nu} J_\nu)=-z^{-\nu} J_{\nu+1} &\\
+&\left(\frac{d}{zdz}\right)^m(z^\nu J_\nu)=z^{\nu-m} J_{\nu-m},\quad
+\left(\frac{d}{zdz}\right)^m(z^{-\nu} J_\nu)=(-1)^mz^{-\nu-m} J_{\nu+m} &
+\ena
+and some recurrent formulas  are
+\bna
+&J_{\nu-1}+J_{\nu+1}=\frac{2\nu}{z}J_\nu,
+\quad J_{\nu-1}-J_{\nu+1}=2J_v'&\\
+&J_{\pm\nu}(ze^{\pi i})=e^{\pm \nu\pi i}J_{\pm \nu}(z)&
+\ena
+
+Integral representations of $J$-Bessel function are
+\bna
+J_\nu(z)&=&\frac{(z/2)^{\nu}}{\sqrt{\pi}\Gamma(\nu+\frac{1}{2})}
+\int_{-1}^1 e^{izt}(1-t^2)^{\nu-\frac{1}{2}}dt,\quad \re(\nu)>-1/2,\arg(1-t^2)=0\\
+&=&\frac{(\frac{z}{2})^\nu}{\sqrt{\pi}\Gamma(\nu+\frac{1}{2})}
+\int_0^\pi e^{iz\cos\theta}\sin^{2\nu}\theta d\theta,\quad\mbox{by taking $t=\cos\theta$ as above}\\
+&=&
+\frac{(\frac{z}{2})^\nu}{\sqrt{\pi}\Gamma(\nu+\frac{1}{2})}
+\int_0^\pi\cos(z\cos\theta)\sin^{2\nu}\theta d\theta\\
+&=&\frac{(z/2)^\nu}{2\pi i}\int_{-\infty}^{0+}e^{t-\frac{z^2}{4t}}t^{-\nu-1}dt,\quad |\arg t|<\pi\\
+&=&\frac{1}{2\pi i}\int_{-\infty}^{0+}
+e^{\frac{z}{2}(t-\frac{1}{t})}t^{-\nu-1}dt,\quad |\arg z|<\frac{\pi}{2},|\arg t|<\pi
+\ena
+We also has the following important integral representation for
+the K-Bessel function, namely
+\bea
+\int_0^\infty e^{-\frac{y}{2}(t+\frac{1}{t})}t^s\frac{dt}{t}=2 K_s(y).
+\label{integral-transform-K-Bessel-in-appendix}
+\eea
+which implies
+\bna
+K_{s}(y)=K_{-s}(y)
+\ena by $t\mapsto t^{-1}$ and $s\mapsto -s$.
+
+
+\subsection{Asymptotic formulas as $|z|\rightarrow\infty$}
+Let
+\bna
+(\nu,0)&=&1\\
+(\nu,p)&=&\frac{\Gamma(\frac{1}{2}+\nu+p)}{p!\Gamma(\frac{1}{2}+\nu-p)}=(-\nu,p).
+\ena
+Some asymptotic formulas as $|z|\rightarrow\infty$ are
+\bna
+J_\nu(z)&\sim& \sqrt{\frac{2}{\pi z}}
+\left[\cos(z-\frac{\pi}{2}\nu-\frac{\pi}{4})\sum_{m\geq 0}(-1)^m\frac{(\nu,2m)}{(2z)^{2m}}
+\right.\\
+&&\qquad\left.
+-\sin(z-\frac{\pi}{2}\nu-\frac{\pi}{4})
+\sum_{m\geq 0}\frac{(-1)^m(\nu,2m+1)}{(2z)^{2m+1}}
+\right],\quad -\pi<\arg z<\pi
+\ena
+Other range of $\arg z$, for example, $0<\arg z<2\pi$ can be obtained by the  recurrent relation
+\bna
+J_\nu(z)=e^{\nu\pi i}J_{\nu}(ze^{-\pi i})
+\sim e^{(\nu+\frac{1}{2})\pi i}
+&\sim& \sqrt{\frac{2}{\pi z}}
+\left[\cos(z+\frac{\pi}{2}\nu+\frac{\pi}{4})\sum_{m\geq 0}(-1)^m\frac{(\nu,2m)}{(2z)^{2m}}
+\right.\\
+&&\qquad\left.
+-\sin(z+\frac{\pi}{2}\nu+\frac{\pi}{4})
+\sum_{m\geq 0}\frac{(-1)^m(\nu,2m+1)}{(2z)^{2m+1}}
+\right]
+\ena
+
+One has also
+\bna
+K_\nu(z)&\sim& \sqrt{\frac{\pi}{2z}} e^{-z}\left[1+\sum_{n\geq 1}\frac{(\nu,n)}{(2z)^n}\right],
+\quad |\arg z|<\frac{3}{2}\pi\\
+I_\nu(z)&\sim&\frac{e^z}{\sqrt{2\pi z}}
+\sum_{n\geq 0}\frac{(-1)^n (\nu,n)}{ (2z)^n}
++\frac{e^{-z+(\nu+\frac{1}{2})\pi i}}{\sqrt{2\pi z}}\sum_{n\geq 0}\frac{(\nu,n)}{(2z)^n},
+\quad -\frac{\pi}{2}<\arg z<\frac{3}{2}\pi.
+\ena
+\subsection{Asymptotic formulas as $|\nu|\rightarrow\infty$ }
+For fixed $z$, as $|\nu|$ large,
+\bna
+J_\nu(z)\sim \exp\left(\nu+\nu\log\frac{z}{2}-(\nu-\frac{1}{2})\log \nu\right)
+\left[c_0+\frac{c_1}{\nu}+\frac{c_2}{\nu^2}+\cdots\right]
+\ena
+with $c_0=\frac{1}{\sqrt{2\pi}}$.
+
+\subsection{Asymptotic formulas as both $|\nu|$ and $|z|$ large}
+We refer to sections 7.11-7.12 in the Book on special functions by Wang Zhuxi-Guo Dunren.
+%\begin{CJK}{UTF8}{gkai}
+%ÍõÖñÏª-¹ù¶ØÈÊ, {\it ÌØÊâº¯Êý¸ÅÂÛ}, ±±¾©´óÑ§³ö°æÉç, 2012
+%\end{CJK}
+
+
+
+\section{Spherical Whittaker function in Whittaker model}\label{appendix-spherical-whittaker-model}
+Some notations are as follows.
+\bit
+\item For compact subgroup,
+\bna
+O(2)=SO(2)\bigcup\bma -1\\&1\ema SO(2),\quad
+PSO(2)= SO(2)/\{\pm I\}.
+\ena
+Note that $GL_2(\R)=GL_2^+(\R)\bigcup GL_2^{-}(\R)$. We have
+\bna
+\mk h=SL_2(\R)/SO(2)=GL_2(\R)/Z(\R)O(2)
+\ena
+\item  Next, $PGL_2(\R)=GL_2(\R)/Z(\R)$ and
+\bna
+ PGL_2(\R)/PSO(2)=GL_2(\R)/Z(\R)SO(2).
+\ena
+\eit
+We are dealing with spherical representations for $PGL_2=GL_2/Z$ over $\R$.
+Note that for $g\in GL_2(\R)$,
+\bna
+g=z\bma 1&x\\&1\ema
+\bma\pm 1\\&1\ema
+\bma y^{1/2}\\&y^{-1/2}\ema \kappa_\theta,
+\quad \kappa_\theta\in SO(2), z\in Z(\R).
+\ena
+Let
+$\pi_\infty$ be an irreducible unramified unitary
+infinite dimensional representation of $G_\infty$
+with trivial central character,
+which can be realized as the normalized induced representation
+\bna
+\pi(\epsilon_\pi,it_\pi)=\mathrm{Ind}_{B(\R)}^{G(\R)}\chi_{\epsilon_\pi,it_\pi},
+\ena
+where $B$ is the standard parabolic subgroup of $G$ and
+$\chi_{\epsilon_\pi,it_\pi}$ is a character of $B(\R)$ given by
+\bna
+\chi_{\epsilon_\pi,it_\pi} \bma a&b\\0&d\ema=\mathrm{sgn}(a)^{\epsilon_{\pi}}\mathrm{sgn}(d)^{\epsilon_{\pi}}
+\left|\frac{a}{d}\right|^{it_\pi},\quad \bma a&b\\0&d\ema\in B(\R).
+\ena
+Here $\epsilon_\pi\in\{0,1\}$ and $\{\pm t_\pi\}$ is the  set of spectral parameters of $\pi$ such that
+\bit
+\item either $t_\pi\in \R$, in which case $\pi_\infty=\pi(\epsilon_{\pi},it_{\pi})$ is a principal series,
+\item or $t_\pi\in i\R$ with $0<|t_\pi|<\frac{1}{2}$,
+ in which case $\pi_\infty=\pi(\epsilon_{\pi},it_{\pi})$
+is a complementary series.
+\eit
+\subsection{spherical Whittaker function}
+The spherical vector in $\pi_\infty=\pi(\epsilon_\pi,it_\pi)$ is the function
+\bna
+f_0:GL_2(\R)\rightarrow\C
+\ena
+such that
+\bna
+f_0\left(z\bma 1&x\\&1\ema
+\bma\pm 1\\&1\ema\bma
+y\\&1\ema\kappa_\theta\right)
+=(\pm 1)^{\epsilon_\pi}y^{\frac{1}{2}+it_\pi}.
+\ena
+Via the theory of intertwining operator and Whittaker function,
+ for given a non-degenerate character on $N(\R)$ (i.e. $a\neq 0$),
+\bna
+\psi_a:N(\R)\rightarrow\C,\quad \psi_a(n(x))=e^{2\pi iax}=e(ax),
+\ena
+the associated spherical Whittaker function (in the Whittaker model) is defined by
+\bna
+W_0(g,\psi_a):&=&\int_{N_P(\R)\cap w_sN_P(\R)w_s^{-1}\backslash N_P(\R)}
+f_0(w_s^{-1}n g)\overline{\psi_a(n)}dn\\
+&=&\int_{-\infty}^{\infty}f_0\left(\bma&-1\\1\ema \bma1&x\\&1\ema  g
+\right)e(-ax)dx
+\ena
+Obviously one has
+\bna
+&&W_0\left(z\bma 1&x_0\\&1\ema\bma \pm y_0\\&1\ema
+g\kappa_\theta,\psi_{a}\right)\\
+&=&e(ax_0)
+\int_{-\infty}^\infty f_0
+\left(\bma&-1\\1\ema \bma1&x\\&1\ema \bma \pm y_0\\&1\ema
+g\right)e(-ax)dx\\
+&=&e(ax_0)
+\int_{-\infty}^\infty f_0
+\left(\bma \pm y_0\\&\pm y_0\ema
+\bma \pm y_0^{-1}\\&1\ema
+\bma&-1\\1\ema \bma1&\pm y_0^{-1}x\\&1\ema
+g\right)e(-ax)dx\\
+&=&(\pm 1)^{\epsilon_\pi}y_0^{\frac{1}{2}-it}
+e(ax_0)
+\int_{-\infty}^\infty f_0
+\left(
+\bma&-1\\1\ema \bma1&x\\&1\ema
+g\right)e(-(\pm y_0a)x)dx\\
+&=&(\pm 1)^{\epsilon_\pi}y_0^{\frac{1}{2}-it}
+e(ax_0)W_0(g,\psi_{\pm y_0 a}).
+\ena
+Based on the argument above, by the Iwasawa decomposition,
+we need only to determine the values
+\bna
+W_0\left(\bma y&\\&1\ema,\psi_1\right)&=&\int_{-\infty}^\infty
+f_0\left(\bma &-1\\ 1\ema\bma 1&x\\&1\ema\bma y\\&1\ema\right)e(-x)dx\\
+&=&
+\int_{-\infty}^\infty
+f_0\bma &-1\\ y&x\ema e(-x)dx
+=\int_{-\infty}^\infty\left(\frac{y}{x^2+y^2}\right)^{\frac{1}{2}+it}e(-x)dx
+\ena
+where we have used the following explicit Iwasawa decomposition.
+The expression above coincides with \eqref{tilde-whittaker}
+ and the calculation are in Lemma \ref{lemma-integral-Whitaker-Bessel}.
+
+\begin{lemma}[Explicit Iwasawa decomposition]
+For $v$ real, then $\forall g=\bma a&b\\c&d\ema\in GL_2(\R)^+$, it has unique decomposition
+\bea
+g=\bma a&b\\c&d\ema=\bma z&\\&z\ema\bma 1&x\\&1\ema\bma y^{1/2}&\\&y^{-1/2}\ema\kappa_\theta
+\label{Iwassawa-local-Arch}
+\eea
+with
+\bna
+z=z(g)=\sqrt{ad-bc},\quad x=x(g)=\frac{ac+bd}{c^2+d^2},\quad y=y(g)=\frac{ad-bc}{c^2+d^2}
+\ena
+and
+\bna
+\theta=\theta(g)=\arctan(-c/d),\quad\mbox{of period $\pi$}.
+\ena
+\end{lemma}
+
+\section{Mellin transform - Harmonic analysis on $L^2(\R^+,\frac{dy}{y})$}
+\subsection{Mellin transform}
+\begin{prop}
+For $f\in C_c^\infty(\R^+,\frac{dy}{y})$, the Mellin transform is defined by
+\bna
+(\mathcal M(f)(s))=\varphi(s)=\int_0^\infty f(t) t^{s}\frac{dt}{t}
+\ena
+and the Mellin inversion formula is
+\bna
+f(y)=(\mathcal M^{-1}\varphi)(y)=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}
+\varphi(s)y^{-s}ds.
+\ena
+\end{prop}
+\begin{remark}
+For $f\in L^2(\R^+,\frac{dy}{y})$, at the discontinuous point,
+\bna
+\frac{1}{2}\left(f(y+)+f(y-)\right)=\frac{1}{2\pi i}\lim_{r\rightarrow\infty}
+\int_{c-ir}^{c+ir}(\mathcal Mf)(s)y^{-s}ds.
+\ena
+\end{remark}
+
+\subsection{Harmonic analysis}
+Now we build the harmonic analysis as follows.
+For $L^2(\R^+,\frac{dy}{y})$,
+the Laplacian operator on $\R^+$ is $\Delta=-y^2\frac{d^2}{dy^2}$.
+Since $\widehat \R^+$ is commutative multiplicative group with invariant measure $\frac{dy}{y}$,
+The spectrum of $L^2(\R^+)$ (eigenfunctions of $\Delta$)
+can also obtained via duality theory.
+
+Let
+\bna
+\widehat{\R^+}=\{\chi:\R^+\rightarrow S^1,\quad\mbox{continuous}, \chi(ab)=\chi(a)\chi(b)\}.
+\ena
+be the group of the continuous characters of $\R^+$.
+Via the differentiable map
+$\log:\R^+\rightarrow\R$, we know that
+the multiplicative character $\chi$ is of the form
+\bna
+\chi:\R^+\xrightarrow{\log}\R\xrightarrow{e()}S^1,
+\quad
+\chi(y)=e^{i\theta\log y}
+\ena
+for some $s=i\theta\in\R$. One has
+\bna
+\widehat \R^+\simeq i\R,\qquad \chi_{i\theta}\mapsto  i\theta.
+\ena
+\begin{remark}
+Obviously $\chi_{s}(y)=y^{s}$ are eigenfunctions of $\Delta=-y^2\frac{d^2}{y^2}$ with eigenvalue
+\bna
+s(1-s).
+\ena
+\end{remark}
+Note that $\chi_{s}(y)$
+ are not in $L^2(\R^+)$.
+For $f\in L^2(\R^+)$ and $\chi_\theta\in \widehat {R^+}$,
+we have  the inner product
+\bna
+\varphi(i\theta)&=&
+\langle f,\chi_{i\theta}\rangle =\int_{\R^+}f(y)e^{-i\theta\log y}\frac{dy}{y}
+=\int_0^\infty f(y)y^{-i\theta}\frac{dy}{y}=\mathcal M(f)(-i\theta)
+\ena
+which gives a function in $s=i\theta\in i\R$.
+
+If the spectrum are all discrete, we expect to establish
+\bna
+f(y)=\sum_{\theta\atop{\mbox{\tiny spectral}}}\frac{\langle f,\chi_{i\theta}\rangle }{
+\langle\chi_{i\theta},\chi_{i\theta}\rangle} \chi_{i\theta};
+\ena
+If the spectrum are all continuous,  one expect that
+\bna
+f(y)=\int_{s=i\theta\atop{\mbox{\tiny spectrum}}}
+\langle f,\chi_{i\theta}\rangle \chi_{i\theta}(y)
+\frac{d\theta}{\langle\chi_{i\theta},\chi_{i\theta}\rangle}
+\ena
+But we know $\chi_{i\theta}$ is not in $L^2(\R^+)$ and
+$\frac{1}{\langle\chi_{i\theta},\chi_{i\theta}\rangle}$ has no means. However, one can replace
+it by a function $\mu(\theta)$, which is known as `spectral measure' (Plancheral measure), and establish
+\bna
+f(y)&=&\int_{-\infty}^{\infty}
+\mathcal M(f)(-i\theta)\chi_{i\theta}(y) {\color{blue}\mu(\theta)}d\theta\\
+&=&\frac{1}{2\pi i}\int_{-i\infty}^{i\infty}
+\mathcal M(f)(i\theta)y^{-i\theta}\left(2\pi\mu(-\theta)\right)d(i\theta)\\
+&=&\frac{1}{2\pi i}\int_{-i\infty}^{i\infty}M(f)(s)y^{-s} \left(2\pi\mu(is)\right)ds.
+\ena
+So if we can prove that the spectral measure $\mu(i\theta)=\frac{1}{2\pi}$,
+then the theory of the spectral decomposition on $L^2(\R^+)$
+is just the theory of Mellin and Mellin inverse transform,
+by some tricks on analytic continuation for the convergence.
+
+\begin{lemma}The spectral measure is $\mu(i\theta)=\frac{1}{2\pi}$.
+\end{lemma}
+\begin{proof}
+choose suitable test function $f$ and consider the value of $f$ at a special point, for example, at $y=1$.
+
+\end{proof}
+
+\subsection{Proof via Fourier transform}
+Recall the argument above,
+\bna
+\varphi(i\theta)=\int_{\R^+}f(y)e^{-i\theta\log y}\frac{dy}{y}.
+\ena
+On taking $y=e^{2\pi x}$,
+\bna
+\varphi(i\theta)=(\mathcal Mf)(i\theta)=
+2\pi\int_{-\infty}^\infty f(e^{2\pi x})e^{-2\pi i x\theta}dx=\int_{-\infty}^\infty
+F(x)e^{-2\pi i x\theta}dx,\qquad F(x)=2\pi f(e^{2\pi x}).
+\ena
+and thus
+\bna
+F(x)&=&2\pi f(e^{2\pi x})=2\pi f(y)\\
+&=&\int_{-\infty}^\infty \varphi(i\theta) e^{2\pi i\theta x}d\theta
+\overset{x=\frac{1}{2\pi}\log y}{=}
+\int_{-\infty}^\infty \varphi(i\theta) y^{i\theta }d\theta
+\ena
+which is
+\bna
+f(y)&=&\frac{1}{2\pi}\int_{-\infty}^{\infty}(\mathcal Mf)(-i\theta)y^{i\theta}d\theta\\
+&=&\frac{1}{2\pi i}\int_{\re(s)=0}(\mathcal Mf)(s)y^{-s}ds.
+\ena
+We finish the proof of the Mellin transform.
+\subsection{Useful table for Mellin and Mellin inversion formula}\label{subsec-useful-Mellin-transform}
+We list the following useful table for Mellin transforms.
+\begin{align*}
+f(y),y>0&\quad &&\mathcal M(f)(s)\\
+\exp(-ay),y>0&\quad &&a^{-s}\Gamma(s)\\
+\exp\left[-\frac{a}{2}(y+\frac{1}{y})\right],a>0&\quad
+&&2K_s(a)
+\end{align*}
+
+An application of the Mellin transform can be found in Lemma \ref{lemma-integral-Whitaker-Bessel}.
+
+\section{Gauss Hypergeometric function}
+The Gauss hypergeometric function is defined by
+\bea
+F(\alpha,\beta,\gamma,z)&=&\sum_{ n\geq 0}\frac{(\alpha)_n(\beta)_n}{n!(\gamma_n)} z^n,\quad |z|<1
+\nonumber\\
+&=&\frac{\Gamma(\gamma)}{\Gamma(\alpha)\Gamma(\beta)}\sum_{n\geq 0}\frac{1}{n!}
+\frac{\Gamma(\alpha+n)\Gamma(\beta+n)}{\Gamma(\gamma+n)} z^n,\quad |z|<1.
+\label{hypergeometric-func}
+\eea
+where
+\bna
+(\alpha)_0=1,\quad (\alpha)_n=\frac{\Gamma(\alpha+n)}{\Gamma(\alpha)}.
+\ena
+
+Here \eqref{hypergeometric-func} is defined for $|z|<1$. $F(\alpha,\beta,\gamma,z)$
+is analytic continuated to $z\in\C$ except for $z=1$ and $z=\infty$,
+which may be branch points of $F(\alpha,\beta,\gamma,z)$.
+
+\subsection{Integral representations}
+We have
+\bna
+F(\alpha,\beta,\gamma,z)=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}
+\int_0^1 t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-zt)^{-\alpha}dt,
+\quad \re(\gamma)>\re(\beta)>0,\quad |\arg(1-z)|>\pi.
+\ena
+Here $\frac{1}{z}$ is the singular pint of $\frac{1}{(1-zt)^{-\alpha}}$(except that $\alpha$ is negative integer),
+and thus $z=1$ and $z=\infty$ are branches points.
+
+\subsection{Barnes integral representations}
+We have
+\bna
+F(\alpha,\beta,\gamma,z)=\frac{\Gamma(\gamma)}{\Gamma(\alpha)\Gamma(\beta)}
+\frac{1}{2\pi i}\int_{-i\infty}^{i\infty}\frac{\Gamma(\alpha+s)\Gamma(\beta+s)}{\Gamma(\gamma+s)}
+\Gamma(-s) (-z)^sds,
+\ena
+where one need that $\arg(-z)<\pi$ and
+$\re(s)$ is in the left of poles of $\Gamma(-s)$,
+and right of poles of $\Gamma(\alpha+s)\Gamma(\beta+s)$. This implies that
+\bna
+\mbox{$\alpha$ and $\beta$  are not zero or negative integers.}
+\ena
+\begin{lemma}[Barnes lemma]
+For $\gamma-\alpha-\beta\in \Z$,
+\bna
+\frac{1}{2\pi i}\int_{-i\infty}^{i\infty}\Gamma(\alpha+s)\Gamma(\beta+s)
+\Gamma(\gamma-s)\Gamma(\delta-s)ds
+=\frac{\Gamma(\alpha+\gamma)\Gamma(\alpha+\delta)
+\Gamma(\beta+\gamma)\Gamma(\beta+\delta)}
+{\Gamma(\alpha+\beta+\gamma+\delta)}
+\ena
+\end{lemma}
+\subsection{Special values}
+One has
+\bna
+F(\alpha,\beta,\gamma,1)=\frac{\Gamma(\gamma)\Gamma(\gamma-\alpha-\beta)}
+{\Gamma(\gamma-\alpha)\Gamma(\gamma-\beta)},
+\quad \gamma\notin\{0\}\cup\Z^-,\quad \gamma-\alpha-\beta\notin\Z
+\ena
+Other cases are the following.
+\bit
+\item [1.]
+If $\alpha-\beta=m$ with $m\in \mathbb N$,  see formula (2) in page 120
+\item [2.] If $\gamma-\alpha-\beta\in \Z$, see (8) in page 123
+\item [3.] If $\gamma-\alpha-\beta\in \mathbb N$, see (9) in page 123
+\item [4.]
+Moreover, if $\alpha$ or $\beta$ is $-n$, in this case, $F(\alpha,\beta,\gamma,z)$
+is a polynomial, called Jacobi polynomial (see (1) page). In this case,
+\bna
+F(-n,\beta,\gamma,1)=\frac{\Gamma(\gamma)\Gamma(\gamma-\beta+n)}{\Gamma(\gamma+n)\Gamma(\gamma-\beta)}.
+\ena
+\eit
+\subsection{Relation with Chebechy polynomial}
+\subsection{Kummer's formula}
+\bna
+F(\alpha,\beta,1+\alpha-\beta,-1)=\frac{\Gamma(1+\alpha-\beta)\Gamma(1+\frac{\alpha}{2})}
+{\Gamma(1+\alpha)\Gamma(1+\frac{\alpha}{2}-\beta)}
+\ena
+\subsection{asymptotic formulas}As $z\rightarrow\infty$ and the parameter $\gamma\rightarrow\infty$,
+see section 4.14.
+
+\section{Legendre functions}
+Legendre functions  are solutions of the Legendre equation
+\bea
+(1-x^2)\frac{d^2y}{dx^2}-2x\frac{dy}{dx}+\nu(\nu+1)y=0,\label{Legendre-equation}
+\eea
+which is obtained via the separable method from the Laplacian differential equation
+under the polar coordinate.
+
+
+\subsection{Legendre polynomial}
+Case $\nu=n\in\mathbb N$, \eqref{Legendre-equation} has solutions, which are called
+Legendre polynomials,
+\bna
+P_n(x)&=&\frac{1}{2^n}\sum_{r=0}^{[\frac{n}{2}]}
+(-1)^r\frac{(2n-2r)!}{r!(n-r)!(n-2r)!} x^{n-2r}\\
+&=&\frac{(2n)!}{2^n (n!)^2}x^nF\left(-\frac{n}{2},\frac{1-n}{2},\frac{1}{2}-n,x^{-2}\right)\\
+&=&F(n+1,-n,1,\frac{1-x}{2})
+\ena
+and $P_n(1)=1$.
+
+One has integral representation of
+\bna
+P_n(x)=\frac{1}{\pi}\int_0^\pi (x+\sqrt{x^2-1}\cos\theta)d\theta
+\ena
+and the recurrent formulas
+\bna
+&P_1(x)-xP_0(x)=0&\\
+&(n+1)P_{n+1}(x)-(2n+1)xP_n(x)+nP_{n-1}(x)=0,\quad n\geq 1.&
+\ena
+\subsubsection{Orthogonal property of Legendre polynomials}
+\begin{prop}Let $f(x)$ be a polynomial with $\deg f=k$. If $k<n$, one has
+\bna
+\int_{-1}^1 f_k(x)P_n(x)dx=0
+\ena
+Moreover,
+\bna
+\int_{-1}^1P_m(x)P_n(x)=\frac{2}{2n+1}\delta_{m,n}.
+\ena
+If $(1-x^2)^{-1/4}f(x)$ is integrable over $[-1,1]$, then
+\bna
+\frac{1}{2}(f(x+0)+f(x-0))=\sum_{k\geq 0}\frac{2k+1}{2}P_k(x)
+\int_{-1}^1 f(t)P_k(t)dt
+\ena
+\end{prop}
+\subsubsection{Zeroes of $P_n(x)$}
+$P_n(x)$ has $n$ number of simple pole appears in $[-1,1]$.
+
+\subsection{Lengedre function}
+The solutions of
+\bna
+(1-z^2)\frac{d^2u}{dz^2}-2z\frac{du}{dz}+[\nu(\nu+1)-\frac{\mu^2}{1-z^2}]u=0
+\ena
+are the associated Legendre function defined by
+\bna
+P_\nu^\mu(z):=\frac{1}{\Gamma(1-\mu)}\left(\frac{z+1}{z-1}\right)^{\mu/2}
+F(-\nu,\nu+1,1-\mu,\frac{1-z}{2}),
+\quad |\arg(z\pm 1)|<\pi.
+\ena
+One has integral representation
+\bna
+P_s^a(z)=
+\frac{\Gamma(s+a+1)}{2\pi\Gamma(s+1)}\int_0^{2\pi} (z+\sqrt{z^2-1}\cos\alpha)^s
+e^{ia\alpha}d\alpha,\quad \re(z)>0
+\ena
+
+For the order $a=0$,
+\bna
+P_s(z)&\sim&\frac{1}{\sqrt{\pi}}\frac{\Gamma(s+\frac{1}{2})}{\Gamma(s+1)} (2z)^s,\quad z\rightarrow\infty\\
+P_{-s}(z)&=&P_{s-1}(z),\quad \re(z)>0\\
+P_s(z)&=&F(-s,s+1,1,\frac{1-z}{2}),\quad |z-1|<2.
+\ena
+
+
+\section{Philosophy of Eisenstein series}\label{Sec-Eisenstein}
+This part is based on Casselman's paper at Casselman's homepage.
+
+\subsection{The lift of classical modular and maass forms to $GL_2$}\label{section-lift}
+Let $\Gamma$ be a principal congruence subgroup of level $N$ in $SL(2,\mathbb Z)$, $\mathfrak h^2$ the Poincare
+upper half plane. By strong approximate theorem, we know
+\bea
+\Gamma\backslash \mathfrak h^2\longrightarrow GL_2(\mathbb \Q)\backslash GL_2(\mathbb A)/K_\mathbb R K_f
+\label{strong-approximate-formula}
+\eea
+is bijective,
+where $K_\mathbb R=SO(2)$, and $K_f$ is compact open subgroup of $GL_2(\mathbb A_f)$ defined in the following.
+\begin{itemize}
+\item For $p\nmid N$, define $K_p=GL_(\Z_p)$.
+\item For $p\mid N$, consider the diagonal embedding
+$$
+SL(2,\Z)\hookrightarrow \prod_{p\mid N}GL_2(\Z_p).
+$$
+Let $K_N$ be open subgroup of $\prod_{p\mid N}GL_2(\Z_p)$ such that
+\bit
+\item the preimage of $K_N$ in $SL(2,\Z)$ is $\Gamma$
+\item $\det\left(K_N\right)=\prod_{p\mid N}\mathbb Z_p^\times$.
+\eit
+Eg, $$K_N=\left\{k, k\equiv \bma 1&\\&*\ema\bmod N\right\}$$
+\item Let $K_f=K_N\prod_{p\nmid N}K_p$.
+\end{itemize}
+
+\remark By (\ref{strong-approximate-formula}), we can lift the maass cusp form on $\Gamma\backslash \mathfrak h^2$
+to be a function on $GL_2(\Q)\backslash G(\A)$ which is fixed by right action under $K_\R K_f$,
+and lift holomorphic modular form to be a function on $GL_2(\Q)\backslash G(\A)$ fixed by $K_f$
+and transforming  in a certain way under $K_\R$.
+
+\subsection{Hecke operators}
+For any $g\in G(\A_f)$, we can define Hecke operator $T_g$ in the following.
+\bit
+\item Consider the double cosets $K_fg K_f$, we have right coset decomposition
+$$
+K_fg K_f=\bigcup_{i}g_iK_f.
+$$
+Thus for $f\in GL(2,\Q)\backslash GL(2,\A)/K_\R K_f$, define the action of $T_g$  on $f$ via
+$$
+T_gf(x)=\sum_i f(xg_i)
+$$
+\item Adele scheme allows us to separable global problem into local ones. For $p\nmid N$,
+the Hecke operator $T_p$ and $T_{p,p}$ corresponds to
+$$
+K_p\bma 1&\\&p\ema K_p,\qquad K_p\bma p&\\&p\ema K_p,
+$$
+and the action of $T_p$ and $T_{p,p}$ can be expressed as convolution with characteristic function of the above double cosets.
+\eit
+
+
+\subsection{Automorphic forms}
+Let $G$ be a reductive group defined over a number field $F$.
+Automorphic forms on $G$ is just functions $f:G(F)\backslash G(\A)\rightarrow \C$ satisfying
+\bit
+\item a condition of moderate growth on adele version of Siegel set,
+\item smooth at real primes, and is $(Z(\mk g^\C_\infty),K_\infty)$-finite,
+\item fixed with respect to the right translation of open subgroup $K_f$ of $G(\A_f)$.
+\eit
+
+Here $G$ is reductive over $F$. We know that $G$ is unramified over $F_v$ for almost all $v$.
+That is to say, $G$ is unramified outside a finite set of primes $D_G$, or equivalently
+\bit
+\item $G$ arises by base extension from smooth reductive group over $O_F[1/N]$ for some  integer $N$,
+\item For $p\mid N$, $G/F_p$ arise by base extension from smooth reductive group scheme over $O_p$, i.e.
+$$
+G(F_p)=G(O_p)\otimes_{O_p}F_p.
+$$
+\eit
+
+\remark In general, we dealing with automorphic forms on connected reductive groups $G$ over $F$ with center character
+defined by a Hecke character $\omega$.
+
+Hecke operators are determined through convolution by functions on $K_f\backslash G(\A_f)/K_f$ with $K_f$ as above.
+One can express $K_f=K_S\prod_{p\notin S}K_p$ where $S\supset D_G$ such that $K_p=G(O_F)$ for $p\notin S$.
+So by local global principle, the Hecke operators involving convolution of functions
+(generated by characteristic functions of double cosets) on $K_p\backslash G(F_p)/K_p$,
+i.e. functions in $\mathcal H(G(F_p),K_p)$ for $p\notin S$.
+We will show that $\mathcal H(G(F_p),K_p)$ is commutative algebra, and the action on spherical vectors
+gives a scalar, by prove the Satake isomorphism.
+
+
+\subsection{Eisenstein series on $\mathfrak h$}
+Let $\Gamma=SL(2,\Z)$ and $z=x+iy\in\mathfrak h$. For $s\in\C$ with $\re(s)>1/2$,
+\bna
+E_s(z):=\sum_{c\geq 0\atop{(c,d)=1}} \frac{y^{s+\frac{1}{2}}}{|cz+d|^{2s+1}}=\sum_{\Gamma_P\backslash \Gamma} Im(\gamma.z)^{s+\frac{1}{2}},
+\ena
+where
+\bna
+\Gamma_P=\{\gamma.(i\infty)=(i\infty),\gamma\in\Gamma\}=P\cap \Gamma=\left\{\pm I,\bma 1&n\\&1\ema,n\in \Z\right\}
+\ena
+It is well defined since $Im(\gamma.z)$ is $\Gamma_P$ invariant
+and is absolutely convergent for $\re(s)>1/2$. Moreover,
+\bit
+\item It is eigenfunction of Laplacian operator with eigenvalue
+$$
+\Delta E_s=(s^2-\frac{1}{4})E_s.
+$$
+\item
+$$
+E_s(z)\sim y^{1/2+s}+c(s)y^{\frac{1}{2}-s},\quad y\rightarrow \infty.
+$$
+i.e., the constant term along parabolic subgroup $P$ is
+$$
+\int_0^1 E_s(x+iy)dx=y^{1/2+s}+c(s)y^{\frac{1}{2}-s}
+$$
+\item It satisfies the functional equation
+$$
+E_s(z)=c(s)E_{1-s}(z)
+$$
+which implies that
+$$
+c(s)c(1-s)=1.
+$$
+\eit
+We can calculate the constant term directly by
+\bna
+\int_0^1 E_s(x+iy)dx
+&=& y^{s+\frac{1}{2}}+y^{s+\frac{1}{2}}\left(\int_{-\infty}^\infty\frac{dw}{|w^2+y^2|^{s+\frac{1}{2}}}\right)\sum_{c>0}\frac{\varphi(c)}{c^{2s+1}}\\
+&=& y^{s+\frac{1}{2}}+y^{s+\frac{1}{2}}\frac{\zeta_\R(2s)}{\zeta_\R(2s+1)}\sum_{c>0}\frac{\varphi(c)}{c^{2s+1}}
+\ena
+where $\zeta_\R(s)=\pi^{-\frac{s}{2}}\Gamma(s/2)$, and $\varphi(c)=\sum_{n\leq c\atop{(n,c)=1}}1$. Moreover,
+\bna
+\sum_{c>0}\frac{\varphi(c)}{c^{2s+1}}=\prod_p \sum_{n\geq 0}\frac{\varphi(p^n)}{p^{n(2s+1)}}
+=\frac{\zeta(2s)}{\zeta(2s+1)}
+\ena
+It implies that
+$$
+c(s)=\frac{\xi(2s)}{\xi(2s+1)}.
+$$
+
+\subsection{The lift of classical Eisenstein series}
+We can lift the Eisenstein series to $SL(2,\R)$.
+Via the decomposition $SL(2,\R)=BK$, or
+\bna
+SL(2,\R)\rightarrow\mathfrak h^2,\quad \bma a&b\\c&d\ema\mapsto \frac{ai+b}{ci+d}.
+\ena
+we can define
+$$
+\tilde E_s(g_\R)=E_s(g.i).
+$$
+Moreover, since $$SL(2,\A)=SL(2,\Q)(SL(2,\R)K_f)$$ with $K_f=\prod_p K_p$,
+we can lift the Eisenstein series to be functions on $SL(2,\A)$ via
+$$
+\mathcal E_s(\gamma g_\R k_f)= \tilde E_s(g_\R)=E_s(g_\R.i),\quad g=\gamma g_\R k_f.
+$$
+
+\subsection{Philosophy of cusp form}
+Recall Parabolic induction in representation of Lie groups.
+Consider $G=SL(2,\R)$ and $B(\R)=M(\R)\ltimes N(\R)$.
+Let $\sigma$  be a representation of the levi-component $M(\R)$. We inflate it to be a representation of $P(\R)$ by letting $N(\R)$
+acting trivially,  and normalized parabolic induced to be a representation of $G(\R)$ via
+$$
+i_{M,P}^G \sigma=ind_{P}^G(\sigma\otimes\delta^{1/2})
+$$
+
+Let $\Gamma$ be a principal  congruence  subgroup of $SL(2,\Z)$.
+The question is,
+how to obtain an automorphic forms on $G(\R)$ w.r.t. $\Gamma$ from automomrphic forms on $M(\R)$ via the above philosophy?
+\bit
+\item
+Assume we have an automorphic form on $M(\R)$ with respect to $M_\Gamma=M(\R)\cap \Gamma$, i.e. a function
+$$
+I_s:M_\Gamma\backslash M(\R)\rightarrow \C,\quad I_s\left(\bma \pm y^{\frac{1}{2}}\\&\pm y^{-1/2}\ema \right)= |y|^s
+$$
+\item Inflate it to be a function on $P(\R)$ via letting $N(\R)$ acts trivially,
+we have an automorphic forms on $P$, namely
+$$
+I_s:P_\Gamma N(\R)\backslash P(\R)\rightarrow \C,\quad I_s\left(\bma \pm y^{\frac{1}{2}}&x\\&\pm y^{-1/2}\ema\right)= |y|^s
+$$
+\item Finally, we use the normalized induction to obtain a function on $G(\R)$, i.e. to obtain a function
+$$
+\varphi_s: P_\Gamma N(\R)\backslash G(\R)\rightarrow\C,\quad \varphi_s\left(\bma \pm y^{1/2}&x\\&\pm y^{-1/2}\ema g\right)=|y|^{s+\frac{1}{2}}\varphi_s(g).
+$$
+Note that we also need $\varphi_s$ is right $K_\R$-finite.
+\item The above function $\varphi_s$ is defined on $G(\R)$, but only with automorphism with respect to $P_\Gamma$.
+To obtain a real automorphic form on $G(\Z)\backslash G(\R)$, we finally define
+$$
+\mathcal E(g,\varphi_s):=\sum_{\gamma\in P_\Gamma\backslash \Gamma}\varphi_s(\gamma g)
+$$
+It is an automorphic forms on $\Gamma\backslash G(\R)$.
+\eit
+
+\subsection{Constant term of Eisenstein series}
+Now we consider the constant term of Eisenstein series.
+Recall that if $\Phi$ is an automorphic form on $\Gamma\backslash G(\R)$, the constant term is defined by
+$$
+\hat \Phi(g)=\int_{N(\Z) \backslash N(\R)}\Phi(n g)dn
+$$
+Since for $\gamma\in P_\Gamma$, $ n\gamma g= \gamma n'g$.
+It is easy to see that $\hat \Phi(g)$ is a function on $P_\Gamma N(\R)\backslash G(\R)$.
+
+
+\remark The constant term along parabolic subgroup $P=M^P\ltimes N^P$ is defined by
+$$
+\hat\Phi_P(g):=\int_{ N^P(\Z)\backslash N^P(\R)}\Phi(ng)dn
+$$
+maps automorphic form to be function on $P_\Gamma N(\R)\backslash G(\R).$
+
+\subsection{Adele version}
+Recall that we have
+\bna
+\A^\times=\Q^\times(\R^\times_+ \prod_p \Z_p^\times).
+\ena
+For $G=SL_2$, it gives
+\bna
+G(\A)= G(\Q)\left(G(\R)(\prod_p G(Z_p))\right),\quad M(\A)= M(\Q)\left(M(\R)(\prod_p M(Z_p))\right).
+\ena
+Let $\Gamma$ be a principal congruent subgroup of level $N$ in $SL(2,\Z)$. Recall $K_f=K_N\prod_p K_p$ is defined in
+section \ref{section-lift}.
+
+Question: How to obtain an Adele analogue of function $\varphi_s$ on $P_\Gamma N(\R)\backslash G(\R)$?
+\bit
+\item
+By Langlands decomposition, we have
+$$
+G(\A)=P(\A)K_\R K_f
+$$
+Moreover, the decomposition
+\bna
+P(\A)=M(\A)N(\A),\quad M(\A)=M(\Q)(M(\R)(\prod_p M(Z_p))
+\ena
+implies that
+\bea
+P(\Q)N(\A)\backslash G(\A)/K_f\simeq  P_\Gamma N(\R)\backslash G(\R)
+\eea
+\item Let $\varphi_s$ be the unique function on $P(\Q)N(\A)\backslash G(\A)/K_\R K_f$
+such that
+\bna
+\varphi_s(pg)=\delta_P(p)^{1/2+s}\varphi_s(g),\qquad \varphi_s(1)=1.
+\ena
+Here $\delta_P$ is the modulus function on $P(\A)$ defined by the product of local ones.
+\item The Eisenstein series $\mathcal E(*,\varphi_s)$ is defined by
+$$
+\mathcal E(g,\varphi_s):=\sum_{\gamma\in P(\Q)\backslash G(\Q)}\varphi_s(\gamma g).
+$$
+\eit
+
+Question: How about the constant term of the Eisenstein series?
+\bna
+\int_{N(\Q)\backslash N(\A)}\mathcal E_s(ng)dn=\int_{N(\Q)\backslash N(\A)}\sum_{\gamma\in P(\Q)\backslash G(\Q)}
+\varphi_s(\gamma n g)dn.
+\ena
+\bit
+\item
+The idea is to use the Bruhat decomposition, i.e.
+$$
+G(\Q)=P(\Q)\cup \bigcup_{w\neq 1} P(\Q) w N_w'(\Q),\quad
+P(\Q)\backslash G(\Q)=\{1\}\cup\bigcup_{w\neq 1} w N_w'(\Q),
+$$
+where $N=N_w\cdot N_w'=N_w'\cdot N_w$ with
+$$
+N_w= wNw^{-1}\cap N,\quad N_w'=w\overline {N} w^{-1}\cap N.
+$$
+\item Thus we can express the constant term as
+$$
+E_P(g,\varphi_s)=\varphi_s(g)+\sum_{w\neq 1}\int_{N_w'(\A)}\varphi_s(w ng)dn.
+$$
+In the case $G=SL_2$, we have
+$$
+E_P(g,\varphi_s)=\varphi_s(g)+\int_{N(\A)}\varphi_s(w ng)dn.
+$$
+\item
+So we need to calculate the local integral
+$$
+\int_{N(\Q_v)}\varphi_{s,v}(w n)dn,
+$$
+where
+$\int_{N(\Q_v)}\varphi_{s,v}(wn)dn$ is a constant given by intertwining operator acts
+on spherical vector of spherical representations, for almost all $v$.
+\eit
+
+
+\section{Some integral transform}
+We review the proof of Lemma \ref{lemma-integral-in-bump} (Lemma \ref{lemma-integral-Whitaker-Bessel}).
+\begin{lemma}
+We have
+\bna
+\pi^{-s}\Gamma(s)y^s\int_{-\infty}^\infty\frac{1}{(x^2+y^2)^s}e(-nx)dx
+=\left\{
+\begin{aligned}
+&\pi^{-s+\frac{1}{2}}\Gamma(s-\frac{1}{2})y^{1-s},\quad && n=0\\
+&2|n|^{s-\frac{1}{2}}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y),\quad &&n\neq 0.
+\end{aligned}
+\right.
+\ena
+\end{lemma}
+\begin{proof}
+Note that
+\bna
+\Gamma(s)=\int_0^\infty e^{-t}t^{s}\frac{dt}{t}.
+\ena
+Thus
+\bna
+&&\pi^{-s}y^s\int_{0}^\infty e^{-t}t^s\frac{dt}{t}
+\int_{-\infty}^\infty\frac{1}{(x^2+y^2)^s}e(-nx)dx\\
+&=&\int_{-\infty}^\infty\left(\int_0^\infty
+\left(\frac{y}{\pi(x^2+y^2)}t\right)^{s} e^{-t}\frac{dt}{t}
+\right)dx
+=\int_{-\infty}^\infty\left(\int_0^\infty
+t^{s} e^{-t\frac{\pi(x^2+y^2)}{y}}\frac{dt}{t}
+\right)dx\\
+&=&\int_0^\infty
+t^{s} e^{-t\pi y}
+\left(\int_{-\infty}^\infty
+ e^{-\frac{\pi t}{y}x^2} e^{-2\pi i n x}dx\right)
+ \frac{dt}{t}
+\ena
+Since
+\bna
+\int_{-\infty}^\infty
+ e^{-\frac{\pi t}{y}x^2} e^{-2\pi i n x}dx=\left\{
+ \begin{aligned}
+ &\sqrt{\frac{y}{t}},\quad &n=0\\
+ &\sqrt{\frac{y}{t}}e^{-\frac{\pi y n^2}{t}},\quad &n\neq 0
+ \end{aligned}
+ \right.
+\ena
+The result follows immediately by the expression of $\Gamma$-function and $K$-Bessel
+function.
+\end{proof}
+
+Next, we consider \eqref{K-bessel-integral-eq}.
+\begin{lemma}\label{lemma-K-bessel-eq}
+One has
+\bna
+\int_0^\infty  e^{-y}y^{s-\frac{1}{2}}K_{\nu}(y)\frac{dy}{y}
+=\pi^{1/2}2^{\frac{1}{2}-s}\frac{\Gamma(s-\frac{1}{2}-\nu)\Gamma(s-\frac{1}{2}+\nu)}{\Gamma(s)}
+\ena
+
+\end{lemma}
+\begin{proof}
+Note that $K$-Bessel function is Mellin transform of $\frac{1}{2}e^{a(y+\frac{1}{y})}$, (see \eqref{integral-transform-K-Bessel-in-appendix}),
+\bna
+\int_0^\infty e^{-\frac{y}{2}(t+\frac{1}{t})}t^s\frac{dt}{t}=2 K_s(y).
+\ena
+Applying this one has
+\bna
+L.H.S.&=&\int_0^\infty e^{-y}y^{s-\frac{1}{2}}
+\frac{1}{2}\int_0^\infty t^\nu e^{-\frac{y}{2}(t+\frac{1}{t})}\frac{dt}{t}
+\frac{dy}{y}\\
+&=&\frac{1}{2}\int_0^\infty \int_0^\infty  t^{\nu}y^{s-\frac{1}{2}}
+ t^\nu e^{-\frac{y}{2}(t+\frac{1}{t}+2)}\frac{dt}{t}
+\frac{dy}{y}\\
+\ena
+Let $yt=u_1$, $\frac{y}{t}=u_2$ and thus
+\bna
+y=\sqrt{u_1u_2},\quad t=\sqrt{\frac{u_1}{u_2}}
+\ena
+and thus
+\bna
+dy=\frac{1}{2}\sqrt{\frac{u_2}{u_1}}du_1+\frac{1}{2}\sqrt{\frac{u_1}{u_2}}du_2\\
+dt=\frac{1}{2}\sqrt{\frac{1}{u_1u_2}}du_1-\frac{1}{2}\sqrt{\frac{u_1}{u_2^3}}du_2\\
+\ena
+and thus
+\bna
+ty=u_1,\quad dydy=-\frac{1}{2}\frac{1}{u_2}du_1du_2.
+\ena
+It gives
+\bna
+L.H.S.&=&\frac{1}{2}\int_0^\infty\int_0^\infty e^{-\sqrt{u_1u_2}} (u_1u_2)^{\frac{s}{2}-\frac{1}{4}}\left(\frac{u_1}{u_2}\right)^{\frac{\nu}{2}}\frac{1}{2}\frac{du_1du_2}{u_1u_2}\\
+&=&\frac{1}{4}\int_0^\infty\int_0^\infty e^{-\sqrt{u_1u_2}} u_1^{\frac{s}{2}+\frac{\nu}{2}-\frac{1}{4}}u_2^{\frac{s}{2}-\frac{\nu}{2}-\frac{1}{4}}
+e^{-\frac{(\sqrt{u_1}+\sqrt{u_2})^2}{2}}\frac{du_1du_2}{u_1u_2}\\
+\ena
+
+\end{proof}
+
+\begin{thebibliography}{100}
+
+\bibitem[IwKo2004]{IwKo2004}
+H. Iwaniec and E. Kowalski, {\it Analytic number theory},
+American Mathematical Society Colloquium Publications, 53.
+American Mathematical Society, Providence, RI, 2004.
+
+\bibitem[Ap2013]{Ap2013}
+T.M. Apostol, {\it Introduction to analytic number theory},
+Undergraduate Texts in Mathematics. Springer-Verlag, New York-Heidelberg, 1976.
+
+\bibitem[BaFr2016]{BF1} O. Balkanova and D. Frolenkov, {\it A uniform asymptotic formula for the second moment of primitive $L$-functions on the critical line},
+    Proceedings of the Steklov Institute of Mathematics 294.1 (2016): 13-46.
+
+\bibitem[BaFr2018]{BF} O. Balkanova and D. Frolenkov, {\it Non-vanishing of automorphic L-functions of prime power level},
+    Monatshefte f\"ur Mathematik 185.1 (2018): 17-41.
+
+
+\bibitem[Bu1998]{B}
+D. Bump, {\it Automorphic forms and representations}, Cambridge Studies in Advanced Mathematics, 55. Cambridge University Press, Cambridge, 1997.
+
+
+\bibitem[Bl2019]{Bl2019}
+V. Blomer,
+{\it The relative trace formula in analytic number theory},
+arXiv:1912.08137.
+\bibitem[BuHe2006]{BuHe2006}
+C.J. Bushnell and G. Henniart,
+{\it The local Langlands conjecture for $GL(2)$},
+Grundlehren der Mathematischen Wissenschaften, 335. Springer-Verlag, Berlin, 2006.
+
+\bibitem[By1996]{By} V. Bykovskii, {\it A trace formula for the scalar product of Hecke series and its applications}, Journal of Mathematical Sciences 89.1 (1998): 915-932.
+
+\bibitem[ByFr2017]{BF2}V. Bykovskii and D. Frolenkov, {\it Asymptotic formulas for the second moments of
+$L$-series associated to holomorphic cusp forms on the critical line}, Izvestiya: Mathematics 81.2 (2017): 239-268.
+
+
+
+\bibitem[Co2004]{Co2004}
+J.W. Cogdell, {\it Analytic Theory of $L$-Functions for $GL_n$},
+An Introduction to the Langlands Program. Birkh\"auser, Boston, MA, 2003. 197-228.
+
+
+\bibitem[DeIw1982]{DeIw1982}
+J.M. Deshouillers and H. Iwaniec, {\it Kloosterman sums and Fourier coefficients of cusp forms}, Inventiones mathematicae 70.2 (1982): 219-288.
+
+
+\bibitem[Du1995]{Du1995}
+W. Duke, {\it The critical order of vanishing of automorphic L-functions with large level}, Inventiones Mathematicae 119.1 (1995): 165-174.
+
+
+\bibitem[DuGu1975]{DuGu1975}
+J.J. Duistermaat and V.M. Guillemin,
+{\it The Spectrum of Positive Elliptic Operators and Periodic Bicharacteristics}. Inventiones mathematicae 29.1 (1975): 39-79.
+
+\bibitem[FeWh2009]{FW}
+B. Feigon and D. Whitehouse,
+{\it Averages of central $L$-values of Hilbert modular forms with an application to subconvexity},
+Duke Mathematical Journal 149.2 (2009): 347-410.
+
+
+\bibitem[GaHoSe2009]{GaHoSe2009}
+S. Ganguly, J. Hoffstein and J. Sengupta, {\it Determining modular forms on $SL_2(\mathbb Z)$ by central values of convolution L-functions},
+Mathematische Annalen 345.4 (2009): 843-857.
+
+
+\bibitem[Ge1996]{Ge}
+S. Gelbart, {\it Lectures on the Arthur-Selberg trace formula},
+University Lecture Series, 9. American Mathematical Society, Providence, RI, 1996.
+
+\bibitem[Go2006]{Go}
+D. Goldfeld,
+{\it Automorphic Forms and L-functions for the Group
+$GL(n,\R)$}, Cambridge Studies in Advanced Mathematics, 99. Cambridge University Press, Cambridge, 2006.
+
+\bibitem[HoLo1994]{H-L}J. Hoffstein and P. Lockhart, {\it Coefficients of Maass forms and the Siegel zero}, Ann. of Math. 140.2 (1994): 161-181.
+
+\bibitem[Iw2002]{Iw2002-spectral-method}
+H. Iwaniec,
+{\it Spectral methods of automorphic forms},
+Graduate Studies in Mathematics, 53. American Mathematical Society, Providence, RI; Revista Matem$\acute{a}$tica Iberoamericana, Madrid, 2002.
+
+\bibitem[IwKo2004]{IwKo2004}
+H. Iwaniec and E. Kowalski, {\it Analytic number theory},
+American Mathematical Society Colloquium Publications, 53.
+American Mathematical Society, Providence, RI, 2004.
+
+\bibitem[IwLuSa2000]{IwLuoSarnak-lowlying-zeroes}
+H. Iwaniec, W. Luo and P. Sarnak,
+{\it Low lying zeros of families of $L$-functions},
+Publications Math$\acute{e}$matiques De Linstitut Des Hautes $\acute{e}$tudes Scientifiques 91.1 (2000): 55-131.
+
+
+\bibitem[IwSa2000]{IwSa2000}
+H. Iwaniec and P. Sarnak, {\it The non-vanishing of central values of automorphicL-functions and Landau-Siegel zeros}, Israel Journal of Mathematics 120.1 (2000): 155-177.
+
+
+\bibitem[Ja1972]{Ja}
+H. Jacquet, {\it Automorphic Forms on GL(2) Part II}, Lecture Notes in Mathematics, Vol. 278. Springer-Verlag, Berlin-New York, 1972.
+
+\bibitem[JaYe1996]{JaYe}
+H. Jacquet and Y. Ye, {\it Distinguished representations and quadratic base change for $GL(3)$},
+Transactions of the American Mathematical Society 348.3 (1996): 913-939.
+
+\bibitem[JaKn2015]{JaKn}
+J. Jackson, and A. Knightly,
+{\it Averages of twisted $L$-functions},
+Journal of the Australian Mathematical Society 99.2 (2015): 207-236.
+
+\bibitem[Kh2010]{Khan2010}
+R.R. Khan, {\it Non-vanishing of the symmetric square $L$-function},
+Proceedings of the London Mathematical Society 100.3 (2010): 736-762.
+
+\bibitem[KiSa2003]{KS2003}H. Kim and P. Sarnak,
+{\it Appendix: Refined estimates towards the Ramanujan and Selberg conjectures},
+J. Amer. Math. Soc 16.1 (2003): 175-181.
+
+
+\bibitem[KnLi2006a]{KnLi2010a}
+A. Knightly and C. Li,
+{\it A relative trace formula proof of the Petersson
+trace formula}, Acta Arithmetica 122.3 (2006): 297-313.
+
+\bibitem[KnLi2006b]{KnLi2006}
+A. Knightly and C. Li. {\it Traces of Hecke Operators},
+ Mathematical Surveys and Monographs, 133. American Mathematical Society, Providence, RI, 2006.
+
+
+\bibitem[KnLi2010]{KnLi2010b}
+A. Knightly and C. Li,
+{\it Weighted averages of modular $L$-values},
+Transactions of the American Mathematical Society 362.3 (2010): 1423-1443.
+
+
+\bibitem[KnLi2012]{KnLi2012}
+A. Knightly and C. Li, {\it Modular L-values of cubic level},
+Pacific Journal of Mathematics 260.2 (2012): 527-563.
+
+\bibitem[KnLi2013]{KnLi2013}
+A. Knightly and C. Li,
+{\it Kuznetsov's Trace Formula and the Hecke Eigenvalues of Maass Forms},
+Mem. Amer. Math. Soc. 224 (2013), no. 1055.
+
+
+
+\bibitem[KnLi2015]{KnLi2015}
+A. Knightly and C. Li, {\it
+Simple supercuspidal representations of ${\rm GL}(n)$},
+Taiwanese Journal of Mathematics 19.4 (2015): 995-1029.
+
+\bibitem[Ko1998]{Ko1998}
+E. Kowalski, {\it The rank of the jacobian of modular curves: analytic methods},
+Ph.D. thesis, Rutgers University, May 1998, http://www.math.ethz.ch
+
+\bibitem[KoMi1999]{KoMi1999}
+E. Kowalski and P. Michel, {\it The analytic rank of $J_0(q)$ and zeros of automorphic L-functions}, Duke Mathematical Journal 100.3 (1999): 503-542.
+
+\bibitem[LaM\"{u}2009]{LaMu2009}
+E. Lapid and W. M\"{u}ller, {\it Spectral asymptotics for arithmetic quotients of $SL(n,\mathbb R)/SO(n)$}, Duke Mathematical Journal 149.1 (2009): 40-44.
+
+\bibitem[Ku1983]{Ku} N.V. Kuznetsov, {\it Convolution of the Fourier coefficients of Eisentein-Maass series}, Auomorphic functions and number theory. Part I, Zap. Nauchn. Sem. LOMI 129 (1983): 43-84.
+
+\bibitem[LaWa2011]{Lau-Wang-Quantitive-joint-distribution}
+Y.K. Lau and Y. Wang, {\it Quantitative version of the joint distribution of eigenvalues of the Hecke operators}, Journal of Number Theory 131.12 (2011): 2262-2281.
+
+\bibitem[Li2011]{Li2011}
+X. Li, {\it A weighted Weyl law for the modular surface},
+International Journal of Number Theory 7.1 (2011): 241-248.
+
+
+
+
+\bibitem[Luo2015]{Luo2015}
+W. Luo, {\it Nonvanishing of the central $L$-values with large weight},
+Adv. Math. 285 (2015): 220-234.
+
+\bibitem[Nel2017]{Nel2017} P. Nelson,
+{\it Analytic isolation of newforms of given level}, Arch. Math. 108 (2017): 555-568.
+
+\bibitem[Popa2008]{Popa0}
+A.A. Popa, {\it
+Whittaker newforms for archimedean representations of $GL(2)$},
+Journal of Number Theory 128.6 (2008): 1637-1645.
+
+\bibitem[Popa]{Popa}
+A.A. Popa, {\it
+ Whittaker newforms for local representations of $GL(2)$}, Preprint.
+
+\bibitem[RaRo2005]{RR}
+D. Ramakrishnan and J.D. Rogawski, {\it Average values of
+modular $L$-series via the relative trace formula},
+Pure Appl. Math. Q. 1.4 (2005): 701-735.
+
+
+\bibitem[Ro1983]{Ro1}
+J.D. Rogawski, {\it Representations of $GL(n)$ and division algebras
+over a $p$-adic field}, Duke Math. J 50.1 (1983): 161-196.
+
+
+
+\bibitem[Rou2011]{Rouymi2011}
+D. Rouymi, {\it Formules de trace et non-annulation de fonctions $L$ automorphes au niveau $p^\nu$}, Acta Arithmetica 147.1 (2011): 1-32.
+
+\bibitem[Rou2012]{Rou} D. Rouymi, {\it Mollification et non annulation de fonctions $L$ automorphes en niveau primaire},
+    J. Number Theory 132.1 (2012): 79-93.
+
+
+\bibitem[Roy2001]{Roy} E. Royer, {\it Sur les fonctions L de formes modulaires}, Ph.D. thesis, Universit\'{e} de Paris-Sud (2001).
+
+\bibitem[Su2015]{Su}
+S. Sugiyama,
+{\it Asymptotic behaviors of means of central values of automorphic $L$-functions for $GL(2)$},
+Journal of Number Theory, 156 (2015): 195-246.
+
+\bibitem[SuTs2016]{ST}
+S. Sugiyama and M. Tsuzuki
+{\it Relative trace formulas and subconvexity estimates of $L$-functions for Hilbert modular forms},
+Acta Arithmetica, 176.1 (2016): 1-63.
+
+\bibitem[Ye1989]{Ye}
+Y. Ye, {\it Kloosterman integrals and base change for $GL(2)$},
+J. reine angew. Math 400.57 (1989): 57-121.
+
+\bibitem[Zh2004]{Zhang}
+S.W. Zhang, {\it Gross-Zagier Formula for $GL(2)$, II},
+ Heegner points and Rankin L-series, 191-214,
+Math. Sci. Res. Inst. Publ., 49, Cambridge Univ. Press, Cambridge, 2004.
+
+
+
+\end{thebibliography}
+\end{document}
